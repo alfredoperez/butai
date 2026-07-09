@@ -27,6 +27,7 @@ const EXPECTED_IDS = [
   'gsap-recipe-reference',
   'butai-themes',
   'slide-kit-code-archetypes',
+  'slide-kit-product-archetypes',
   'hyperframes',
   'frontend-slides-theme-presets',
   'bold-template-pack',

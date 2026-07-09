@@ -1,0 +1,66 @@
+.dgm {
+  width: 100%;
+  max-width: 1180px;
+}
+.dgm__frame {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: clamp(24px, 3vw, 52px);
+}
+.dgm__frame svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.dgm__caption {
+  margin: 18px 0 0;
+  color: var(--text-dim);
+  font-size: clamp(0.95rem, 1.3vw, 1.35rem);
+  line-height: 1.5;
+}
+
+/*
+ * Draw-on entrance. Shapes carry pathLength=1, so dasharray/dashoffset work
+ * in normalized units for any shape. Base state is fully drawn (the /kit
+ * gallery and non-engine hosts render static); activation replays the draw.
+ */
+.dgm .dgm-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+.slide.active .dgm .dgm-draw {
+  animation: dgm-draw-on 0.9s var(--ease-out-quart, ease-out) both;
+  animation-delay: calc(var(--dgm-i, 0) * 0.3s + 0.1s);
+}
+@keyframes dgm-draw-on {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.dgm .dgm-fade {
+  opacity: 1;
+}
+.slide.active .dgm .dgm-fade {
+  animation: dgm-fade-in 0.5s ease both;
+  animation-delay: calc(var(--dgm-i, 0) * 0.3s + 0.5s);
+}
+@keyframes dgm-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide.active .dgm .dgm-draw,
+  .slide.active .dgm .dgm-fade {
+    animation: none;
+  }
+}

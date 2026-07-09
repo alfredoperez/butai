@@ -2,7 +2,7 @@
   "name": "@butai/slide-kit",
   "version": "0.1.0-beta.0",
   "registryVersion": 1,
-  "contentHash": "f746a9ae03f7b96bf3589564b612f757489a68c27d973b246a7ec15f42b585d2",
+  "contentHash": "a47ba6df26b5a325e61992b87b4b60de3096e7a926d70efada20bbfd7db4ea07",
   "items": [
     {
       "id": "agenda-slide",
@@ -64,6 +64,53 @@
       "butaiDependencies": [],
       "importMap": {
         "src/primitives/badge.tsx": {
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "before-after-slide",
+      "type": "registry:slide",
+      "title": "Before After Slide",
+      "category": "layout",
+      "files": [
+        {
+          "path": "src/slides/before-after-slide.css",
+          "target": "styles",
+          "sha256": "7be524486e68e327e7912caea46f47164a0530ee3ead81f933be5445e8582279"
+        },
+        {
+          "path": "src/slides/before-after-slide.tsx",
+          "target": "slides",
+          "sha256": "006209b84697908ea71f216daf50949c8c0753eff7c632d53d785eae50e36d26"
+        }
+      ],
+      "registryDependencies": [
+        "code-panel",
+        "slide-base",
+        "subheading"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/before-after-slide.tsx": {
+          "../primitives/code-panel.js": {
+            "kind": "registry",
+            "item": "code-panel",
+            "alias": "primitives"
+          },
+          "../primitives/subheading.js": {
+            "kind": "registry",
+            "item": "subheading",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
           "react": {
             "kind": "external"
           }
@@ -550,6 +597,47 @@
       }
     },
     {
+      "id": "diagram-slide",
+      "type": "registry:slide",
+      "title": "Diagram Slide",
+      "category": "content",
+      "files": [
+        {
+          "path": "src/slides/diagram-slide.css",
+          "target": "styles",
+          "sha256": "121be636b2c677712a0068bf1edcf5fa5fde0c638e094ca35768031393eb86d4"
+        },
+        {
+          "path": "src/slides/diagram-slide.tsx",
+          "target": "slides",
+          "sha256": "1ac02e5d2b76e59c54209f15ddb7fb7227259b707ef6c80a6d8ec69110b68e0e"
+        }
+      ],
+      "registryDependencies": [
+        "slide-base",
+        "subheading"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/diagram-slide.tsx": {
+          "../primitives/subheading.js": {
+            "kind": "registry",
+            "item": "subheading",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
       "id": "full-bleed-slide",
       "type": "registry:slide",
       "title": "Full Bleed Slide",
@@ -720,6 +808,53 @@
       ],
       "importMap": {
         "src/primitives/intro-slide.tsx": {
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "kpi-slide",
+      "type": "registry:slide",
+      "title": "KPI Slide",
+      "category": "data",
+      "files": [
+        {
+          "path": "src/slides/kpi-slide.css",
+          "target": "styles",
+          "sha256": "5e69eae505806a6306904278a7ada40afae273937a1add3b51f5720c43dda5a5"
+        },
+        {
+          "path": "src/slides/kpi-slide.tsx",
+          "target": "slides",
+          "sha256": "955f3e860a9f49195d326dae8c265c92d1031115ac5f14da17eef7e3312a3f6b"
+        }
+      ],
+      "registryDependencies": [
+        "slide-base",
+        "subheading",
+        "subtitle"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/kpi-slide.tsx": {
+          "../primitives/subheading.js": {
+            "kind": "registry",
+            "item": "subheading",
+            "alias": "primitives"
+          },
+          "../primitives/subtitle.js": {
+            "kind": "registry",
+            "item": "subtitle",
+            "alias": "primitives"
+          },
           "@butai/deck": {
             "kind": "external"
           },
@@ -1059,6 +1194,59 @@
       "butaiDependencies": [],
       "importMap": {
         "src/primitives/subtitle.tsx": {
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "terminal-slide",
+      "type": "registry:slide",
+      "title": "Terminal Slide",
+      "category": "demo",
+      "files": [
+        {
+          "path": "src/slides/terminal-slide.css",
+          "target": "styles",
+          "sha256": "66162aeef4830e9a85de6d0299fc6456bef17165a4e679c7857233d9a25e206b"
+        },
+        {
+          "path": "src/slides/terminal-slide.tsx",
+          "target": "slides",
+          "sha256": "cb6f4cced09ba7291f416cf9d9ade8db00cf43eca1f902f843aff557a03649e8"
+        }
+      ],
+      "registryDependencies": [
+        "code-panel",
+        "slide-base",
+        "subheading",
+        "subtitle"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/terminal-slide.tsx": {
+          "../primitives/code-panel.js": {
+            "kind": "registry",
+            "item": "code-panel",
+            "alias": "primitives"
+          },
+          "../primitives/subheading.js": {
+            "kind": "registry",
+            "item": "subheading",
+            "alias": "primitives"
+          },
+          "../primitives/subtitle.js": {
+            "kind": "registry",
+            "item": "subtitle",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
           "react": {
             "kind": "external"
           }

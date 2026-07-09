@@ -18,8 +18,9 @@ version: 1
 #   notes         OPTIONAL — free text (e.g. a secondary relationship)
 #   excluded_reason  REQUIRED when how: excluded
 #
-# Fourteen entries: the 13 surveyed upstreams (phase-8 §0.2 + iter-2), i.e. 9
-# adopted/inspired/external/own + 4 excluded, plus the slide-kit code archetypes own-work row.
+# Fifteen entries: the 13 surveyed upstreams (phase-8 §0.2 + iter-2), i.e. 9
+# adopted/inspired/external/own + 4 excluded, plus the slide-kit code archetypes
+# and product archetypes own-work rows.
 sources:
   # ── Copied-in (vendored) ────────────────────────────────────────────────────
   - id: shadcn-ui
@@ -190,6 +191,25 @@ sources:
       highlighter seam so the packaged kit never depends on codehike. The slide-kit
       provenance guard (src/forbidden-strings.test.ts) scans these files like every other
       archetype.
+  - id: slide-kit-product-archetypes
+    name: Slide-kit product archetypes
+    url: ./packages/slide-kit
+    license: MIT
+    what: >-
+      Four product-engineering slide archetypes (kpi, diagram, before-after, terminal)
+      designed and written from scratch for butai, with CSS-only motion (stroke draw-on,
+      staggered and step-driven reveals) plus one tiny self-contained rAF count-up hook.
+    how: own-work
+    adopted: 2026-07-09
+    last_checked: 2026-07-09
+    last_ref: null
+    notes: >-
+      Original butai work: no motion library and no non-free plugin techniques. The new
+      diagram-slide is a fresh pure-CSS stroke-dasharray implementation and shares nothing
+      with the similarly named slide excluded at P3 for importing non-free motion plugins
+      (see greensock-club-plugins). Styled entirely through the theme token contract; the
+      slide-kit provenance guard (src/forbidden-strings.test.ts) scans these files like
+      every other archetype.
 
   # ── Excluded (considered but deliberately NOT shipped — the license-review rows) ──
   - id: frontend-slides-theme-presets

@@ -1,0 +1,97 @@
+.ba {
+  width: 100%;
+  max-width: 1180px;
+}
+.ba__grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: clamp(16px, 2vw, 32px);
+}
+.ba__panel {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: clamp(22px, 2.4vw, 40px);
+  overflow: hidden;
+}
+/* tone edge bar, inset like stat-row's so it follows the rounded corners */
+.ba__panel::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 4px;
+  background: var(--ba-tone, var(--accent));
+}
+.ba__chip {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: var(--ba-tone-dim, var(--accent-glow));
+  color: var(--ba-tone, var(--accent));
+  font-size: clamp(0.75rem, 1vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.ba__title {
+  margin: 14px 0 0;
+  font-size: clamp(1.15rem, 1.7vw, 1.9rem);
+  font-weight: 700;
+  color: var(--text);
+}
+.ba__points {
+  margin: 14px 0 0;
+  padding: 0 0 0 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: clamp(0.95rem, 1.3vw, 1.35rem);
+  line-height: 1.45;
+}
+.ba__points li::marker {
+  color: var(--ba-tone, var(--accent));
+}
+
+/* center divider arrow: dim until the reveal, then accent */
+.ba__divider {
+  align-self: center;
+  color: var(--text-dim);
+  transition: color 0.45s ease, transform 0.45s ease;
+}
+.ba--revealed .ba__divider {
+  color: var(--accent);
+  transform: scale(1.08);
+}
+
+/* the reveal: "after" waits dimmed + shifted until the first engine step */
+.ba__panel--after {
+  opacity: 0.25;
+  transform: translateX(18px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.ba--revealed .ba__panel--after {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ba__divider,
+  .ba__panel--after {
+    transition: none;
+    transform: none;
+  }
+}
+@media (max-width: 820px) {
+  .ba__grid {
+    grid-template-columns: 1fr;
+  }
+  .ba__divider {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+}

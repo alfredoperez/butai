@@ -26,6 +26,10 @@ import { DemoCueSlide } from "./slides/demo-cue-slide.js";
 import { CodeScrollySlide } from "./slides/code-scrolly-slide.js";
 import { CodeSpotlightSlide } from "./slides/code-spotlight-slide.js";
 import { CodeSlideshowSlide } from "./slides/code-slideshow-slide.js";
+import { KpiSlide } from "./slides/kpi-slide.js";
+import { DiagramSlide } from "./slides/diagram-slide.js";
+import { BeforeAfterSlide } from "./slides/before-after-slide.js";
+import { TerminalSlide } from "./slides/terminal-slide.js";
 
 /** A 16:9 solid-color placeholder — inline SVG data URI, no asset fetch. */
 const PLACEHOLDER =
@@ -303,6 +307,124 @@ export const EXAMPLES: Record<string, () => JSX.Element> = {
           code: "const add = (a: number, b: number): number => a + b;",
           caption: "Typed.",
         },
+      ]}
+    />
+  ),
+  "kpi-slide": () => (
+    <KpiSlide
+      chapter="Results"
+      title="The quarter in numbers"
+      items={[
+        {
+          value: 412,
+          label: "PRs shipped",
+          delta: { direction: "up", text: "+38% vs Q4" },
+          context: "across 6 teams",
+        },
+        {
+          value: 24,
+          suffix: "m",
+          label: "Median review",
+          delta: { direction: "down", text: "from 71m", tone: "good" },
+        },
+        {
+          value: 1.4,
+          decimals: 1,
+          label: "Reverts / 100",
+          delta: { direction: "down", text: "from 6.2", tone: "good" },
+          context: "rolling 90 days",
+        },
+      ]}
+    />
+  ),
+  "diagram-slide": () => (
+    <DiagramSlide
+      chapter="Workflow"
+      title="How a change flows"
+      caption="Spec to plan to shipped code, one gate at a time."
+    >
+      <svg viewBox="0 0 760 160" role="img" aria-label="Flow diagram: spec, then plan, then ship">
+        {(["Spec", "Plan", "Ship"] as const).map((label, i) => (
+          <g key={label}>
+            <rect
+              className="dgm-draw"
+              pathLength={1}
+              style={{ ["--dgm-i" as string]: i * 2 }}
+              x={30 + i * 270}
+              y="40"
+              width="160"
+              height="80"
+              rx="12"
+              fill="none"
+              stroke="var(--accent)"
+              strokeWidth="2.5"
+            />
+            <text
+              className="dgm-fade"
+              style={{ ["--dgm-i" as string]: i * 2 }}
+              x={110 + i * 270}
+              y="88"
+              textAnchor="middle"
+              fill="var(--text)"
+              fontSize="22"
+              fontFamily="inherit"
+            >
+              {label}
+            </text>
+            {i < 2 && (
+              <path
+                className="dgm-draw"
+                pathLength={1}
+                style={{ ["--dgm-i" as string]: i * 2 + 1 }}
+                d={`M${200 + i * 270} 80 H${282 + i * 270} M${272 + i * 270} 70 l14 10 -14 10`}
+                fill="none"
+                stroke="var(--text-dim)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            )}
+          </g>
+        ))}
+      </svg>
+    </DiagramSlide>
+  ),
+  "before-after-slide": () => (
+    <BeforeAfterSlide
+      chapter="Payoff"
+      title="Review, before and after specs"
+      before={{
+        label: "Before",
+        title: "Vibe-coded PRs",
+        points: [
+          "Reviewer reverse-engineers intent",
+          "Median review 71 minutes",
+          "The bug ships anyway",
+        ],
+      }}
+      after={{
+        label: "After",
+        title: "Spec-first PRs",
+        points: [
+          "Intent is written down first",
+          "Median review 24 minutes",
+          "Review is a step, not a scramble",
+        ],
+      }}
+    />
+  ),
+  "terminal-slide": () => (
+    <TerminalSlide
+      chapter="Demo"
+      title="One command, whole pipeline"
+      windowTitle="~/acme-app"
+      reveal="steps"
+      lines={[
+        { kind: "prompt", text: "specify plan payments-v2" },
+        { kind: "output", text: "reading spec … ok (14 requirements)" },
+        { kind: "output", text: "writing plan.md … ok" },
+        { kind: "comment", text: "# review the plan before any code exists" },
+        { kind: "highlight", text: "plan ready for review -> plan.md" },
       ]}
     />
   ),

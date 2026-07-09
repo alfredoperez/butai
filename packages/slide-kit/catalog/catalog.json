@@ -1,9 +1,9 @@
 {
   "version": "0.0.1",
-  "contentHash": "a70630a31d051cd9b181712a0bebb3889eb41d4db8bc53088c05ccc1ef541ded",
-  "count": 21,
+  "contentHash": "c4b7eceb05f24a3c64f9cf04388259aed529a72af6f542108ec2dcc969dbd209",
+  "count": 25,
   "kinds": {
-    "slide": 21
+    "slide": 25
   },
   "items": [
     {
@@ -94,6 +94,25 @@
       }
     },
     {
+      "id": "diagram-slide",
+      "name": "Diagram Slide",
+      "kind": "slide",
+      "category": "content",
+      "description": "Titled frame hosting an inline SVG diagram with a pure-CSS stroke draw-on entrance and an optional caption. Bring your own SVG; strokes draw in with a per-shape stagger.",
+      "snippet": "<DiagramSlide\n  chapter=\"Workflow\"\n  title=\"How a change flows\"\n  caption=\"Spec to plan to shipped code, one gate at a time.\"\n>\n  <svg viewBox=\"0 0 760 160\" role=\"img\" aria-label=\"Flow: spec, then plan, then ship\">\n    <rect className=\"dgm-draw\" pathLength={1} x=\"30\" y=\"40\" width=\"160\" height=\"80\" rx=\"12\"\n      fill=\"none\" stroke=\"var(--accent)\" strokeWidth=\"2.5\" />\n    <path className=\"dgm-draw\" pathLength={1} style={{ [\"--dgm-i\" as string]: 1 }}\n      d=\"M200 80 H282 M272 70 l14 10 -14 10\" fill=\"none\" stroke=\"var(--text-dim)\" strokeWidth=\"2.5\" />\n    <text className=\"dgm-fade\" x=\"110\" y=\"88\" textAnchor=\"middle\" fill=\"var(--text)\" fontSize=\"22\">Spec</text>\n    {/* ...repeat for Plan and Ship... */}\n  </svg>\n</DiagramSlide>",
+      "motion": "CSS stroke-dasharray/dashoffset keyframes draw each `dgm-draw` shape on slide activation, staggered by `--dgm-i`; `dgm-fade` labels fade in after; reduced motion renders the diagram fully drawn",
+      "tags": [
+        "content",
+        "diagram",
+        "svg",
+        "draw-on",
+        "flow"
+      ],
+      "source": {
+        "file": "slides/diagram-slide.meta.md"
+      }
+    },
+    {
       "id": "image-caption-slide",
       "name": "Image Caption Slide",
       "kind": "slide",
@@ -178,6 +197,25 @@
       }
     },
     {
+      "id": "kpi-slide",
+      "name": "KPI Slide",
+      "kind": "slide",
+      "category": "data",
+      "description": "Row of 2-4 KPI cards with a count-up display number, label, up/down/flat delta pill, and optional context line. Use to land headline metrics with a beat of motion.",
+      "snippet": "<KpiSlide\n  chapter=\"Results\"\n  title=\"The quarter in numbers\"\n  items={[\n    {\n      value: 412,\n      label: \"PRs shipped\",\n      delta: { direction: \"up\", text: \"+38% vs Q4\" },\n      context: \"across 6 teams\",\n    },\n    {\n      value: 24,\n      suffix: \"m\",\n      label: \"Median review\",\n      delta: { direction: \"down\", text: \"from 71m\", tone: \"good\" },\n    },\n    {\n      value: 1.4,\n      decimals: 1,\n      label: \"Reverts / 100\",\n      delta: { direction: \"down\", text: \"from 6.2\", tone: \"good\" },\n    },\n  ]}\n/>",
+      "motion": "numbers count up via a tiny self-contained rAF hook when the slide activates; cards stagger in via the engine's data-stagger; reduced motion renders final values immediately",
+      "tags": [
+        "data",
+        "kpi",
+        "metrics",
+        "count-up",
+        "delta"
+      ],
+      "source": {
+        "file": "slides/kpi-slide.meta.md"
+      }
+    },
+    {
       "id": "demo-cue-slide",
       "name": "Demo Cue Slide",
       "kind": "slide",
@@ -191,6 +229,44 @@
       ],
       "source": {
         "file": "slides/demo-cue-slide.meta.md"
+      }
+    },
+    {
+      "id": "terminal-slide",
+      "name": "Terminal Slide",
+      "kind": "slide",
+      "category": "demo",
+      "description": "Terminal window chrome (traffic lights, title bar) with mono lines that reveal per step or staggered. Prompt/output/comment line styling plus a highlighted payoff line.",
+      "snippet": "<TerminalSlide\n  chapter=\"Demo\"\n  title=\"One command, whole pipeline\"\n  windowTitle=\"~/acme-app\"\n  reveal=\"steps\"\n  lines={[\n    { kind: \"prompt\", text: \"specify plan payments-v2\" },\n    { kind: \"output\", text: \"reading spec … ok (14 requirements)\" },\n    { kind: \"output\", text: \"writing plan.md … ok\" },\n    { kind: \"comment\", text: \"# review the plan before any code exists\" },\n    { kind: \"highlight\", text: \"plan ready for review -> plan.md\" },\n  ]}\n/>",
+      "motion": "stagger (default) fades lines in sequentially on slide activation via pure CSS; steps reveals one line per engine advance through hidden data-step markers; reduced motion shows all lines at once",
+      "tags": [
+        "demo",
+        "terminal",
+        "cli",
+        "steps",
+        "walkthrough"
+      ],
+      "source": {
+        "file": "slides/terminal-slide.meta.md"
+      }
+    },
+    {
+      "id": "before-after-slide",
+      "name": "Before After Slide",
+      "kind": "slide",
+      "category": "layout",
+      "description": "Two panels (before/after) with header chips and a center divider arrow. Opens on the \"before\" state; the first engine step brings \"after\" in and lights the arrow.",
+      "snippet": "<BeforeAfterSlide\n  chapter=\"Payoff\"\n  title=\"Review, before and after specs\"\n  before={{\n    label: \"Before\",\n    title: \"Vibe-coded PRs\",\n    points: [\"Reviewer reverse-engineers intent\", \"Median review 71 minutes\"],\n  }}\n  after={{\n    label: \"After\",\n    title: \"Spec-first PRs\",\n    points: [\"Intent is written down first\", \"Median review 24 minutes\"],\n  }}\n/>",
+      "motion": "step-driven via a hidden data-step marker; the after panel waits dimmed and shifted, then transitions in on the first advance; reduced motion drops the transition and shift",
+      "tags": [
+        "layout",
+        "before-after",
+        "comparison",
+        "steps",
+        "transformation"
+      ],
+      "source": {
+        "file": "slides/before-after-slide.meta.md"
       }
     },
     {

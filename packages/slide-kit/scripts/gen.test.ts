@@ -12,6 +12,7 @@ const stylesDir = join(pkgRoot, "src", "styles");
 
 const ARCHETYPE_IDS = [
   "agenda-slide",
+  "before-after-slide",
   "big-statement-slide",
   "bento-grid-slide",
   "code-scrolly-slide",
@@ -22,15 +23,18 @@ const ARCHETYPE_IDS = [
   "concept-slide",
   "cover-slide",
   "demo-cue-slide",
+  "diagram-slide",
   "full-bleed-slide",
   "image-caption-slide",
   "image-text-split-slide",
+  "kpi-slide",
   "quote-portrait-slide",
   "quote-slide",
   "recap-slide",
   "section-divider-slide",
   "speaker-intro-slide",
   "stat-row-slide",
+  "terminal-slide",
   "timeline-slide",
 ];
 
@@ -43,9 +47,9 @@ describe("catalog generation", () => {
     expect(diagnostics.filter((d) => d.level === "error")).toEqual([]);
   });
 
-  it("has count >= 16 with kinds.slide >= 16, all kind slide", () => {
-    expect(catalog.count).toBeGreaterThanOrEqual(16);
-    expect(catalog.kinds.slide).toBeGreaterThanOrEqual(16);
+  it("has count >= 25 with kinds.slide >= 25, all kind slide", () => {
+    expect(catalog.count).toBeGreaterThanOrEqual(25);
+    expect(catalog.kinds.slide).toBeGreaterThanOrEqual(25);
     expect(catalog.count).toBe(catalog.items.length);
     expect(catalog.items.every((i) => i.kind === "slide")).toBe(true);
     expect(catalog.contentHash).toMatch(/^[0-9a-f]{64}$/);
@@ -126,7 +130,7 @@ describe("registry index generation", () => {
 
   it("closures slide-base into every registry:slide (§0.5 CSS-closure fix)", () => {
     const slides = index.items.filter((i) => i.type === "registry:slide");
-    expect(slides.length).toBeGreaterThanOrEqual(16);
+    expect(slides.length).toBeGreaterThanOrEqual(25);
     for (const it of slides) {
       expect(it.registryDependencies, `${it.id} → slide-base`).toContain("slide-base");
     }

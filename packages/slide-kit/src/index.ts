@@ -68,6 +68,13 @@ export { CodeSpotlightSlide } from "./slides/code-spotlight-slide.js";
 export type { SpotlightStep } from "./slides/code-spotlight-slide.js";
 export { CodeSlideshowSlide } from "./slides/code-slideshow-slide.js";
 export type { CodeSnapshot } from "./slides/code-slideshow-slide.js";
+export { KpiSlide } from "./slides/kpi-slide.js";
+export type { KpiItem, KpiDelta } from "./slides/kpi-slide.js";
+export { DiagramSlide } from "./slides/diagram-slide.js";
+export { BeforeAfterSlide } from "./slides/before-after-slide.js";
+export type { BeforeAfterPanel } from "./slides/before-after-slide.js";
+export { TerminalSlide } from "./slides/terminal-slide.js";
+export type { TerminalLine } from "./slides/terminal-slide.js";
 
 // ── Gallery examples (asset-free, personal-data-free) ──
 export { EXAMPLES } from "./examples.js";

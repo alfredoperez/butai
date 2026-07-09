@@ -84,6 +84,12 @@ The three code slide archetypes (code-scrolly, code-spotlight, code-slideshow) p
 
 _Generalization: app-specific imports and design tokens were replaced with the butai theme token contract, and syntax highlighting was moved behind an optional highlighter seam so the packaged kit never depends on codehike. The slide-kit provenance guard (src/forbidden-strings.test.ts) scans these files like every other archetype._
 
+### [Slide-kit product archetypes](./packages/slide-kit) — MIT
+
+Four product-engineering slide archetypes (kpi, diagram, before-after, terminal) designed and written from scratch for butai, with CSS-only motion (stroke draw-on, staggered and step-driven reveals) plus one tiny self-contained rAF count-up hook. Adopted 2026-07-09. Last checked 2026-07-09.
+
+_Original butai work: no motion library and no non-free plugin techniques. The new diagram-slide is a fresh pure-CSS stroke-dasharray implementation and shares nothing with the similarly named slide excluded at P3 for importing non-free motion plugins (see greensock-club-plugins). Styled entirely through the theme token contract; the slide-kit provenance guard (src/forbidden-strings.test.ts) scans these files like every other archetype._
+
 ## Excluded (considered, not shipped)
 
 ### [bold-template-pack (34 themes) + its primitives.css devices](https://github.com/zarazhangrui/frontend-slides) — UNVERIFIED

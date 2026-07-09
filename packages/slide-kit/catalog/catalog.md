@@ -1,8 +1,8 @@
 # Butai pattern catalog
 
-- count: 21
+- count: 25
 - version: 0.0.1
-- contentHash: a70630a31d051cd9b181712a0bebb3889eb41d4db8bc53088c05ccc1ef541ded
+- contentHash: c4b7eceb05f24a3c64f9cf04388259aed529a72af6f542108ec2dcc969dbd209
 
 ## slide
 
@@ -20,16 +20,26 @@
 ### content
 
 - **Concept Slide** (`concept-slide`) — Eyebrow label + big serif title + optional subtitle. Use for concept defines (What is X?).
+- **Diagram Slide** (`diagram-slide`) — Titled frame hosting an inline SVG diagram with a pure-CSS stroke draw-on entrance and an optional caption. Bring your own SVG; strokes draw in with a per-shape stagger.
+  - motion: CSS stroke-dasharray/dashoffset keyframes draw each `dgm-draw` shape on slide activation, staggered by `--dgm-i`; `dgm-fade` labels fade in after; reduced motion renders the diagram fully drawn
 - **Image Caption Slide** (`image-caption-slide`) — Title + large screenshot + optional caption. The workhorse of every recap section.
 - **Image Text Split Slide** (`image-text-split-slide`) — Half image, half copy. Use for product detail beats or storytelling pairs.
 - **Quote Portrait Slide** (`quote-portrait-slide`) — Testimonial with a face — big quote + portrait (photo or initials) + name/role + optional logo. Social proof, vs. the text-only quote.
 - **Quote Slide** (`quote-slide`) — Pull quote with attribution. Use for evidence, a stakeholder voice, or a memorable framing.
 - **Recap Slide** (`recap-slide`) — Closing recap of a section or the whole talk. A check-marker list anchors what the audience just heard.
+### data
+
+- **KPI Slide** (`kpi-slide`) — Row of 2-4 KPI cards with a count-up display number, label, up/down/flat delta pill, and optional context line. Use to land headline metrics with a beat of motion.
+  - motion: numbers count up via a tiny self-contained rAF hook when the slide activates; cards stagger in via the engine's data-stagger; reduced motion renders final values immediately
 ### demo
 
 - **Demo Cue Slide** (`demo-cue-slide`) — Cue card for a live demo — accent badge + h1 + optional subtitle. Drops the speaker out of the deck and into the demo.
+- **Terminal Slide** (`terminal-slide`) — Terminal window chrome (traffic lights, title bar) with mono lines that reveal per step or staggered. Prompt/output/comment line styling plus a highlighted payoff line.
+  - motion: stagger (default) fades lines in sequentially on slide activation via pure CSS; steps reveals one line per engine advance through hidden data-step markers; reduced motion shows all lines at once
 ### layout
 
+- **Before After Slide** (`before-after-slide`) — Two panels (before/after) with header chips and a center divider arrow. Opens on the "before" state; the first engine step brings "after" in and lights the arrow.
+  - motion: step-driven via a hidden data-step marker; the after panel waits dimmed and shifted, then transitions in on the first advance; reduced motion drops the transition and shift
 - **Bento Grid Slide** (`bento-grid-slide`) — Bento grid of mixed tiles (stat / text / quote), each spanning 1–2 cols/rows. The 'everything at a glance' dashboard beat.
 - **Big Statement Slide** (`big-statement-slide`) — One huge line — the manifesto / 'one big word' / punchline beat. Centered, minimal, with one accent phrase.
 - **Comparison Table Slide** (`comparison-table-slide`) — Feature matrix (rows × columns) with check/x/partial or short-text cells and an optional highlighted winning column. The 'X vs Y' slide.
