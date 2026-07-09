@@ -12,6 +12,8 @@ const VALUE_EXPORTS = [
   'useSlides',
   'ThemePicker',
   'EngineOverlays',
+  // additive extension to the P2 frozen surface: grid contact-sheet mode
+  'DeckOverview',
   'SectionTracker',
   'NavSidebar',
   'LinktreePage',

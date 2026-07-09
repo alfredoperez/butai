@@ -8,6 +8,7 @@ import {
 import { NavSidebar } from "./NavSidebar.js";
 import { ThemePicker } from "./ThemePicker.js";
 import { EngineOverlays } from "./EngineOverlays.js";
+import { DeckOverview } from "./DeckOverview.js";
 import { SectionTracker } from "./SectionTracker.js";
 import { useSlides } from "./useSlides.js";
 
@@ -77,6 +78,9 @@ export function SlideEngine({
   const [overlay, setOverlay] = useState<
     "overview" | "help" | "presenter" | null
   >(null);
+  // Grid contact sheet (G). Separate from `overlay`: it is a MODE that
+  // re-layouts the real slides, not a panel drawn over them.
+  const [gridOpen, setGridOpen] = useState(false);
   const slideAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -119,6 +123,20 @@ export function SlideEngine({
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
+      // G toggles the grid contact sheet from anywhere.
+      if (e.key === "g" || e.key === "G") {
+        setGridOpen((o) => !o);
+        return;
+      }
+      // While the contact sheet is up it is modal: Escape closes it and the
+      // other engine keys are swallowed, because next/goTo write inline
+      // transforms that would fight the grid's per-cell scaling.
+      if (gridOpen) {
+        if (e.key === "Escape") {
+          setGridOpen(false);
+        }
+        return;
+      }
       if (e.key === "ArrowRight" || e.key === " ") {
         e.preventDefault();
         next();
@@ -155,7 +173,7 @@ export function SlideEngine({
     };
     document.addEventListener("keydown", handleKey);
     return () => document.removeEventListener("keydown", handleKey);
-  }, [next, prev]);
+  }, [next, prev, gridOpen]);
 
   const progress = total > 0 ? ((current + 1) / total) * 100 : 0;
 
@@ -224,6 +242,15 @@ export function SlideEngine({
         )}
         {themePickerOpen && (
           <ThemePicker onClose={() => setThemePickerOpen(false)} />
+        )}
+        {gridOpen && total > 0 && (
+          <DeckOverview
+            current={current}
+            total={total}
+            titles={titles}
+            goTo={goTo}
+            onClose={() => setGridOpen(false)}
+          />
         )}
         <EngineOverlays
           open={overlay}

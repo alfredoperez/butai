@@ -10,6 +10,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import '@butai/deck/styles/engine.css';
+import '@butai/deck/styles/overview.css';
 import '@butai/deck/styles/linktree.css';
 
 import '@butai/themes/themes/brand.css';

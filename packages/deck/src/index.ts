@@ -11,6 +11,8 @@ export { useSlides } from './useSlides.js';
 export type { ChapterInfo } from './useSlides.js';
 export { ThemePicker } from './ThemePicker.js';
 export { EngineOverlays } from './EngineOverlays.js';
+export { DeckOverview } from './DeckOverview.js';
+export type { DeckOverviewProps } from './DeckOverview.js';
 export { SectionTracker } from './SectionTracker.js';
 export { NavSidebar } from './NavSidebar.js';
 export { LinktreePage } from './LinktreePage.js';

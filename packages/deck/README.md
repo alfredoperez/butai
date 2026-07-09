@@ -36,11 +36,32 @@ export function Deck() {
 }
 ```
 
+## Grid overview (contact sheet)
+
+Press G while presenting to see every slide of the deck at once, laid out as a
+grid of small live previews, like a photographer's contact sheet. The slide you
+are on is highlighted; click any thumbnail to jump straight to it, or press G
+or Escape to go back to where you were. People who prefer reduced motion get a
+plain fade instead of the zoom animation.
+
+To enable it, import the overview stylesheet after the engine one:
+
+```tsx
+import '@butai/deck/styles/engine.css';
+import '@butai/deck/styles/overview.css';
+```
+
+Under the hood this is a true mode, not a re-render: the engine's real slide
+elements are scaled into the grid cells with inline transforms, so interactive
+slide content is never mounted twice. The `DeckOverview` component is also
+exported for decks that drive `useSlides` directly.
+
 ## Under the hood
 
 - Component exports: `SlideEngine`, `Slide`, `SlideBackground`, `ThemePicker`,
-  `EngineOverlays`, `SectionTracker`, `NavSidebar`, `LinktreePage`, and the
-  `useSlides` hook.
+  `EngineOverlays`, `DeckOverview`, `SectionTracker`, `NavSidebar`,
+  `LinktreePage`, and the `useSlides` hook.
 - Motion helpers: `PROFILES`, `THEME_PROFILE`, `profileForTheme`, `specForTheme`.
-- Styles: `@butai/deck/styles/engine.css` and `@butai/deck/styles/linktree.css`.
+- Styles: `@butai/deck/styles/engine.css`, `@butai/deck/styles/overview.css`,
+  and `@butai/deck/styles/linktree.css`.
 - Depends on `@butai/themes`; the published tarball ships `dist` and `styles`.

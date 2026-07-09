@@ -106,6 +106,46 @@ test('help overlay: lists shortcuts, no Cursor row', async ({ page }) => {
   await expect(help).toHaveCount(0);
 });
 
+test('grid overview: G shows the contact sheet, click jumps, Esc closes', async ({ page }) => {
+  await page.goto('/');
+  // Engine mount wait (keydown listener registers in an effect).
+  await expect(counter(page)).toHaveText('1 / 3');
+
+  await page.keyboard.press('g');
+  const sheet = page.locator('.deck-ov');
+  await expect(sheet).toBeVisible();
+
+  // One cell per slide; the current slide is highlighted.
+  const cells = page.locator('.deck-ov__cell');
+  await expect(cells).toHaveCount(3);
+  await expect(cells.nth(0)).toHaveClass(/is-current/);
+
+  // The REAL slides are forced visible and scaled into their cells
+  // (mode class on the area + an inline translate/scale per slide).
+  await expect(page.locator('.slide-area.is-overview')).toHaveCount(1);
+  const slide2 = page.locator('[data-slide]').nth(1);
+  await expect(slide2).toBeVisible();
+  const inline = await slide2.evaluate((el) => (el as HTMLElement).style.transform);
+  expect(inline, 'slide 2 carries an inline overview transform').toContain('scale(');
+
+  // Clicking a cell jumps there and exits overview.
+  await cells.nth(2).click();
+  await expect(sheet).toHaveCount(0);
+  await expect(counter(page)).toHaveText('3 / 3');
+
+  // The mode fully restores: class gone, inline transform cleared.
+  await expect(page.locator('.slide-area.is-overview')).toHaveCount(0);
+  const restored = await slide2.evaluate((el) => (el as HTMLElement).style.transform);
+  expect(restored, 'overview transform cleared on exit').toBe('');
+
+  // G re-opens; Escape closes without changing the slide.
+  await page.keyboard.press('g');
+  await expect(sheet).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(sheet).toHaveCount(0);
+  await expect(counter(page)).toHaveText('3 / 3');
+});
+
 test('print CSS: every slide paginates as a flex page, chrome hidden', async ({ page }) => {
   await page.goto('/');
   await page.emulateMedia({ media: 'print' });

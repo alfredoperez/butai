@@ -10,6 +10,7 @@
       "default": "./dist/index.js"
     },
     "./styles/engine.css": "./styles/engine.css",
+    "./styles/overview.css": "./styles/overview.css",
     "./styles/linktree.css": "./styles/linktree.css"
   },
   "files": [

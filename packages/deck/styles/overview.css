@@ -1,0 +1,166 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   @butai/deck : DeckOverview (grid contact sheet) styles.
+   Import AFTER engine.css:  import "@butai/deck/styles/overview.css";
+
+   z-index landscape inside .slide-area (engine.css): toolbar 10,
+   nav-toggle / dots 20. Overview layers: backdrop 25 (covers deck chrome),
+   mini slides 30, grid cells + hint 40 (click targets above the slides).
+
+   The .deck-ov root deliberately carries NO z-index / transform / filter.
+   It must not create a stacking context, because its cell buttons have to
+   layer ABOVE the mini slides, which are its DOM *siblings* (the engine's
+   real slide elements stay where they are; DeckOverview only transforms
+   them into place).
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.deck-ov {
+  position: absolute;
+  inset: 0;
+}
+
+/* Backdrop: solid theme ground over the deck chrome (toolbar, dots, bar). */
+.deck-ov::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  background: var(--bg);
+}
+
+.deck-ov__hint {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.deck-ov__grid {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  align-content: start;
+  padding: 52px 28px 28px;
+}
+@media (max-width: 1280px) {
+  .deck-ov__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 860px) {
+  .deck-ov__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .deck-ov__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cell = transparent 16:9 frame; the real slide shows through from the
+   layer beneath (z 30), so the button only draws the border + badge. */
+.deck-ov__cell {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.deck-ov__cell:hover,
+.deck-ov__cell:focus-visible {
+  border-color: var(--accent);
+}
+.deck-ov__cell.is-current {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px
+    var(--accent-glow, color-mix(in srgb, var(--accent) 35%, transparent));
+}
+
+.deck-ov__num {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  z-index: 1;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--accent);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 4px 7px;
+}
+
+.deck-ov__title {
+  position: absolute;
+  left: 38px;
+  right: 8px;
+  bottom: 8px;
+  z-index: 1;
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--text-dim);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ─── Forced slide visibility (no !important) ─────────────────────────
+   The doubled .is-overview bumps specificity to (0,4,0) so these rules
+   beat every engine state without !important and independent of import
+   order: `.slide.active` (0,2,0), the transition variants
+   `.slide-area[data-transition=…] .slide` (0,3,0), and the reduced-motion
+   overrides (media queries add no specificity). Slides keep
+   pointer-events: none; the cell buttons above them own the clicks. */
+.slide-area.is-overview.is-overview [data-slide] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
+  z-index: 30;
+  transition:
+    opacity calc(var(--motion-scale, 1) * 0.3s) ease,
+    transform calc(var(--motion-scale, 1) * 0.45s) var(--ease-out-quart, ease);
+}
+
+/* Contact sheet shows each slide's FINAL state: reveal steps, entrance
+   animations, and staggered lists. Mirrors the print reveal, but via
+   specificity: (0,5,0)+ beats `.slide:not(.active) [data-stagger] > *`
+   at (0,3,0) and the [data-step] base at (0,1,0). */
+.slide-area.is-overview.is-overview [data-slide] [data-step],
+.slide-area.is-overview.is-overview [data-slide] [data-animate],
+.slide-area.is-overview.is-overview [data-slide] [data-stagger] > * {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  animation: none;
+  filter: none;
+}
+
+/* Reduced motion: no zoom choreography; cells and slides simply fade. */
+@media (prefers-reduced-motion: reduce) {
+  .slide-area.is-overview.is-overview [data-slide] {
+    transition: opacity 0.2s ease;
+  }
+  .deck-ov__cell {
+    transition: none;
+  }
+}

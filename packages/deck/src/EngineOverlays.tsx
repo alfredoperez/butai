@@ -13,6 +13,7 @@ const SHORTCUTS: [string, string][] = [
   ["→ / Space", "Next step / slide"],
   ["←", "Previous"],
   ["O", "Overview — jump to any slide"],
+  ["G", "Grid contact sheet: every slide, scaled"],
   ["P", "Presenter view (notes + timer)"],
   ["N", "Chapter navigation"],
   ["T", "Theme picker"],
