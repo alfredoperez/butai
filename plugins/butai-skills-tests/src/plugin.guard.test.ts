@@ -21,8 +21,10 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
 const srcDir = dirname(fileURLToPath(import.meta.url));
-const pluginRoot = join(srcDir, "..");
-const repoRoot = join(pluginRoot, "..", "..");
+// This guard lives in the sibling plugins/butai-skills-tests package; it scans
+// the shipped plugin surface at plugins/butai-skills (no package.json there).
+const pluginRoot = join(srcDir, "..", "..", "butai-skills");
+const repoRoot = join(srcDir, "..", "..", "..");
 const skillsDir = join(pluginRoot, "skills");
 const readmePath = join(pluginRoot, "README.md");
 const pluginManifestPath = join(pluginRoot, ".claude-plugin", "plugin.json");

@@ -64,6 +64,14 @@ claude plugin marketplace add .
 claude plugin install butai-skills@butai
 ```
 
+### Troubleshooting
+
+If the install ever stops with "Unable to find package manager binary", your
+machine is missing a package manager Claude Code expects. You can turn one on
+with `corepack enable`, or install pnpm globally with `npm install -g pnpm`,
+then run the install command again. This plugin ships no code to install, so
+once a package manager is present the install just copies the skills across.
+
 ## Using a skill
 
 After install, invoke a skill by its name, for example `/outline` or
@@ -93,10 +101,15 @@ engine packages are published to npm under the `@butai/*` scope (currently the
   invocation suffix, so it always equals the skill's frontmatter `name`.
 - `.claude-plugin/marketplace.json` (repo root) — lists this single plugin and
   points at `./plugins/butai-skills`.
-- `src/plugin.manifest.test.ts` — validates the manifest, the marketplace entry,
+
+This directory carries no `package.json` on purpose, so Claude Code has nothing
+to install when it copies the plugin onto a fresh machine. The plugin's tests
+live in the sibling `plugins/butai-skills-tests` workspace instead:
+
+- `plugin.manifest.test.ts` — validates the manifest, the marketplace entry,
   and that all seven skills resolve with a frontmatter `name` matching their
   folder.
-- `src/plugin.guard.test.ts` — scans the whole packaged surface for personal or
+- `plugin.guard.test.ts` — scans the whole packaged surface for personal or
   proprietary strings, so nothing private ships in the public plugin.
 
 Both tests are plain Node plus a YAML parser — no network, no external CLI — so

@@ -63,8 +63,9 @@ Applied to `@butai/patterns`, `@butai/themes`, `@butai/deck`, `@butai/slide-kit`
 - [ ] **`@butai/create-butai`** (the starter) is still `private` on purpose — it
       depends on the 7, so it is a follow-on beta you flip + publish **last**.
 - [x] Intended-private packages left untouched: `studio`, `playground`,
-      `@butai/library-web`, `@butai/credits`, `@butai/skills-plugin` (marketplace,
-      not npm), `@butai/release-check`.
+      `@butai/library-web`, `@butai/credits`, `@butai/skills-plugin-tests` (tests
+      for the marketplace plugin; the plugin dir itself has no package.json),
+      `@butai/release-check`.
 
 ## 3. npm org + publish (real, human-run — your authenticated step)
 

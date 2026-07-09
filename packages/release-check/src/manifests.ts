@@ -83,7 +83,7 @@ export const PRIVATE_EXPECTED: readonly string[] = [
   'apps/playground', // name: playground
   'library/web', // @butai/library-web (internal recipe demo)
   'packages/credits', // @butai/credits (internal generator)
-  'plugins/butai-skills', // @butai/skills-plugin (ships via marketplace)
+  'plugins/butai-skills-tests', // @butai/skills-plugin-tests (tests for the plugin; the plugin dir itself has no package.json and ships via the marketplace)
   'packages/release-check', // @butai/release-check (internal, this phase)
 ];
 

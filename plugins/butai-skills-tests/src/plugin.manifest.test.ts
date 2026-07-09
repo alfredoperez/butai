@@ -22,8 +22,10 @@ import { parse as parseYaml } from "yaml";
 import { describe, expect, it } from "vitest";
 
 const srcDir = dirname(fileURLToPath(import.meta.url));
-const pluginRoot = join(srcDir, "..");
-const repoRoot = join(pluginRoot, "..", "..");
+// This test lives in the sibling plugins/butai-skills-tests package; the plugin
+// it validates is plugins/butai-skills (no package.json, so it installs bare).
+const pluginRoot = join(srcDir, "..", "..", "butai-skills");
+const repoRoot = join(srcDir, "..", "..", "..");
 const pluginManifestPath = join(pluginRoot, ".claude-plugin", "plugin.json");
 const marketplacePath = join(repoRoot, ".claude-plugin", "marketplace.json");
 const skillsDir = join(pluginRoot, "skills");

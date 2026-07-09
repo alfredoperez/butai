@@ -1,11 +1,11 @@
 {
-  "name": "@butai/skills-plugin",
+  "name": "@butai/skills-plugin-tests",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Private workspace carrying the butai-skills plugin manifest + validation and forbidden-strings tests.",
+  "description": "Private workspace carrying the butai-skills plugin manifest + validation and forbidden-strings tests. Ships no plugin content — the plugin itself (plugins/butai-skills) has no package.json so it installs on bare machines.",
   "scripts": {
-    "build": "echo \"@butai/skills-plugin: no build output (skills are docs)\"",
+    "build": "echo \"@butai/skills-plugin-tests: no build output (tests only)\"",
     "lint": "eslint src --no-error-on-unmatched-pattern",
     "test": "vitest run --passWithNoTests"
   },
