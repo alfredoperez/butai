@@ -1,0 +1,63 @@
+/* butai original — authored for butai P1 */
+/* Atelier — light editorial sibling of `brand`. Warmer paper, ink text,
+   a single terracotta accent, serif display. Quieter and more bookish
+   than brand's sharp red: a studio worktable, not a magazine cover. */
+[data-theme="atelier"] {
+  --bg: #f6efe3; /* warm paper, one shade deeper than brand */
+  --bg-card: #fffdf8;
+  --bg-nav: #efe6d6;
+  --text: #221a14; /* warm ink */
+  --text-dim: rgba(34, 26, 20, 0.6);
+  --accent: #c65d3b; /* terracotta — the only loud thing on the page */
+  --accent-glow: rgba(198, 93, 59, 0.12);
+  --red: #b3392b;
+  --red-dim: rgba(179, 57, 43, 0.1);
+  --green: #3f7d5a;
+  --green-dim: rgba(63, 125, 90, 0.1);
+  --yellow: #a9791c;
+  --yellow-dim: rgba(169, 121, 28, 0.1);
+  --orange: #cf6a32;
+  --blue: #33628c;
+  --blue-dim: rgba(51, 98, 140, 0.1);
+  --border: rgba(34, 26, 20, 0.16);
+  --font-display: "Fraunces", "Playfair Display", Georgia, serif;
+  --font-body: "Lora", Georgia, serif;
+  --font-mono: "IBM Plex Mono", "JetBrains Mono", monospace;
+}
+
+html[data-theme="atelier"] body {
+  font-family: var(--font-body);
+}
+
+/* Serif display headlines */
+html[data-theme="atelier"] .slide h1,
+html[data-theme="atelier"] .slide h2,
+html[data-theme="atelier"] .slide h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Signature device: a short terracotta brushstroke under headlines —
+   the atelier rule. One mark of the maker's hand per slide. */
+html[data-theme="atelier"] .slide h1::after,
+html[data-theme="atelier"] .slide h2::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 4px;
+  margin-top: 0.5rem;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+/* Soft editorial shadow on paper */
+html[data-theme="atelier"] .card,
+html[data-theme="atelier"] .flow-step {
+  box-shadow: 0 1px 3px rgba(34, 26, 20, 0.08);
+}
+
+/* Dark ink code card against the paper */
+html[data-theme="atelier"] .code-block {
+  background: #221a14;
+  color: #f6efe3;
+}

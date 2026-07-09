@@ -1,0 +1,68 @@
+/* butai original — authored for butai P1 */
+/* Stage — the butai identity theme (舞台, "stage"). Deep charcoal house,
+   a warm spotlight falling from above, gold where the light lands.
+   Everything you put on a stage should feel lit, not decorated. */
+[data-theme="stage"] {
+  --bg: #191817; /* deep charcoal, house lights down */
+  --bg-card: #23211f;
+  --bg-nav: #1d1c1a;
+  --text: #f2ede4; /* warm white, lit by tungsten not LED */
+  --text-dim: #9b948a;
+  --accent: #e6b04a; /* warm stage gold */
+  --accent-glow: rgba(230, 176, 74, 0.18);
+  --red: #e26d5c;
+  --red-dim: rgba(226, 109, 92, 0.14);
+  --green: #74b48d;
+  --green-dim: rgba(116, 180, 141, 0.14);
+  --yellow: #e3c567;
+  --yellow-dim: rgba(227, 197, 103, 0.14);
+  --orange: #d98a4a;
+  --blue: #6f9fc8;
+  --blue-dim: rgba(111, 159, 200, 0.14);
+  --border: #383530;
+  --font-display: "Marcellus", "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+html[data-theme="stage"] body {
+  font-family: var(--font-body);
+}
+
+/* Signature device: the spotlight — a warm radial pool falling from
+   top center, brightest where the headline stands. */
+html[data-theme="stage"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 55% at 50% 8%,
+    rgba(230, 176, 74, 0.1) 0%,
+    rgba(230, 176, 74, 0.03) 45%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Display serif headlines catch the light */
+html[data-theme="stage"] .slide h1,
+html[data-theme="stage"] .slide h2 {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+html[data-theme="stage"] .slide h1 {
+  text-shadow: 0 0 32px rgba(230, 176, 74, 0.25);
+}
+
+/* Cards sit just outside the pool of light */
+html[data-theme="stage"] .card,
+html[data-theme="stage"] .flow-step {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Gold progress bar — the follow spot tracking the talk */
+html[data-theme="stage"] .progress-bar {
+  background: linear-gradient(90deg, #e6b04a, #d98a4a);
+}

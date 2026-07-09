@@ -1,0 +1,22 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renderCatalogMd > matches the snapshot 1`] = `
+"# Butai pattern catalog
+
+- count: 2
+- version: 0.0.1
+- contentHash: 63cf59a63dabe175ba6b73389f2b8ef4d2289c2677dc5b953ce6d61ca9d2fba5
+
+## motion
+
+### svg-diagram
+
+- **A First** (\`a-first\`) · engine: gsap — Description for a-first.
+## slide
+
+### hero
+
+- **C Slide** (\`c-slide\`) — Description for c-slide.
+  - motion: fade in
+"
+`;

@@ -1,0 +1,100 @@
+<!doctype html>
+<!--
+  feature-callout.html — framework-free HyperFrames scene (callout).
+  A centered framed "shot" region (a generic placeholder panel, NOT a real
+  screenshot) with a mono eyebrow label on top and a big display caption below
+  carrying ONE accent payoff word. Generalized "tab-shot-with-caption" beat.
+
+  Styled by the butai TOKEN CONTRACT; the :root fallback keeps it standalone
+  and offline. A theme overrides these vars to restyle the same HTML.
+-->
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      :root {
+        --bg: #0f0f13;
+        --bg-card: #16161d;
+        --text: #e9e9f2;
+        --text-dim: #8a8a9c;
+        --accent: #60a5fa;
+        --accent-glow: rgba(96, 165, 250, 0.18);
+        --border: #2a2a3a;
+        --green: #34d399;
+        --font-display: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      }
+
+      html, body {
+        width: 1080px; height: 1920px; overflow: hidden;
+        background: var(--bg); font-family: var(--font-body); color: var(--text);
+      }
+
+      .bg {
+        position: absolute; inset: 0; opacity: 0.5;
+        background:
+          radial-gradient(120% 70% at 50% 40%, transparent 45%, rgba(0, 0, 0, 0.9) 100%),
+          linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 100% 100%, 46px 46px, 46px 46px;
+      }
+
+      .scene { position: absolute; inset: 0; }
+
+      .eyebrow {
+        position: absolute; left: 0; right: 0; top: 210px; text-align: center;
+        font-family: var(--font-mono); font-size: 28px; font-weight: 600;
+        letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+        animation: fade 0.5s ease-out both;
+      }
+
+      /* the placeholder "shot" — a framed card, flat, 1px border, faint accent ring */
+      .shot {
+        position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+        width: 900px; height: 900px; border-radius: 20px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        box-shadow: 0 0 0 1px var(--accent-glow), 0 40px 110px rgba(0, 0, 0, 0.6);
+        display: flex; align-items: center; justify-content: center;
+        animation: punch 5s linear both;
+      }
+      .shot .placeholder {
+        font-family: var(--font-mono); font-size: 30px; letter-spacing: 0.18em;
+        text-transform: uppercase; color: var(--text-dim);
+        border: 1px dashed var(--border); border-radius: 12px; padding: 26px 34px;
+      }
+
+      .caption {
+        position: absolute; left: 70px; right: 70px; bottom: 220px; text-align: center;
+        font-family: var(--font-display); font-weight: 800; font-size: 80px;
+        line-height: 1.03; letter-spacing: -0.02em; text-wrap: balance;
+        animation: rise 0.6s ease-out 0.9s both;
+      }
+      .caption .accent { color: var(--accent); }
+
+      /* bottom scrim so the caption reads over the shot */
+      .scrim {
+        position: absolute; left: 0; right: 0; bottom: 0; height: 620px;
+        background: linear-gradient(transparent, var(--bg) 72%);
+      }
+
+      @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+      @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes punch { from { transform: translate(-50%, -50%) scale(1.06); } to { transform: translate(-50%, -50%) scale(1); } }
+      @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    </style>
+  </head>
+  <body>
+    <div class="bg"></div>
+    <section class="scene">
+      <div class="shot"><div class="placeholder">Your UI here</div></div>
+      <div class="scrim"></div>
+      <div class="eyebrow">Feature · what it does</div>
+      <div class="caption">One panel, <span class="accent">one payoff</span></div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,262 @@
+/* ── Linktree page (@butai/deck) ─────────────────────────────────────── */
+
+.lt-root {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  overflow-y: auto;
+  padding: 32px 16px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lt-cover {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(28px) brightness(0.35) saturate(1.1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.lt-card {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  box-shadow: 0 16px 56px rgba(0, 0, 0, 0.45);
+}
+
+/* ── Header (speaker chip) ──────────────────────── */
+.lt-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.lt-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  padding: 2px;
+  background: var(--bg);
+  flex-shrink: 0;
+}
+
+.lt-speaker {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lt-speaker__name {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.lt-speaker__role {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.lt-speaker__bio {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin: 4px 0 0;
+  line-height: 1.5;
+}
+
+/* ── Talk header ────────────────────────────────── */
+.lt-talk {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  padding-top: 22px;
+}
+
+.lt-talk__date {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.lt-talk__title {
+  font-size: clamp(22px, 5vw, 28px);
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  line-height: 1.18;
+  margin: 0;
+}
+
+.lt-talk__tagline {
+  font-size: 15px;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Link rows ──────────────────────────────────── */
+.lt-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lt-links__heading {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 2px;
+}
+
+.lt-links--socials {
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+}
+
+.lt-row {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    transform 0.15s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.lt-row:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+.lt-row--primary {
+  background: var(--accent-glow);
+  border-color: var(--accent);
+}
+.lt-row--primary .lt-row__label {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.lt-row--inert {
+  cursor: default;
+}
+.lt-row--inert:hover {
+  transform: none;
+  border-color: var(--border);
+}
+
+.lt-row__media {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.lt-row__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lt-row__emoji {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.lt-row__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.lt-row__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.lt-row__label {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.1px;
+}
+
+.lt-row__detail {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  line-height: 1.45;
+}
+
+.lt-row__chev {
+  color: var(--text-dim);
+  font-size: 18px;
+  transition:
+    transform 0.15s ease,
+    color 0.2s ease;
+  flex-shrink: 0;
+}
+.lt-row:hover .lt-row__chev {
+  color: var(--accent);
+  transform: translateX(2px);
+}
+
+/* ── Footer ─────────────────────────────────────── */
+.lt-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.lt-footer a {
+  color: var(--text-dim);
+  text-decoration: none;
+}
+.lt-footer a:hover {
+  color: var(--accent);
+}
+
+.lt-footer__home {
+  color: var(--text-dim);
+}

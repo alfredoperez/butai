@@ -1,0 +1,68 @@
+/* butai original — authored for butai P1 */
+/* Blueprint — dark mission-control. Near-black ground, faint hairline grid,
+   glowing blue structure, and exactly ONE scarce yellow payoff per slide.
+   Authored from our own internal frame.md design language. */
+[data-theme="blueprint"] {
+  --bg: #0f0f13; /* near-black ground */
+  --bg-card: #16161d; /* flat panel, 1px border, no heavy shadow */
+  --bg-nav: #121218;
+  --text: #e9e9f2;
+  --text-dim: #8a8a9c;
+  --accent: #60a5fa; /* structure is blue: rails, nodes, links, glow */
+  --accent-glow: rgba(96, 165, 250, 0.16);
+  --red: #f87171;
+  --red-dim: rgba(248, 113, 113, 0.14);
+  --green: #34d399; /* pass-state only */
+  --green-dim: rgba(52, 211, 153, 0.14);
+  --yellow: #facc15; /* THE scarce accent — one payoff per slide, never two */
+  --yellow-dim: rgba(250, 204, 21, 0.14);
+  --orange: #fb923c;
+  --blue: #3b82f6; /* deeper blue for depth */
+  --blue-dim: rgba(59, 130, 246, 0.14);
+  --border: #2a2a3a; /* blueprint hairline */
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* Signature device: faint 44px blueprint grid + edge vignette so content floats */
+html[data-theme="blueprint"] body {
+  font-family: var(--font-body);
+  background-image:
+    radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.45) 100%),
+    linear-gradient(rgba(42, 42, 58, 0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 42, 58, 0.55) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    44px 44px,
+    44px 44px;
+}
+
+/* Headlines are display and loud; chrome is mono and quiet — never both */
+html[data-theme="blueprint"] .slide h1,
+html[data-theme="blueprint"] .slide h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+html[data-theme="blueprint"] .label,
+html[data-theme="blueprint"] .slide-table th {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+
+/* Counters and moving digits stay aligned */
+html[data-theme="blueprint"] .big-num,
+html[data-theme="blueprint"] .stat-value {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Flat cards: panel fill, hairline border, faint inner glow at most */
+html[data-theme="blueprint"] .card,
+html[data-theme="blueprint"] .flow-step {
+  box-shadow: inset 0 0 24px rgba(96, 165, 250, 0.04);
+}

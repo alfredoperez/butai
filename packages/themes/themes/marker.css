@@ -1,0 +1,63 @@
+/* butai original — authored for butai P1 */
+/* Marker — cream ground and hand-drawn ink energy from our diagram brand:
+   black 2px structure, teal/blue/gold/coral accents, lines that wobble
+   like they were drawn by a person who was excited about the idea. */
+[data-theme="marker"] {
+  --bg: #faf3e3; /* cream */
+  --bg-card: #ffffff;
+  --bg-nav: #f2ead7;
+  --text: #171512; /* marker ink */
+  --text-dim: rgba(23, 21, 18, 0.62);
+  --accent: #0f8b8d; /* teal — the lead marker in the pack */
+  --accent-glow: rgba(15, 139, 141, 0.14);
+  --red: #e5624d; /* coral */
+  --red-dim: rgba(229, 98, 77, 0.12);
+  --green: #2f9e68;
+  --green-dim: rgba(47, 158, 104, 0.12);
+  --yellow: #eaa221; /* gold */
+  --yellow-dim: rgba(234, 162, 33, 0.14);
+  --orange: #e07b2f;
+  --blue: #2b6cb0;
+  --blue-dim: rgba(43, 108, 176, 0.12);
+  --border: #171512; /* black 2px structure */
+  --font-display: "Lilita One", "Archivo", system-ui, sans-serif;
+  --font-body: "Nunito Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+html[data-theme="marker"] body {
+  font-family: var(--font-body);
+}
+
+html[data-theme="marker"] .slide h1,
+html[data-theme="marker"] .slide h2 {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+/* Signature device: the hand-drawn wobble — asymmetric border radii make
+   every box read as inked freehand, not ruled. */
+html[data-theme="marker"] .card,
+html[data-theme="marker"] .flow-step {
+  border: 2px solid var(--border);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 0 2px 6px rgba(23, 21, 18, 0.12);
+}
+
+html[data-theme="marker"] .badge {
+  border: 2px solid var(--border);
+  border-radius: 999px;
+}
+
+/* Accented words get a marker swipe, not a color change alone */
+html[data-theme="marker"] .c-accent {
+  text-decoration: underline wavy var(--accent) 2px;
+  text-underline-offset: 4px;
+}
+
+/* Code lives on an index card taped to the board */
+html[data-theme="marker"] .code-block {
+  border: 2px solid var(--border);
+  border-radius: 12px 4px 14px 5px / 5px 12px 4px 16px;
+  background: #fffdf6;
+}

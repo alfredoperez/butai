@@ -1,0 +1,80 @@
+<!doctype html>
+<!--
+  quote-scene.html — framework-free HyperFrames scene (quote).
+  A large pull-quote with attribution. One accent quotation mark is the payoff.
+  Generic quote, no personal or product refs.
+
+  Styled by the butai TOKEN CONTRACT; the :root fallback keeps it standalone
+  and offline. A theme overrides the vars to restyle the same HTML.
+-->
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      :root {
+        --bg: #0f0f13;
+        --bg-card: #16161d;
+        --text: #e9e9f2;
+        --text-dim: #8a8a9c;
+        --accent: #60a5fa;
+        --accent-glow: rgba(96, 165, 250, 0.18);
+        --border: #2a2a3a;
+        --font-display: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      }
+
+      html, body {
+        width: 1080px; height: 1920px; overflow: hidden;
+        background: var(--bg); font-family: var(--font-body); color: var(--text);
+      }
+
+      .bg {
+        position: absolute; inset: 0; opacity: 0.5;
+        background:
+          radial-gradient(120% 75% at 50% 44%, transparent 45%, rgba(0, 0, 0, 0.9) 100%),
+          linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 100% 100%, 46px 46px, 46px 46px;
+      }
+
+      .scene {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        padding: 140px 90px; text-align: center;
+      }
+
+      .mark {
+        font-family: var(--font-display); font-weight: 800; font-size: 240px; line-height: 0.6;
+        color: var(--accent); margin-bottom: 20px;
+        animation: pop 0.6s ease-out both;
+      }
+      .quote {
+        font-family: var(--font-display); font-weight: 800; font-size: 96px;
+        line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance;
+        animation: rise 0.7s ease-out 0.15s both;
+      }
+      .attr {
+        margin-top: 56px; font-family: var(--font-mono); font-size: 30px;
+        letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dim);
+        animation: rise 0.7s ease-out 0.45s both;
+      }
+      .attr .role { color: var(--accent); }
+
+      @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+      @keyframes pop { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: none; } }
+      @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    </style>
+  </head>
+  <body>
+    <div class="bg"></div>
+    <section class="scene">
+      <div class="mark" aria-hidden="true">&ldquo;</div>
+      <blockquote class="quote">Make the important thing the obvious thing.</blockquote>
+      <div class="attr">Casey Vale<span class="role"> · Design lead</span></div>
+    </section>
+  </body>
+</html>

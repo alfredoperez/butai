@@ -1,0 +1,66 @@
+/* Brand — warm paper, ink text, one sharp red accent, serif headlines.
+   The default theme. Editorial and premium, not corporate. */
+[data-theme="brand"] {
+  --bg: #fbefd9; /* warm paper */
+  --bg-card: #ffffff;
+  --bg-nav: #f3e7cf;
+  --text: #1a1310; /* ink */
+  --text-dim: rgba(26, 19, 16, 0.58);
+  --accent: #d30800; /* sharp red — links, CTA, one moment per slide */
+  --accent-glow: rgba(211, 8, 0, 0.1);
+  --red: #d30800;
+  --red-dim: rgba(211, 8, 0, 0.1);
+  --green: #1f7a4d;
+  --green-dim: rgba(31, 122, 77, 0.1);
+  --yellow: #b8860b;
+  --yellow-dim: rgba(184, 134, 11, 0.1);
+  --orange: #c2410c;
+  --orange-dim: rgba(194, 65, 12, 0.1);
+  --blue: #1d4ed8;
+  --blue-dim: rgba(29, 78, 216, 0.1);
+  --border: rgba(26, 19, 16, 0.14);
+}
+
+/* Serif display headlines (Playfair already loaded) */
+html[data-theme="brand"] .slide h1,
+html[data-theme="brand"] .slide h2,
+html[data-theme="brand"] .slide h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+html[data-theme="brand"] .big-num,
+html[data-theme="brand"] .stat-value,
+html[data-theme="brand"] .card-num {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+/* Soft editorial card shadow on the light paper */
+html[data-theme="brand"] .card,
+html[data-theme="brand"] .flow-step {
+  box-shadow: 0 1px 3px rgba(26, 19, 16, 0.08);
+}
+
+/* Pastel badge backgrounds read on paper */
+html[data-theme="brand"] .badge-red {
+  background: #fdeceb;
+}
+html[data-theme="brand"] .badge-green {
+  background: #ecf6f0;
+}
+html[data-theme="brand"] .badge-yellow {
+  background: #fbf3e0;
+}
+html[data-theme="brand"] .badge-blue {
+  background: #eaeefc;
+}
+
+html[data-theme="brand"] .slide-table th {
+  border-bottom-width: 2px;
+}
+
+/* Dark code editor card for contrast against the paper slide */
+html[data-theme="brand"] .code-block {
+  background: #1a1310;
+  color: #f5f0e8;
+}

@@ -1,0 +1,97 @@
+[data-theme="glassmorphism"] {
+  --bg: #0a0a1a;
+  --bg-card: rgba(255, 255, 255, 0.06);
+  --bg-nav: rgba(10, 10, 30, 0.8);
+  --text: #e8e8f0;
+  --text-dim: #8888a0;
+  --accent: #8b5cf6;
+  --accent-glow: rgba(139, 92, 246, 0.15);
+  --red: #ff6b6b;
+  --red-dim: rgba(255, 107, 107, 0.15);
+  --green: #4ecdc4;
+  --green-dim: rgba(78, 205, 196, 0.15);
+  --yellow: #ffd166;
+  --yellow-dim: rgba(255, 209, 102, 0.15);
+  --orange: #ff9f43;
+  --blue: #54a0ff;
+  --blue-dim: rgba(84, 160, 255, 0.15);
+  --border: rgba(255, 255, 255, 0.12);
+}
+
+/* Gradient blobs */
+html[data-theme="glassmorphism"] body::before {
+  content: "";
+  position: fixed;
+  top: -20%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.15) 0%,
+    transparent 70%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+html[data-theme="glassmorphism"] body::after {
+  content: "";
+  position: fixed;
+  bottom: -15%;
+  right: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(78, 205, 196, 0.12) 0%,
+    transparent 70%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+html[data-theme="glassmorphism"] .slide-area::before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 209, 102, 0.06) 0%,
+    transparent 70%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+html[data-theme="glassmorphism"] .card {
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="glassmorphism"] .flow-step {
+  backdrop-filter: blur(16px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme="glassmorphism"] .flow-step.highlight {
+  backdrop-filter: blur(16px);
+}
+
+html[data-theme="glassmorphism"] .code-block {
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="glassmorphism"] .timeline-dot {
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+}
+
+html[data-theme="glassmorphism"] .nav-keys kbd {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+}

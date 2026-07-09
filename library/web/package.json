@@ -1,0 +1,31 @@
+{
+  "name": "@butai/library-web",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.tooling.json && vite build",
+    "lint": "eslint src scripts demos/src e2e",
+    "test": "vitest run",
+    "gen": "tsx scripts/gen.ts",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "@butai/patterns": "workspace:*",
+    "gsap": "^3.12.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "yaml": "^2.6.0",
+    "vite": "^6.0.0",
+    "eslint": "^9.15.0",
+    "typescript-eslint": "^8.15.0",
+    "@eslint/js": "^9.15.0",
+    "vitest": "^2.1.0",
+    "typescript": "^5.6.0"
+  }
+}

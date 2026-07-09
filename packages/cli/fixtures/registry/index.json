@@ -1,0 +1,82 @@
+{
+  "name": "@butai/slide-kit-fixture",
+  "version": "0.0.1",
+  "registryVersion": 1,
+  "contentHash": "129249065aa7f8b2c9b8b2667497e2cd41a5c190cc2a746d5b48208f835b419c",
+  "items": [
+    {
+      "id": "cover-slide",
+      "type": "registry:slide",
+      "title": "Cover Slide",
+      "category": "structure",
+      "files": [
+        {
+          "path": "src/slides/cover-slide.tsx",
+          "target": "slides",
+          "sha256": "f7bfa116c171a850f22598f5578d2f1b541cfb1986d2b90c46be247ce2d11106"
+        },
+        {
+          "path": "src/slides/cover-slide.css",
+          "target": "styles",
+          "sha256": "6f916aaef8225bcd340d2a3d660deff9668ef751763ed3e89eda1f899f0117c3"
+        }
+      ],
+      "registryDependencies": ["label"],
+      "dependencies": [],
+      "butaiDependencies": ["@butai/deck"],
+      "importMap": {
+        "src/slides/cover-slide.tsx": {
+          "react": { "kind": "external" },
+          "@butai/deck": { "kind": "external" },
+          "../primitives/label.js": { "kind": "registry", "item": "label", "alias": "primitives" }
+        },
+        "src/slides/cover-slide.css": {}
+      }
+    },
+    {
+      "id": "label",
+      "type": "registry:primitive",
+      "title": "Label",
+      "category": "primitive",
+      "files": [
+        {
+          "path": "src/primitives/label.tsx",
+          "target": "primitives",
+          "sha256": "c0015fdeac51ab65165bf8f29e0ea62a229d9ac21bb9fae7e763f9d9aa463278"
+        }
+      ],
+      "registryDependencies": [],
+      "dependencies": [],
+      "butaiDependencies": [],
+      "importMap": {
+        "src/primitives/label.tsx": {
+          "react": { "kind": "external" }
+        }
+      }
+    },
+    {
+      "id": "quote-slide",
+      "type": "registry:slide",
+      "title": "Quote Slide",
+      "category": "content",
+      "files": [
+        {
+          "path": "src/slides/quote-slide.tsx",
+          "target": "slides",
+          "sha256": "a438319803d4db276954fa5a10b2916e05c355fafcdb8fafbb0b2afdcf5f48a7"
+        }
+      ],
+      "registryDependencies": ["cover-slide"],
+      "dependencies": ["qrcode.react"],
+      "butaiDependencies": ["@butai/deck"],
+      "importMap": {
+        "src/slides/quote-slide.tsx": {
+          "react": { "kind": "external" },
+          "@butai/deck": { "kind": "external" },
+          "qrcode.react": { "kind": "external" },
+          "../slides/cover-slide.js": { "kind": "registry", "item": "cover-slide", "alias": "slides" }
+        }
+      }
+    }
+  ]
+}

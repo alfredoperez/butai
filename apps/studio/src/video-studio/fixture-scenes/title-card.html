@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      /* Built-in fallback :root — the studio/theme injects a later :root that wins. */
+      :root {
+        --bg: #0f0f13;
+        --text: #e8e8f0;
+        --text-dim: #8888a0;
+        --accent: #60a5fa;
+        --font-display: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        --font-body: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      }
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+      }
+      .scene {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 3vh;
+        padding: 8vw;
+        box-sizing: border-box;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+      }
+      .eyebrow {
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        font-size: 3.2vw;
+        color: var(--text-dim);
+      }
+      .cap {
+        margin: 0;
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 11vw;
+        line-height: 1.02;
+      }
+      .accent {
+        color: var(--accent);
+      }
+      .sub {
+        margin: 0;
+        font-size: 4vw;
+        color: var(--text-dim);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="scene">
+      <div class="eyebrow">EXAMPLE.COM · 2026</div>
+      <h1 class="cap">Ship faster, <span class="accent">break less</span></h1>
+      <p class="sub">A calm, one-idea-per-frame opener.</p>
+    </section>
+  </body>
+</html>

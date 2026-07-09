@@ -1,0 +1,67 @@
+.qp {
+  margin: 0;
+  max-width: min(92vw, 46rem);
+  text-align: center;
+  position: relative;
+}
+.qp__mark {
+  font-family: var(--display-font);
+  font-size: clamp(4rem, 9vw, 9rem);
+  line-height: 0.6;
+  color: var(--accent);
+  opacity: 0.5;
+}
+.qp__quote {
+  font-family: var(--display-font);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.6vw, 3.4rem);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  max-width: 18em;
+  margin: 8px auto clamp(24px, 4vh, 44px);
+  color: var(--text);
+}
+.qp__by {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+.qp__avatar {
+  width: clamp(56px, 6vw, 78px);
+  height: clamp(56px, 6vw, 78px);
+  border-radius: 999px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--display-font);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--accent);
+  background: radial-gradient(
+    circle at 32% 28%,
+    color-mix(in srgb, var(--accent) 26%, var(--bg-card)),
+    var(--bg-card)
+  );
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--border);
+}
+.qp__meta {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.qp__name {
+  font-weight: 700;
+  font-size: clamp(1rem, 1.4vw, 1.35rem);
+  color: var(--text);
+}
+.qp__role {
+  font-size: clamp(0.85rem, 1.1vw, 1.05rem);
+  color: var(--text-dim);
+}
+.qp__logo {
+  height: 30px;
+  margin-left: 8px;
+  opacity: 0.85;
+}

@@ -1,0 +1,23 @@
+[data-theme="brutalist"] {
+  --bg: #000000;
+  --bg-card: #000000;
+  --bg-nav: #000000;
+  --text: #ffffff;
+  --text-dim: #888888;
+  --accent: #ff0040;
+  --accent-glow: rgba(255, 0, 64, 0.15);
+  --red: #ff0040;
+  --red-dim: rgba(255, 0, 64, 0.15);
+  --green: #00ff88;
+  --green-dim: rgba(0, 255, 136, 0.15);
+  --yellow: #ffff00;
+  --yellow-dim: rgba(255, 255, 0, 0.15);
+  --orange: #ff6600;
+  --blue: #0088ff;
+  --blue-dim: rgba(0, 136, 255, 0.15);
+  --border: #ffffff;
+}
+
+html[data-theme="brutalist"] body {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+}

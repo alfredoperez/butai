@@ -1,0 +1,188 @@
+{
+  "name": "@butai/docs-kit",
+  "version": "0.1.0-beta.0",
+  "registryVersion": 1,
+  "contentHash": "ed20952692b8a28966c9c1f9b2c97b05cb6bb81e8dc9cf6c0a908085f1ac56ba",
+  "items": [
+    {
+      "id": "callout",
+      "type": "registry:doc-pattern",
+      "title": "Callout",
+      "category": "emphasis",
+      "files": [
+        {
+          "path": "src/patterns/callout.html",
+          "target": "pages",
+          "sha256": "73b53e4f1d7bf78918c7ba9cfbb83256b9d5aa448fdfb143edb56b5b6f9af8f0"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "id": "card-grid",
+      "type": "registry:doc-pattern",
+      "title": "Card Grid",
+      "category": "content",
+      "files": [
+        {
+          "path": "src/patterns/card-grid.html",
+          "target": "pages",
+          "sha256": "196c316aef32abab6c87d1df39c83596c981b531d5990e121568aeba0be3503a"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "id": "code-block",
+      "type": "registry:doc-pattern",
+      "title": "Code Block",
+      "category": "code",
+      "files": [
+        {
+          "path": "src/patterns/code-block.html",
+          "target": "pages",
+          "sha256": "ea669018bd94f928ef92de2862396a78601ecce6160e37586cb0450d29bb5db7"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "id": "comparison",
+      "type": "registry:doc-pattern",
+      "title": "Comparison",
+      "category": "data",
+      "files": [
+        {
+          "path": "src/patterns/comparison.html",
+          "target": "pages",
+          "sha256": "5670067e974f73d1723feab2d90a0cf8929d8002ea3e48d318396622f3274217"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "id": "data-table",
+      "type": "registry:doc-pattern",
+      "title": "Data Table",
+      "category": "data",
+      "files": [
+        {
+          "path": "src/patterns/data-table.html",
+          "target": "pages",
+          "sha256": "19045239f9c7102e5e8ae8c5856d3de3e5027eeed24e74dd9e7a3414600236d4"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "id": "decisions",
+      "type": "registry:doc-pattern",
+      "title": "Decisions",
+      "category": "structure",
+      "files": [
+        {
+          "path": "src/patterns/decisions.html",
+          "target": "pages",
+          "sha256": "9caf00052f0cd530ea219263de858e11945746a110f18ff004b964d5f47ffda8"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "id": "doc-footer",
+      "type": "registry:doc-pattern",
+      "title": "Doc Footer",
+      "category": "closing",
+      "files": [
+        {
+          "path": "src/patterns/doc-footer.html",
+          "target": "pages",
+          "sha256": "c48ea9182d4d03ae454a9e647ed8e82afa23e9d1f4555283813e6a6e7fcc38e2"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "id": "doc-hero",
+      "type": "registry:doc-pattern",
+      "title": "Doc Hero",
+      "category": "header",
+      "files": [
+        {
+          "path": "src/patterns/doc-hero.html",
+          "target": "pages",
+          "sha256": "d8fddf0b2bfe1eea0a0b1df58f5b6a15e1bf32638756b6383d70367fe1de9e06"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "id": "metric-grid",
+      "type": "registry:doc-pattern",
+      "title": "Metric Grid",
+      "category": "data",
+      "files": [
+        {
+          "path": "src/patterns/metric-grid.html",
+          "target": "pages",
+          "sha256": "e0f6d45e5c6be3dbd7cdd9c0ab6e85ca82f1921f3f77fbc90f892c55d8d1e3a2"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "id": "quote-band",
+      "type": "registry:doc-pattern",
+      "title": "Quote Band",
+      "category": "emphasis",
+      "files": [
+        {
+          "path": "src/patterns/quote-band.html",
+          "target": "pages",
+          "sha256": "3c4bd83b8eeb3ddbbe4d072ab5dcce0bf464d4a27fbedec1a9c4a72cb340e59e"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "id": "section-header",
+      "type": "registry:doc-pattern",
+      "title": "Section Header",
+      "category": "structure",
+      "files": [
+        {
+          "path": "src/patterns/section-header.html",
+          "target": "pages",
+          "sha256": "72691b9686e706a24a364fa1716ec320b84d8bb924137048e01714d820c48275"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "id": "timeline",
+      "type": "registry:doc-pattern",
+      "title": "Timeline",
+      "category": "structure",
+      "files": [
+        {
+          "path": "src/patterns/timeline.html",
+          "target": "pages",
+          "sha256": "1143935761b1c921e036ba14b67dfaf27d3cb1a2de416886ff9c7d39345eccb8"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    }
+  ]
+}

@@ -1,0 +1,1348 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   @butai/deck — engine chrome CSS.
+   Extracted from the upstream presentation app's base.css (engine slices
+   only — kit-component CSS stays behind; see the extraction map in
+   _ops/plans/phase-2.md). Theme tokens (--bg, --text, --accent, …)
+   come from @butai/themes; import the theme CSS in the consuming app.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Variable seeds the engine consumes: default display face for headings +
+   covers, and the easing scale used by dots/entrances. (The app-level
+   display-font PICKER stays behind — only the defaults move.) */
+html {
+  --display-font: "Space Grotesk", system-ui, sans-serif;
+  /* exponential ease-outs, no bounce; sophisticated, decelerating motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── Layout ────────────────────────────────────── */
+
+.presentation {
+  display: flex;
+  height: 100vh;
+}
+
+/* ─── Navigation Sidebar ────────────────────────── */
+
+.nav {
+  width: 260px;
+  min-width: 260px;
+  background: var(--bg-nav);
+  border-right: 1px solid var(--border);
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transition:
+    width 0.3s ease,
+    min-width 0.3s ease,
+    padding 0.3s ease;
+}
+
+.nav.collapsed {
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  border-right: none;
+  overflow: hidden;
+}
+
+.nav-toggle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 20;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-dim);
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.nav-toggle:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.nav-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.nav-chapter {
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-chapter:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.nav-chapter.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.nav-chapter .ch-num {
+  font-size: 10px;
+  font-weight: 700;
+  opacity: 0.5;
+  min-width: 18px;
+}
+
+.nav-keys {
+  margin-top: auto;
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+.nav-keys kbd {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: inherit;
+  font-size: 10px;
+}
+
+/* ─── Slide Area ────────────────────────────────── */
+
+.slide-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-toolbar {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.slide-toolbar__btn {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+.slide-toolbar__btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.slide-counter {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Content slides are left-aligned by default; covers/hero opt into .centered */
+  align-items: flex-start;
+  text-align: left;
+  padding: clamp(32px, 6vh, 60px) clamp(40px, 7vw, 96px);
+  /* one slide fits the viewport; overflow is clipped, not spilled */
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(40px) scale(0.97);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0s linear 0.35s;
+  pointer-events: none;
+}
+
+/* Keep long text readable instead of stretching edge-to-edge */
+.slide :where(h1, h2, h3, p, ul, ol, blockquote) {
+  max-width: 64ch;
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0) scale(1);
+  pointer-events: auto;
+  transition:
+    opacity calc(var(--motion-scale, 1) * 0.35s) ease,
+    transform calc(var(--motion-scale, 1) * 0.35s) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Motion intensity dial — one deck-wide knob (data-motion on .slide-area).
+   Scales entrance timing; standard = 1. */
+.slide-area {
+  --motion-scale: 1;
+}
+.slide-area[data-motion="subtle"] {
+  --motion-scale: 0.6;
+}
+.slide-area[data-motion="expressive"] {
+  --motion-scale: 1.5;
+}
+
+/* ─── Print → PDF: one clean slide per page (Cmd-P → Save as PDF) ───────
+   Vector, dependency-free. Every slide becomes a 16:9 page with all steps
+   revealed and deck chrome hidden. Ported concept from frontend-slides. */
+@media print {
+  @page {
+    size: 1280px 720px;
+    margin: 0;
+  }
+  html,
+  body {
+    width: 1280px;
+    height: auto;
+    overflow: visible;
+    background: #fff;
+  }
+  .presentation,
+  .slide-area {
+    position: static !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  /* hide all deck/authoring chrome */
+  .slide-toolbar,
+  .nav-toggle,
+  .nav-sidebar,
+  .slide-dots,
+  .progress-bar,
+  .eng-overlay {
+    display: none !important;
+  }
+  .slide {
+    position: relative !important;
+    inset: auto !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    width: 1280px;
+    height: 720px;
+    overflow: hidden;
+    break-after: page;
+    page-break-after: always;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  /* The last slide is never :last-child — the engine renders the watermark,
+     dot strip, and progress bar as later siblings — so match "no .slide
+     follows me" instead to avoid a trailing blank page. */
+  .slide:not(:has(~ .slide)) {
+    break-after: auto;
+    page-break-after: auto;
+  }
+  /* reveal every stepped / animated element so nothing prints hidden */
+  .slide [data-step],
+  .slide [data-animate],
+  .slide [data-stagger] > * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    animation: none !important;
+    filter: none !important;
+  }
+}
+
+/* The outgoing slide fades quickly so it never lingers under the new one */
+.slide.exit-left {
+  opacity: 0;
+  visibility: visible;
+  transform: translateX(-40px) scale(0.97);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+/* ─── Slide Layout Modifiers ───────────────────── */
+
+/* Covers, hero, quotes — center both axes and the text */
+.slide.centered {
+  align-items: center;
+  text-align: center;
+}
+
+/* Legacy: left-aligned is now the base; kept for explicit opt-in */
+.slide.left-aligned {
+  align-items: flex-start;
+}
+
+.slide.top-aligned {
+  justify-content: flex-start;
+  padding-top: 80px;
+}
+
+.slide.slide--demo {
+  border: 2px solid var(--accent);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* ─── Slide Typography ──────────────────────────── */
+
+.slide h1 {
+  font-size: clamp(2.5rem, 5.2vw, 4rem);
+  font-weight: 800;
+  line-height: 1.06;
+  margin-bottom: clamp(12px, 1.8vh, 20px);
+  letter-spacing: -0.02em;
+}
+
+/* Headings render in the display face so a theme/font switch visibly changes
+   every slide (not just covers/quotes). Body stays the base face. */
+.slide :where(h1, h2) {
+  font-family: var(--display-font);
+}
+
+.slide h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.375rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: clamp(10px, 1.4vh, 16px);
+  letter-spacing: -0.5px;
+}
+
+.slide h3 {
+  font-size: clamp(1.85rem, 3.4vw, 2.85rem);
+  font-weight: 700;
+  line-height: 1.18;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Body copy on slides — readable, not the 16px browser default */
+.slide p,
+.slide li {
+  font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+  line-height: 1.5;
+}
+
+.slide .subtitle {
+  font-size: clamp(1.35rem, 2.1vw, 1.95rem);
+  color: var(--text-dim);
+  font-weight: 400;
+  max-width: 40ch;
+  line-height: 1.5;
+  /* inherits text-align from .slide (left) or .slide.centered (center) */
+}
+/* On centered slides the capped-width subtitle must also center its box, not
+   just its text (max-width + flex-start would otherwise pin it left). */
+.slide.centered .subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Hero/cover/divider titles read larger than content headings */
+.slide.centered h1 {
+  font-size: clamp(2.9rem, 6.6vw, 5.5rem);
+  line-height: 1.04;
+}
+
+.slide .label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+/* ─── Utility Color Classes ─────────────────────── */
+
+.c-red {
+  color: var(--red);
+}
+.c-green {
+  color: var(--green);
+}
+.c-yellow {
+  color: var(--yellow);
+}
+.c-accent {
+  color: var(--accent);
+}
+.c-blue {
+  color: var(--blue);
+}
+.c-orange {
+  color: var(--orange);
+}
+.c-dim {
+  color: var(--text-dim);
+}
+
+/* ─── Progress Bar ──────────────────────────────── */
+
+.slide-watermark {
+  position: absolute;
+  bottom: 12px;
+  left: 32px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dim);
+  opacity: 0.5;
+  text-decoration: none;
+  z-index: 10;
+  transition: opacity 0.2s ease;
+}
+.slide-watermark:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  transition: width 0.4s ease;
+  z-index: 10;
+}
+
+/* ─── Top section tracker (chapter tab bar) ─────────────────── */
+.section-tracker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  align-items: stretch;
+  background: var(--bg);
+  border-bottom: 2px solid var(--text);
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+}
+.st-tab {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 13px 18px;
+  border: none;
+  border-right: 1px solid var(--border);
+  background: none;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+.st-tab:last-child {
+  border-right: none;
+}
+.st-tab:hover {
+  background: var(--bg-card);
+}
+.st-tab.is-active {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.st-num {
+  color: var(--text-dim);
+  font-weight: 400;
+  flex-shrink: 0;
+}
+.st-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* make room below the bar so the deck chrome doesn't collide */
+.slide-area[data-chapterbar] .slide-toolbar,
+.slide-area[data-chapterbar] .nav-toggle {
+  top: 62px;
+}
+.slide-area[data-chapterbar] .slide-now {
+  display: none;
+}
+
+/* ─── Presenter-grade overlays (overview / help / presenter) ─── */
+.eng-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vmin;
+  background: rgba(6, 8, 14, 0.8);
+  backdrop-filter: blur(8px);
+  animation: ov-fade 0.15s ease;
+}
+@keyframes ov-fade {
+  from {
+    opacity: 0;
+  }
+}
+.eng-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 26px 30px;
+  color: var(--text);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  max-width: 92vw;
+  max-height: 88vh;
+  overflow: auto;
+}
+.eng-panel__title {
+  margin: 0 0 18px;
+  font-size: 15px;
+  font-family: "JetBrains Mono", monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+/* help */
+.eng-panel--help {
+  width: 460px;
+}
+.help-list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.help-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  align-items: center;
+  gap: 14px;
+}
+.help-row dt {
+  margin: 0;
+}
+.help-row dd {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 15px;
+}
+.help-row kbd {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 8px;
+  color: var(--text);
+}
+/* overview */
+.eng-panel--ov {
+  width: min(1100px, 90vw);
+}
+.ov-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+}
+.ov-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  transition:
+    border-color 0.12s ease,
+    background 0.12s ease;
+}
+.ov-cell:hover {
+  border-color: var(--accent);
+}
+.ov-cell.is-current {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+.ov-cell__n {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.ov-cell__t {
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* presenter view */
+.eng-panel--pv {
+  width: min(720px, 92vw);
+}
+.pv__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+}
+.pv__now {
+  font-weight: 700;
+  font-size: 18px;
+}
+.pv__timer {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 22px;
+  color: var(--accent);
+}
+.pv__next {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-bottom: 18px;
+}
+.pv__notes {
+  font-size: 20px;
+  line-height: 1.55;
+  min-height: 120px;
+}
+.pv__nonotes {
+  color: var(--text-dim);
+}
+.pv__hint {
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--text-dim);
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* ─── Bottom slide nav (dot strip + title peek) ─────────────── */
+.slide-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  /* visible by default, brighten fully on hover */
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+.slide-area:hover .slide-dots,
+.slide-dots:focus-within {
+  opacity: 1;
+}
+.slide-dots__peek {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 12px;
+  color: var(--text);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 12px;
+  max-width: 46ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+  pointer-events: none;
+}
+.slide-dots__peek.is-shown {
+  opacity: 1;
+  transform: none;
+}
+.slide-dots__row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  max-width: min(86vw, 900px);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.slide-dots__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text) 28%, transparent);
+  cursor: pointer;
+  transition:
+    transform 0.18s var(--ease-out-quart, ease),
+    background 0.18s ease;
+}
+.slide-dots__dot:hover {
+  background: color-mix(in srgb, var(--accent) 70%, var(--text));
+  transform: scale(1.3);
+}
+.slide-dots__dot.is-active {
+  background: var(--accent);
+  transform: scale(1.65);
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide-dots__dot,
+  .slide-dots__peek {
+    transition: none;
+  }
+}
+
+/* ─── Keyboard Step Reveal ──────────────────────── */
+
+[data-step] {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+  pointer-events: none;
+}
+[data-step].step-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ─── CSS Auto-Stagger ──────────────────────────── */
+
+.slide:not(.active) [data-stagger] > * {
+  opacity: 0;
+  animation: none;
+}
+.slide.active [data-stagger] > * {
+  animation: stagger-in 2s ease both;
+}
+.slide.active [data-stagger] > *:nth-child(1) {
+  animation-delay: 0s;
+}
+.slide.active [data-stagger] > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.slide.active [data-stagger] > *:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.slide.active [data-stagger] > *:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.slide.active [data-stagger] > *:nth-child(5) {
+  animation-delay: 0.8s;
+}
+.slide.active [data-stagger] > *:nth-child(6) {
+  animation-delay: 1s;
+}
+.slide.active [data-stagger] > *:nth-child(7) {
+  animation-delay: 1.2s;
+}
+.slide.active [data-stagger] > *:nth-child(8) {
+  animation-delay: 1.4s;
+}
+@keyframes stagger-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ─── Slide Transition Variants ─────────────────── */
+
+/* fade */
+.slide-area[data-transition="fade"] .slide {
+  transform: none;
+  opacity: 0;
+}
+.slide-area[data-transition="fade"] .slide.active {
+  opacity: 1;
+  transform: none;
+}
+.slide-area[data-transition="fade"] .slide.exit-left {
+  opacity: 0;
+  transform: none;
+}
+
+/* zoom */
+.slide-area[data-transition="zoom"] .slide {
+  transform: scale(0.92);
+  opacity: 0;
+}
+.slide-area[data-transition="zoom"] .slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+.slide-area[data-transition="zoom"] .slide.exit-left {
+  opacity: 0;
+  transform: scale(1.06);
+}
+
+/* flip */
+.slide-area[data-transition="flip"] {
+  perspective: 1400px;
+}
+.slide-area[data-transition="flip"] .slide {
+  transform: rotateY(12deg) scale(0.97);
+  opacity: 0;
+  transform-origin: left center;
+}
+.slide-area[data-transition="flip"] .slide.active {
+  opacity: 1;
+  transform: rotateY(0deg) scale(1);
+}
+.slide-area[data-transition="flip"] .slide.exit-left {
+  opacity: 0;
+  transform: rotateY(-12deg) scale(0.97);
+  transform-origin: right center;
+}
+
+/* ─── Content Entrance Animations ──────────────── */
+
+.slide:not(.active) [data-animate] {
+  opacity: 0;
+  animation: none;
+}
+
+.slide.active [data-animate="fade-up"] {
+  animation: anim-fade-up calc(var(--motion-scale, 1) * 0.5s)
+    cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.slide.active [data-animate="pop"] {
+  animation: anim-pop calc(var(--motion-scale, 1) * 0.5s)
+    cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.slide.active [data-animate="fade"] {
+  animation: anim-fade calc(var(--motion-scale, 1) * 0.5s) ease both;
+}
+
+/* cinematic "unfocus into view" — ported from frontend-slides */
+.slide.active [data-animate="blur-in"] {
+  animation: anim-blur-in calc(var(--motion-scale, 1) * 0.8s)
+    var(--ease-out-expo) both;
+}
+
+[data-delay="1"] {
+  animation-delay: 0.1s;
+}
+[data-delay="2"] {
+  animation-delay: 0.2s;
+}
+[data-delay="3"] {
+  animation-delay: 0.3s;
+}
+[data-delay="4"] {
+  animation-delay: 0.4s;
+}
+[data-delay="5"] {
+  animation-delay: 0.5s;
+}
+[data-delay="6"] {
+  animation-delay: 0.6s;
+}
+[data-delay="7"] {
+  animation-delay: 0.7s;
+}
+[data-delay="8"] {
+  animation-delay: 0.8s;
+}
+
+@keyframes anim-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes anim-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes anim-blur-in {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes anim-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ─── Slide Backgrounds ─────────────────────────── */
+
+.slide-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+/* Ensure slide content sits above background layer.
+   .cover-bg is a full-bleed background layer (like .slide-bg) — exempt it so its
+   own `position: absolute; inset: 0` wins, instead of being forced into normal
+   flow where it'd stack on top of the title. */
+.slide > *:not(.slide-bg):not(.cover-bg) {
+  position: relative;
+  z-index: 1;
+}
+
+/* shared soft vignette so patterns fade out at the edges (not harsh tiling) */
+.slide-bg--dots,
+.slide-bg--grid,
+.slide-bg--blueprint {
+  -webkit-mask-image: radial-gradient(
+    ellipse 82% 82% at 50% 42%,
+    #000 38%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 82% 82% at 50% 42%,
+    #000 38%,
+    transparent 100%
+  );
+}
+
+/* Dots ─ faint, neutral, slow drift */
+.slide-bg--dots {
+  background-image: radial-gradient(
+    circle,
+    var(--text-dim) 1.4px,
+    transparent 1.4px
+  );
+  background-size: 40px 40px;
+  opacity: 0.1;
+  animation: bgDotDrift 34s linear infinite;
+}
+
+@keyframes bgDotDrift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+/* Grid ─ faint crosshatch (was a harsh full-bleed grid) */
+.slide-bg--grid {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.22;
+}
+
+/* Blueprint (v2) ─ fine + coarse grid with a soft vignette. A calmer,
+   more intentional alternative to particles/beams for the dark theme. */
+.slide-bg--blueprint {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px),
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size:
+    120px 120px,
+    120px 120px,
+    24px 24px,
+    24px 24px;
+  /* Calmer so text never fights the grid (was 0.5 — too heavy behind copy). */
+  opacity: 0.18;
+  /* Tighter vignette pushes the grid to the edges, clearing the text zone. */
+  -webkit-mask-image: radial-gradient(
+    ellipse 70% 70% at 50% 45%,
+    transparent 12%,
+    #000 70%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 70% 70% at 50% 45%,
+    transparent 12%,
+    #000 70%,
+    transparent 100%
+  );
+}
+
+/* Beams ─ soft, slow ambient glow (toned down from a pulsing blob) */
+.slide-bg--beams {
+  background:
+    radial-gradient(
+      ellipse 65% 55% at 20% 72%,
+      var(--accent-glow),
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 82% 26%,
+      var(--accent-glow),
+      transparent 74%
+    );
+  opacity: 0.6;
+  animation: bgBeams 18s ease-in-out infinite alternate;
+}
+
+@keyframes bgBeams {
+  0% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1.04);
+  }
+}
+
+/* Noise ─ SVG grain texture overlay */
+.slide-bg--noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  opacity: 1;
+  mix-blend-mode: overlay;
+}
+
+/* Particles ─ floating glowing orbs (children are absolutely positioned) */
+
+.slide-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px 1px var(--accent);
+  opacity: 0;
+  animation: particleRise linear infinite;
+}
+
+@keyframes particleRise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0);
+  }
+  15% {
+    opacity: 0.55;
+  }
+  85% {
+    opacity: 0.45;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-90px) translateX(var(--drift, 30px));
+  }
+}
+
+/* ─── Reduced motion ─────────────────────────────
+   Honor the OS setting: kill slide transitions, entrance
+   animations, staggers, and ambient background motion. */
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .slide.active,
+  .slide.exit-left {
+    transition: opacity 0.2s ease;
+    transform: none;
+  }
+  .slide.active [data-animate],
+  .slide.active [data-stagger] > *,
+  .slide-particle {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ─── Height breakpoints ─────────────────────────
+   clamp() keys off viewport width; short screens
+   (laptops, split-screen) need their own guard so
+   a slide still fits without clipping. */
+@media (max-height: 720px) {
+  .slide {
+    padding-top: clamp(24px, 4vh, 40px);
+    padding-bottom: clamp(24px, 4vh, 40px);
+  }
+  /* short slide: keep the cover compact so subtitle stays on-canvas */
+  .slide.cover .cover-title {
+    font-size: clamp(2.4rem, 8.5cqh, 5rem);
+  }
+  .cover-body {
+    padding-top: clamp(28px, 5vh, 56px);
+    gap: clamp(12px, 1.8vh, 22px);
+  }
+}
+@media (max-height: 560px) {
+  .slide h1 {
+    font-size: clamp(1.7rem, 6vh, 2.4rem);
+  }
+  .slide .subtitle {
+    font-size: clamp(0.95rem, 3.4vh, 1.25rem);
+  }
+}
+
+/* ─── Motion-owned steps ─────────────────────────
+   Elements that carry data-step (so the engine reveals them) plus
+   .motion-step opt out of the CSS [data-step] transition so a motion
+   library fully owns opacity/transform via inline styles. */
+[data-step].motion-step {
+  /* motion owns opacity/transform via inline styles; keep the base
+     [data-step] opacity:0 as the hidden default so steps stay hidden even
+     if motion hasn't committed yet (and under reduced motion). */
+  transition: none;
+}
+[data-step].motion-step:not(.step-visible) {
+  pointer-events: none;
+}
+
+/* ─── Cover / title slide ─────────────────────────────────────────
+   Big, left-aligned, display-font title that dominates the slide. */
+.slide.cover {
+  align-items: stretch;
+  justify-content: center;
+  text-align: left;
+  /* NO padding here, so the background image goes truly edge-to-edge.
+     The inset lives on .cover-body instead. */
+  padding: 0;
+  /* size the title to THIS slide's width so it fits both the full-screen
+     deck and small previews */
+  container-type: inline-size;
+}
+
+.cover-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.cover-bg__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* full-bleed art — readable across the whole slide, lightly soft-focused so
+     the title still reads crisply on top (see .cover-bg__fade for the scrim) */
+  opacity: 0.85;
+  filter: blur(2px) saturate(1.05);
+  animation: cover-kenburns 28s ease-in-out infinite alternate;
+}
+/* Scrim that MERGES art + title: a soft pool of bg dissolves the artwork into
+   the lower-left where the title sits, fading to clear toward the art (upper-
+   right). No hard horizontal band — the image bleeds behind the title. */
+.cover-bg__fade {
+  position: absolute;
+  inset: 0;
+  background:
+    /* dark scrim weighted to the bottom-left where the title sits;
+       fades to clear toward the top-right so the full-bleed art reads cleanly */
+    linear-gradient(
+      to top right,
+      color-mix(in srgb, var(--bg) 92%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 60%, transparent) 38%,
+      transparent 72%
+    ),
+    /* gentle overall floor so bottom-anchored content always stays legible */
+    linear-gradient(
+        0deg,
+        color-mix(in srgb, var(--bg) 70%, transparent) 0%,
+        transparent 24%
+      );
+}
+@keyframes cover-kenburns {
+  from {
+    /* scaled up so the blur's soft edges stay off-frame */
+    transform: scale(1.03);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+.cover-body {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  gap: clamp(16px, 2.4vh, 30px);
+  width: 100%;
+  padding: clamp(40px, 8vh, 90px) clamp(48px, 7vw, 110px);
+}
+
+/* full-bleed cover: anchor the title block to the bottom-left over the scrim */
+.slide.cover--bg .cover-body {
+  justify-content: flex-end;
+  padding-bottom: clamp(64px, 11vh, 130px);
+}
+
+.cover-eyebrow {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: clamp(0.8rem, 1.05vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+/* subtle attention pulse on the eyebrow's lead dot */
+.cover-eyebrow::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--accent);
+  animation: cover-pulse 2.4s ease-in-out infinite;
+}
+@keyframes cover-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.slide.cover .cover-title {
+  font-family: var(--display-font) !important;
+  /* key off the shorter axis too (cqh) so a wide-but-short slide (1280x720)
+     keeps the title small enough to leave room for the subtitle */
+  font-size: clamp(2.4rem, min(9cqw, 11cqh), 7rem);
+  font-weight: 800;
+  line-height: 0.97;
+  letter-spacing: -0.02em;
+  margin: 0;
+  max-width: 16ch;
+}
+
+.slide.cover .cover-subtitle {
+  font-size: clamp(1.35rem, 2vw, 2.05rem);
+  color: var(--text-dim);
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0;
+  max-width: 34ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover-bg__img {
+    animation: none;
+  }
+  .cover-eyebrow::before {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* current-section pill in the engine toolbar */
+.slide-now {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-glow);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

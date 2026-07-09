@@ -1,0 +1,308 @@
+{
+  "version": "0.0.1",
+  "contentHash": "eaddeb357e72cb092b593e582911b85aea7351602db3a2789bc1c1efaa47d1f6",
+  "count": 18,
+  "kinds": {
+    "slide": 18
+  },
+  "items": [
+    {
+      "id": "speaker-intro-slide",
+      "name": "Speaker Intro Slide",
+      "kind": "slide",
+      "category": "closing",
+      "description": "Speaker introduction — avatar + name + role + bio + links. Drop it early to set credibility.",
+      "snippet": "<SpeakerIntroSlide\n  chapter=\"Speaker\"\n  avatar=\"/img/avatar.png\"\n  name=\"Jordan Rivera\"\n  role=\"Developer Advocate\"\n  bio=\"Builds tools so that writing software with AI feels like engineering, not improvisation.\"\n  links={[{ label: \"example.dev\", href: \"https://example.dev\" }]}\n/>",
+      "tags": [
+        "closing",
+        "speaker",
+        "bio",
+        "intro"
+      ],
+      "source": {
+        "file": "slides/speaker-intro-slide.meta.md"
+      }
+    },
+    {
+      "id": "concept-slide",
+      "name": "Concept Slide",
+      "kind": "slide",
+      "category": "content",
+      "description": "Eyebrow label + big serif title + optional subtitle. Use for concept defines (What is X?).",
+      "snippet": "<ConceptSlide\n  chapter=\"Concepts\"\n  eyebrow=\"The Concept\"\n  title={<>What is <span className=\"c-accent\">Spec-Driven Development</span>?</>}\n/>",
+      "tags": [
+        "content",
+        "concept",
+        "title"
+      ],
+      "source": {
+        "file": "slides/concept-slide.meta.md"
+      }
+    },
+    {
+      "id": "image-caption-slide",
+      "name": "Image Caption Slide",
+      "kind": "slide",
+      "category": "content",
+      "description": "Title + large screenshot + optional caption. The workhorse of every recap section.",
+      "snippet": "<ImageCaptionSlide\n  chapter=\"Benefits\"\n  title=\"Easy navigation between specs\"\n  image=\"/img/nav.png\"\n  alt=\"Sidebar\"\n  caption=\"Every feature has its spec, plan, and tasks — connected in the sidebar.\"\n/>",
+      "tags": [
+        "content",
+        "image",
+        "screenshot",
+        "caption"
+      ],
+      "source": {
+        "file": "slides/image-caption-slide.meta.md"
+      }
+    },
+    {
+      "id": "image-text-split-slide",
+      "name": "Image Text Split Slide",
+      "kind": "slide",
+      "category": "content",
+      "description": "Half image, half copy. Use for product detail beats or storytelling pairs.",
+      "snippet": "<ImageTextSplitSlide\n  chapter=\"Product\"\n  image=\"/img/viewer.png\"\n  alt=\"Viewer\"\n  side=\"left\"\n  eyebrow=\"Spec Viewer\"\n  title=\"Read and navigate specs like code\"\n  body={<p>Rendered markdown with anchors to sub-documents.</p>}\n/>",
+      "tags": [
+        "content",
+        "image",
+        "split",
+        "layout"
+      ],
+      "source": {
+        "file": "slides/image-text-split-slide.meta.md"
+      }
+    },
+    {
+      "id": "quote-portrait-slide",
+      "name": "Quote Portrait Slide",
+      "kind": "slide",
+      "category": "content",
+      "description": "Testimonial with a face — big quote + portrait (photo or initials) + name/role + optional logo. Social proof, vs. the text-only quote.",
+      "snippet": "<QuotePortraitSlide\n  chapter=\"Proof\"\n  quote=\"It makes them look good in the room — audiences react really well.\"\n  name=\"Jordan Rivera\"\n  role=\"Staff Engineer\"\n/>",
+      "tags": [
+        "content",
+        "quote",
+        "testimonial",
+        "social-proof"
+      ],
+      "source": {
+        "file": "slides/quote-portrait-slide.meta.md"
+      }
+    },
+    {
+      "id": "quote-slide",
+      "name": "Quote Slide",
+      "kind": "slide",
+      "category": "content",
+      "description": "Pull quote with attribution. Use for evidence, a stakeholder voice, or a memorable framing.",
+      "snippet": "<QuoteSlide\n  chapter=\"Quote\"\n  quote={<>Code without a spec is just a prompt that gets forgotten.</>}\n  attribution=\"Ada Lovelace\"\n  role=\"Engineer\"\n  source=\"Notes on the Analytical Engine\"\n/>",
+      "tags": [
+        "content",
+        "quote",
+        "evidence"
+      ],
+      "source": {
+        "file": "slides/quote-slide.meta.md"
+      }
+    },
+    {
+      "id": "recap-slide",
+      "name": "Recap Slide",
+      "kind": "slide",
+      "category": "content",
+      "description": "Closing recap of a section or the whole talk. A check-marker list anchors what the audience just heard.",
+      "snippet": "<RecapSlide\n  chapter=\"Recap\"\n  title={<>What we <span className=\"c-accent\">saw today</span></>}\n  items={[\n    { title: \"Vibe coding fails at scale\", sub: \"the bug ships anyway\" },\n    { title: \"Spec-driven development\", sub: \"the spec before the code\" },\n    { title: \"An open standard\", sub: \"portable across tools\" },\n  ]}\n/>",
+      "tags": [
+        "content",
+        "recap",
+        "summary",
+        "closing"
+      ],
+      "source": {
+        "file": "slides/recap-slide.meta.md"
+      }
+    },
+    {
+      "id": "demo-cue-slide",
+      "name": "Demo Cue Slide",
+      "kind": "slide",
+      "category": "demo",
+      "description": "Cue card for a live demo — accent badge + h1 + optional subtitle. Drops the speaker out of the deck and into the demo.",
+      "snippet": "<DemoCueSlide\n  chapter=\"Live Demo\"\n  cue=\"Live Demo\"\n  iconName=\"terminal\"\n  title=\"Back to the spec we created\"\n  subtitle=\"We'll create it, plan it, and review it — live.\"\n/>",
+      "tags": [
+        "demo",
+        "cue",
+        "live"
+      ],
+      "source": {
+        "file": "slides/demo-cue-slide.meta.md"
+      }
+    },
+    {
+      "id": "bento-grid-slide",
+      "name": "Bento Grid Slide",
+      "kind": "slide",
+      "category": "layout",
+      "description": "Bento grid of mixed tiles (stat / text / quote), each spanning 1–2 cols/rows. The 'everything at a glance' dashboard beat.",
+      "snippet": "<BentoGridSlide\n  chapter=\"Recap\"\n  title=\"The quarter, at a glance\"\n  tiles={[\n    { value: \"412\", title: \"PRs shipped\", tone: \"accent\", colSpan: 2 },\n    { value: \"24m\", title: \"Median review\", tone: \"green\" },\n    { value: \"1.4\", title: \"Reverts / 100\", tone: \"red\" },\n    { title: \"What changed\", body: \"Specs made review a step, not a scramble.\", colSpan: 2 },\n  ]}\n/>",
+      "tags": [
+        "layout",
+        "bento",
+        "grid",
+        "dashboard"
+      ],
+      "source": {
+        "file": "slides/bento-grid-slide.meta.md"
+      }
+    },
+    {
+      "id": "big-statement-slide",
+      "name": "Big Statement Slide",
+      "kind": "slide",
+      "category": "layout",
+      "description": "One huge line — the manifesto / 'one big word' / punchline beat. Centered, minimal, with one accent phrase.",
+      "snippet": "<BigStatementSlide\n  chapter=\"Thesis\"\n  eyebrow=\"The point\"\n  sub=\"Steal the best ideas. Make it yours.\"\n>\n  The best workflow is the one you build yourself.\n</BigStatementSlide>",
+      "tags": [
+        "layout",
+        "statement",
+        "punchline"
+      ],
+      "source": {
+        "file": "slides/big-statement-slide.meta.md"
+      }
+    },
+    {
+      "id": "comparison-table-slide",
+      "name": "Comparison Table Slide",
+      "kind": "slide",
+      "category": "layout",
+      "description": "Feature matrix (rows × columns) with check/x/partial or short-text cells and an optional highlighted winning column. The 'X vs Y' slide.",
+      "snippet": "<ComparisonTableSlide\n  chapter=\"Compare\"\n  title=\"Why spec-driven wins\"\n  columns={[\"Vibe coding\", \"Spec + plan\", \"Reviewed\"]}\n  highlight={2}\n  rows={[\n    { label: \"Structure\", cells: [false, true, true] },\n    { label: \"Handoff survives\", cells: [false, \"partial\", true] },\n    { label: \"Review built in\", cells: [false, false, true] },\n  ]}\n/>",
+      "tags": [
+        "layout",
+        "comparison",
+        "table",
+        "matrix"
+      ],
+      "source": {
+        "file": "slides/comparison-table-slide.meta.md"
+      }
+    },
+    {
+      "id": "full-bleed-slide",
+      "name": "Full Bleed Slide",
+      "kind": "slide",
+      "category": "layout",
+      "description": "Edge-to-edge image with a text lockup over a scrim — the cinematic opener / chapter cover. Degrades to a gradient if the image is missing.",
+      "snippet": "<FullBleedSlide\n  chapter=\"Chapter\"\n  eyebrow=\"Part II\"\n  title=\"Ship faster, break less\"\n  subtitle=\"How spec-driven delivery changed the numbers.\"\n  anchor=\"bottom-left\"\n/>",
+      "tags": [
+        "layout",
+        "image",
+        "cinematic",
+        "cover"
+      ],
+      "source": {
+        "file": "slides/full-bleed-slide.meta.md"
+      }
+    },
+    {
+      "id": "timeline-slide",
+      "name": "Timeline Slide",
+      "kind": "slide",
+      "category": "layout",
+      "description": "Horizontal timeline / roadmap — dated beats (when + title + body) on a connecting line. Use for history or now·next·later.",
+      "snippet": "<TimelineSlide\n  chapter=\"Roadmap\"\n  title=\"How the workflow evolved\"\n  items={[\n    { when: \"v0\", title: \"Vibe coding\", body: \"No structure, lost context\", color: \"red\" },\n    { when: \"v1\", title: \"Spec + plan\", body: \"Two files you own\", color: \"yellow\" },\n    { when: \"v2\", title: \"Reviewed\", body: \"Review built into the loop\", color: \"green\" },\n    { when: \"next\", title: \"Your workflow\", body: \"Steal the best, own it\", color: \"accent\" },\n  ]}\n/>",
+      "tags": [
+        "layout",
+        "timeline",
+        "roadmap",
+        "chronology"
+      ],
+      "source": {
+        "file": "slides/timeline-slide.meta.md"
+      }
+    },
+    {
+      "id": "agenda-slide",
+      "name": "Agenda Slide",
+      "kind": "slide",
+      "category": "structure",
+      "description": "Numbered list of chapters with an optional 'you are here' highlight. Sets the audience's expectations.",
+      "snippet": "<AgendaSlide\n  chapter=\"Agenda\"\n  current={1}\n  items={[\n    { num: \"01\", title: \"The problem\", sub: \"vibe coding fails at scale\" },\n    { num: \"02\", title: \"Spec-driven development\", sub: \"the cycle\" },\n    { num: \"03\", title: \"An open standard\" },\n    { num: \"04\", title: \"Live demo\" },\n  ]}\n/>",
+      "tags": [
+        "structure",
+        "agenda",
+        "overview"
+      ],
+      "source": {
+        "file": "slides/agenda-slide.meta.md"
+      }
+    },
+    {
+      "id": "cold-open-slide",
+      "name": "Cold Open Slide",
+      "kind": "slide",
+      "category": "structure",
+      "description": "Cold open — background + eyebrow only; the title is held back to land on the first click.",
+      "snippet": "<ColdOpenSlide\n  coldOpen\n  miniHeader=\"DevTools Summit · 2026\"\n  title={<>The Big <span className=\"c-accent\">Idea</span></>}\n  subtitle=\"Hold the title back, then land it.\"\n/>",
+      "tags": [
+        "structure",
+        "opener",
+        "reveal"
+      ],
+      "source": {
+        "file": "slides/cold-open-slide.meta.md"
+      }
+    },
+    {
+      "id": "cover-slide",
+      "name": "Cover Slide",
+      "kind": "slide",
+      "category": "structure",
+      "description": "Deck opener — eyebrow, big display-font title, subtitle, optional faded background image.",
+      "snippet": "<CoverSlide\n  miniHeader=\"DevTools Summit · 2026\"\n  title={<>Ship Faster, <span className=\"c-accent\">Break Less</span></>}\n  subtitle=\"A practical guide to spec-driven delivery.\"\n/>",
+      "tags": [
+        "structure",
+        "opener",
+        "title"
+      ],
+      "source": {
+        "file": "slides/cover-slide.meta.md"
+      }
+    },
+    {
+      "id": "section-divider-slide",
+      "name": "Section Divider Slide",
+      "kind": "slide",
+      "category": "structure",
+      "description": "Visual chapter break — large number + section name. Lets the audience reset between acts.",
+      "snippet": "<SectionDividerSlide\n  chapter=\"Section\"\n  num=\"02\"\n  title={<><span className=\"c-accent\">Spec-Driven</span> Development</>}\n  subtitle=\"The cycle that frames the rest of the talk.\"\n/>",
+      "tags": [
+        "structure",
+        "divider",
+        "chapter"
+      ],
+      "source": {
+        "file": "slides/section-divider-slide.meta.md"
+      }
+    },
+    {
+      "id": "stat-row-slide",
+      "name": "Stat Row Slide",
+      "kind": "slide",
+      "category": "type",
+      "description": "Row of 3–4 metric cards with accent edge bars, big display numbers, and an optional secondary line. Use to frame results or scale at a glance.",
+      "snippet": "<StatRowSlide\n  chapter=\"Results\"\n  title=\"The quarter in three figures\"\n  stats={[\n    { value: \"412\", label: \"PRs shipped\", sub: \"+38% throughput\", color: \"accent\" },\n    { value: \"24m\", label: \"Median review\", sub: \"down from 71m\", color: \"green\" },\n    { value: \"1.4\", label: \"Reverts / 100\", sub: \"from 6.2\", color: \"red\" },\n  ]}\n/>",
+      "tags": [
+        "type",
+        "stats",
+        "metrics",
+        "results"
+      ],
+      "source": {
+        "file": "slides/stat-row-slide.meta.md"
+      }
+    }
+  ]
+}

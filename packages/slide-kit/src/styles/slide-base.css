@@ -1,0 +1,28 @@
+/*
+ * slide-base — shared typographic helpers the archetypes lean on. Theme-var
+ * driven (colors/fonts come from @butai/themes). Load this once alongside the
+ * per-slide CSS. Not import-linked in TS (plain-tsc builds ship CSS as sidecar
+ * files), so `add` a slide that uses `.title-serif` / `.c-accent` / a
+ * screenshot helper should also pull this style item.
+ */
+.title-serif {
+  font-family: var(--display-font);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+.c-accent {
+  color: var(--accent);
+}
+.screenshot-full {
+  width: 90%;
+  max-height: 600px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.screenshot-card {
+  max-height: 600px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Butai · GSAP recipe demos</title>
+    <style>
+      :root {
+        --bg: #0f0f13;
+        --bg-card: #17171d;
+        --text: #e8e8ee;
+        --text-dim: #9a9aa8;
+        --accent: #5aa9ff;
+        --border: #2a2a33;
+        --yellow: #f5c542;
+        color-scheme: dark;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 15px/1.5 ui-sans-serif, system-ui, sans-serif;
+      }
+      header {
+        padding: 1.2rem 1.5rem 0.4rem;
+      }
+      header h1 { margin: 0 0 0.2rem; font-size: 1.25rem; }
+      header p { margin: 0; color: var(--text-dim); }
+      #stage-wrap {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background: var(--bg);
+        padding: 0.8rem 1.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      #stage {
+        height: 240px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--bg-card);
+        overflow: hidden;
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+      #stage .stage-hint { color: var(--text-dim); }
+      main { padding: 1rem 1.5rem 3rem; }
+      h2.category {
+        margin: 1.6rem 0 0.5rem;
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .recipe {
+        display: flex;
+        gap: 0.75rem;
+        align-items: baseline;
+        padding: 0.45rem 0.6rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .recipe .name { font-weight: 600; white-space: nowrap; }
+      .recipe .id, .recipe .engine {
+        font: 12px/1.4 ui-monospace, monospace;
+        color: var(--text-dim);
+        white-space: nowrap;
+      }
+      .recipe .desc { color: var(--text-dim); flex: 1; min-width: 12rem; }
+      .recipe button {
+        margin-left: auto;
+        background: var(--accent);
+        color: #08131f;
+        border: 0;
+        border-radius: 6px;
+        padding: 0.25rem 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .recipe button:hover { filter: brightness(1.15); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Butai · GSAP recipe demos</h1>
+      <p>Every cataloged recipe, grouped by category. Recipes with a registered demo mount into the stage.</p>
+    </header>
+    <div id="stage-wrap"><div id="stage"><span class="stage-hint">Pick a recipe with a Run button</span></div></div>
+    <main id="list"></main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

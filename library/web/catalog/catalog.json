@@ -1,0 +1,1039 @@
+{
+  "version": "0.0.1",
+  "contentHash": "70804eb39185d6aa4059778a4071dc1c328c56267347c2c4373b5e4feb829aab",
+  "count": 57,
+  "kinds": {
+    "motion": 57
+  },
+  "items": [
+    {
+      "id": "adv-13-confetti-burst",
+      "name": "Confetti / Particle Burst",
+      "kind": "motion",
+      "category": "attention",
+      "description": "A particle burst from a point — the \"ta-da\" for a reveal or closing moment.",
+      "snippet": "gsap.registerPlugin(Physics2DPlugin);\nparticles.forEach((p) =>\n  gsap.to(p, {\n    physics2D: {\n      velocity: gsap.utils.random(150, 400),\n      angle: gsap.utils.random(200, 340),\n      gravity: 600,\n    },\n    autoAlpha: 0,\n    duration: gsap.utils.random(1.5, 2.5),\n    onComplete: () => p.remove(),\n  }),\n);",
+      "motion": "fire once on a step; reduced motion replaces the burst with a simple fade-in",
+      "engine": "gsap/Physics2D",
+      "tags": [
+        "attention",
+        "particles",
+        "celebration"
+      ],
+      "source": {
+        "file": "attention/adv-13-confetti-burst.md"
+      }
+    },
+    {
+      "id": "adv-14-gravity-drop",
+      "name": "Gravity Drop",
+      "kind": "motion",
+      "category": "attention",
+      "description": "Elements fall in under gravity with a little friction — a physical entrance for a cluster of items.",
+      "snippet": "gsap.to(el, {\n  autoAlpha: 1,\n  duration: gsap.utils.random(0.8, 1.4),\n  delay: i * 0.1,\n  physics2D: {\n    velocity: gsap.utils.random(100, 200),\n    angle: 90,\n    gravity: 800,\n    friction: 0.1,\n  },\n}); // on active",
+      "motion": "run on active; reduced motion uses a simple fade-up instead of physics",
+      "engine": "gsap/Physics2D",
+      "tags": [
+        "attention",
+        "particles",
+        "entrance"
+      ],
+      "source": {
+        "file": "attention/adv-14-gravity-drop.md"
+      }
+    },
+    {
+      "id": "ui-01-card-hover-lift",
+      "name": "Card Hover Lift",
+      "kind": "motion",
+      "category": "attention",
+      "description": "A card lifts and scales slightly under the pointer — polish for interactive (laptop) surfaces.",
+      "snippet": "el.addEventListener('mouseenter', () =>\n  gsap.to(card, { y: -8, scale: 1.02, boxShadow: '0 12px 24px rgba(0,0,0,0.25)', duration: 0.3 }),\n);\nel.addEventListener('mouseleave', () => gsap.to(card, { y: 0, scale: 1, clearProps: 'boxShadow', duration: 0.3 }));",
+      "motion": "pointer-driven, interactive surfaces only; disable on touch, projection, and reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "attention",
+        "hover",
+        "interactive"
+      ],
+      "source": {
+        "file": "attention/ui-01-card-hover-lift.md"
+      }
+    },
+    {
+      "id": "ui-02-3d-card-tilt",
+      "name": "3D Card Tilt",
+      "kind": "motion",
+      "category": "attention",
+      "description": "A card tilts in 3D toward the pointer — use gsap.quickTo in the move handler, never gsap.to per frame.",
+      "snippet": "const rxTo = gsap.quickTo(card, 'rotationX', { duration: 0.4, ease: 'power2.out' });\nconst ryTo = gsap.quickTo(card, 'rotationY', { duration: 0.4, ease: 'power2.out' });\nel.addEventListener('mousemove', (e) => {\n  const r = card.getBoundingClientRect();\n  ryTo(gsap.utils.mapRange(0, r.width, -10, 10)(e.clientX - r.left));\n  rxTo(gsap.utils.mapRange(0, r.height, 10, -10)(e.clientY - r.top));\n});",
+      "motion": "pointer-driven, interactive surfaces only; disable on touch and reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "attention",
+        "hover",
+        "3d",
+        "interactive"
+      ],
+      "source": {
+        "file": "attention/ui-02-3d-card-tilt.md"
+      }
+    },
+    {
+      "id": "ui-05-stacked-card-fan",
+      "name": "Stacked Card Fan",
+      "kind": "motion",
+      "category": "attention",
+      "description": "A stack of cards fans out into an arc — a reveal for a hand of options.",
+      "snippet": "cards.forEach((c, i) =>\n  gsap.to(c, {\n    rotation: (i - (cards.length - 1) / 2) * 8,\n    x: (i - (cards.length - 1) / 2) * 40,\n    y: -Math.abs(i - (cards.length - 1) / 2) * 6,\n    duration: 0.5,\n    ease: 'back.out(1.4)',\n  }),\n);",
+      "motion": "fan on a step; duration 0 for reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "attention",
+        "cards",
+        "reveal"
+      ],
+      "source": {
+        "file": "attention/ui-05-stacked-card-fan.md"
+      }
+    },
+    {
+      "id": "ui-08-magnetic-button",
+      "name": "Magnetic Button",
+      "kind": "motion",
+      "category": "attention",
+      "description": "A button drifts toward the pointer and snaps back on leave — desktop-only micro-delight.",
+      "snippet": "const xTo = gsap.quickTo(el, 'x', { duration: 0.4, ease: 'power2.out' });\nconst yTo = gsap.quickTo(el, 'y', { duration: 0.4, ease: 'power2.out' });\n// mousemove: xTo((e.clientX - cx) * 0.3); yTo((e.clientY - cy) * 0.3);\n// mouseleave: xTo(0); yTo(0);",
+      "motion": "pointer-driven, interactive surfaces only; disable on touch and reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "attention",
+        "hover",
+        "interactive"
+      ],
+      "source": {
+        "file": "attention/ui-08-magnetic-button.md"
+      }
+    },
+    {
+      "id": "ui-09-button-shimmer",
+      "name": "Button Shimmer",
+      "kind": "motion",
+      "category": "attention",
+      "description": "A light sweep crosses a button — a paused timeline replayed on demand.",
+      "snippet": "gsap.set('.shine', { xPercent: -120, skewX: -20 });\nconst tl = gsap\n  .timeline({ paused: true })\n  .to('.shine', { xPercent: 220, duration: 0.7, ease: 'power2.inOut' });\n// on step / hover: tl.restart();",
+      "motion": "paused timeline; play on step or hover; skip on reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "attention",
+        "micro-interaction"
+      ],
+      "source": {
+        "file": "attention/ui-09-button-shimmer.md"
+      }
+    },
+    {
+      "id": "ui-10-button-morph",
+      "name": "Button Morph",
+      "kind": "motion",
+      "category": "attention",
+      "description": "A button morphs between two states via a paused timeline played and reversed.",
+      "snippet": "const tl = gsap\n  .timeline({ paused: true })\n  .to(btn, { width: 56, borderRadius: 28, duration: 0.35, ease: 'power2.inOut' })\n  .to('.label', { autoAlpha: 0, duration: 0.2 }, '<')\n  .to('.icon', { autoAlpha: 1, duration: 0.2 }, '<0.15');\n// state change: on ? tl.play() : tl.reverse();",
+      "motion": "paused timeline; play/reverse on state change; duration 0 for reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "attention",
+        "micro-interaction"
+      ],
+      "source": {
+        "file": "attention/ui-10-button-morph.md"
+      }
+    },
+    {
+      "id": "ui-11-smooth-accordion",
+      "name": "Smooth Accordion",
+      "kind": "motion",
+      "category": "attention",
+      "description": "Animate an expand/collapse between height 0 and auto — measure the auto height, then tween.",
+      "snippet": "const open = () => {\n  gsap.set(panel, { height: 'auto' });\n  gsap.from(panel, { height: 0, autoAlpha: 0, duration: 0.4, ease: 'power2.inOut' });\n};\nconst close = () => gsap.to(panel, { height: 0, autoAlpha: 0, duration: 0.35, ease: 'power2.inOut' });",
+      "motion": "toggle on step or click; duration 0 for reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "attention",
+        "accordion",
+        "interactive"
+      ],
+      "source": {
+        "file": "attention/ui-11-smooth-accordion.md"
+      }
+    },
+    {
+      "id": "ui-13-counter-odometer",
+      "name": "Counter / Number Odometer",
+      "kind": "motion",
+      "category": "attention",
+      "description": "Animate a number from zero to its target with locale formatting — the top pick for KPI and stat moments.",
+      "snippet": "const obj = { value: 0 };\ngsap.to(obj, {\n  value: target,\n  duration: 2,\n  ease: 'power2.out',\n  onUpdate: () => {\n    el.textContent = Math.round(obj.value).toLocaleString() + suffix;\n  },\n}); // on active",
+      "motion": "run on active; reduced motion sets the final value instantly",
+      "engine": "gsap",
+      "tags": [
+        "attention",
+        "counter",
+        "kpi"
+      ],
+      "source": {
+        "file": "attention/ui-13-counter-odometer.md"
+      }
+    },
+    {
+      "id": "ui-14-progress-stat-bar",
+      "name": "Progress / Stat Bar",
+      "kind": "motion",
+      "category": "attention",
+      "description": "Fill a bar to a target percentage using scaleX (compositor-friendly), not width.",
+      "snippet": "gsap.set(fill, { scaleX: 0, transformOrigin: 'left center' });\ngsap.to(fill, { scaleX: target / 100, duration: 1.2, ease: 'power3.out' }); // on active; stagger multiple bars",
+      "motion": "run on active, stagger multiple bars; reduced motion sets the fill instantly",
+      "engine": "gsap",
+      "tags": [
+        "attention",
+        "bar",
+        "kpi"
+      ],
+      "source": {
+        "file": "attention/ui-14-progress-stat-bar.md"
+      }
+    },
+    {
+      "id": "adv-04-organic-random-entrance",
+      "name": "Organic Random Entrance",
+      "kind": "motion",
+      "category": "background",
+      "description": "Each element enters from its own random offset and rotation with a random-order stagger.",
+      "snippet": "gsap.set(els, {\n  x: () => gsap.utils.random(-40, 40),\n  y: () => gsap.utils.random(20, 60),\n  rotation: () => gsap.utils.random(-12, 12),\n  autoAlpha: 0,\n});\ngsap.to(els, {\n  x: 0,\n  y: 0,\n  rotation: 0,\n  autoAlpha: 1,\n  ease: 'power3.out',\n  duration: () => gsap.utils.random(0.6, 1.0),\n  stagger: { each: 0.08, from: 'random' },\n}); // on active",
+      "motion": "run on active; duration 0 for reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "background",
+        "entrance",
+        "random"
+      ],
+      "source": {
+        "file": "background/adv-04-organic-random-entrance.md"
+      }
+    },
+    {
+      "id": "adv-06-infinite-wrap-loop",
+      "name": "Infinite Wrap Loop",
+      "kind": "motion",
+      "category": "background",
+      "description": "Cycle values endlessly with gsap.utils.wrap — positions or a 360-degree rotation orbit.",
+      "snippet": "const wrapX = gsap.utils.wrap(-100, 100);\ngsap.to(els, {\n  x: '+=200',\n  duration: 10,\n  ease: 'none',\n  repeat: -1,\n  modifiers: { x: gsap.utils.unitize(wrapX) },\n});",
+      "motion": "loop only while active; pause on reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "background",
+        "loop",
+        "utility"
+      ],
+      "source": {
+        "file": "background/adv-06-infinite-wrap-loop.md"
+      }
+    },
+    {
+      "id": "adv-15-organic-floating",
+      "name": "Organic Floating Elements",
+      "kind": "motion",
+      "category": "background",
+      "description": "Elements drift to new random spots forever via a recursive onComplete — a lava-lamp background.",
+      "snippet": "function float(el) {\n  gsap.to(el, {\n    x: gsap.utils.random(-30, 30),\n    y: gsap.utils.random(-20, 20),\n    rotation: gsap.utils.random(-8, 8),\n    duration: gsap.utils.random(3, 6),\n    ease: 'sine.inOut',\n    onComplete: () => float(el),\n  });\n}",
+      "motion": "start only while active; do not start under reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "background",
+        "float",
+        "loop"
+      ],
+      "source": {
+        "file": "background/adv-15-organic-floating.md"
+      }
+    },
+    {
+      "id": "scr-13-infinite-marquee",
+      "name": "Infinite Marquee",
+      "kind": "motion",
+      "category": "background",
+      "description": "An endless horizontal ticker of logos or keywords — pure repeat, no scroll dependence.",
+      "snippet": "gsap.to('[track]', {\n  x: -(track.scrollWidth / 2),\n  duration: 20,\n  ease: 'none',\n  repeat: -1,\n  modifiers: {\n    x: gsap.utils.unitize((x) => parseFloat(x) % (track.scrollWidth / 2)),\n  },\n});",
+      "motion": "loop only while active; pause on reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "background",
+        "marquee",
+        "loop"
+      ],
+      "source": {
+        "file": "background/scr-13-infinite-marquee.md"
+      }
+    },
+    {
+      "id": "svg-09-blob-morph-loop",
+      "name": "Blob Morph Loop",
+      "kind": "motion",
+      "category": "background",
+      "description": "An organic shape morphs forever between a few reference blobs — a living background element.",
+      "snippet": "const tl = gsap.timeline({ repeat: -1 });\nshapes.forEach((s) =>\n  tl.to('#blob', { morphSVG: { shape: s, type: 'rotational' }, duration: 4, ease: 'power1.inOut' }),\n);",
+      "motion": "loop only while active; pause on reduced motion; keep durations slow (3-5s)",
+      "engine": "gsap/MorphSVG",
+      "tags": [
+        "background",
+        "svg",
+        "morph",
+        "loop"
+      ],
+      "source": {
+        "file": "background/svg-09-blob-morph-loop.md"
+      }
+    },
+    {
+      "id": "svg-01-stroke-draw-on",
+      "name": "Stroke Draw On",
+      "kind": "motion",
+      "category": "svg-diagram",
+      "description": "Draw a line or path on as if hand-drawn — diagram connectors, arrows, underlines that build in.",
+      "snippet": "gsap.registerPlugin(DrawSVGPlugin);\ngsap.set('[sel]', { drawSVG: '0% 0%' });\ngsap.to('[sel]', { drawSVG: '0% 100%', duration: 1.5, ease: 'power2.inOut' });",
+      "motion": "drive on active; duration 0 for reduced motion",
+      "engine": "gsap/DrawSVG",
+      "tags": [
+        "svg",
+        "draw",
+        "diagram"
+      ],
+      "source": {
+        "file": "svg-diagram/svg-01-stroke-draw-on.md"
+      }
+    },
+    {
+      "id": "svg-02-stroke-erase",
+      "name": "Stroke Erase",
+      "kind": "motion",
+      "category": "svg-diagram",
+      "description": "Retract a drawn stroke — the reverse of draw-on — or sweep a moving dash window along a path.",
+      "snippet": "gsap.set('[sel]', { drawSVG: '0% 100%' }); // fully visible\ngsap.to('[sel]', { drawSVG: '100% 100%', duration: 1.2, ease: 'power2.in' }); // erase L to R\n// moving window: fromTo { drawSVG: '0% 10%' } -> { drawSVG: '90% 100%', repeat: -1, ease: 'none' }",
+      "motion": "drive on a later step; duration 0 for reduced motion",
+      "engine": "gsap/DrawSVG",
+      "tags": [
+        "svg",
+        "draw",
+        "diagram"
+      ],
+      "source": {
+        "file": "svg-diagram/svg-02-stroke-erase.md"
+      }
+    },
+    {
+      "id": "svg-03-scribble-underline",
+      "name": "Scribble Underline",
+      "kind": "motion",
+      "category": "svg-diagram",
+      "description": "A hand-drawn wavy underline revealed as an emphasis beat under a headline.",
+      "snippet": "gsap.set(path, { drawSVG: '0% 0%' });\ngsap.to(path, { drawSVG: '0% 100%', duration: 0.4, ease: 'power2.out' }); // on step",
+      "motion": "trigger on a step (not hover); duration 0 for reduced motion",
+      "engine": "gsap/DrawSVG",
+      "tags": [
+        "svg",
+        "draw",
+        "emphasis"
+      ],
+      "source": {
+        "file": "svg-diagram/svg-03-scribble-underline.md"
+      }
+    },
+    {
+      "id": "svg-04-signature-reveal",
+      "name": "Signature / Handwriting Reveal",
+      "kind": "motion",
+      "category": "svg-diagram",
+      "description": "Sequentially draw multiple pen-stroke paths so the mark looks written — signatures, built-up logos, glyphs.",
+      "snippet": "gsap.set('[sel] path', { drawSVG: '0% 0%', autoAlpha: 1 });\nconst tl = gsap.timeline();\npaths.forEach((p, i) =>\n  tl.to(p, { drawSVG: '0% 100%', duration: 0.6, ease: 'power1.inOut' }, i ? '-=0.1' : 0),\n);",
+      "motion": "build the timeline on active; reduced motion sets all paths fully drawn instantly",
+      "engine": "gsap/DrawSVG",
+      "tags": [
+        "svg",
+        "draw",
+        "timeline"
+      ],
+      "source": {
+        "file": "svg-diagram/svg-04-signature-reveal.md"
+      }
+    },
+    {
+      "id": "svg-05-multi-path-sequential-draw",
+      "name": "Multi-Path Sequential Draw",
+      "kind": "motion",
+      "category": "svg-diagram",
+      "description": "Draw many diagram segments in order, each timed to its length so pen speed feels constant.",
+      "snippet": "const dur = (p) => gsap.utils.clamp(0.3, 1.5, DrawSVGPlugin.getLength(p) / 300);\npaths.forEach((p) => tl.to(p, { drawSVG: '0% 100%', duration: dur(p) }, '-=0.05'));",
+      "motion": "one timeline on active, or one segment per step for click-paced assembly",
+      "engine": "gsap/DrawSVG",
+      "tags": [
+        "svg",
+        "draw",
+        "diagram",
+        "timeline"
+      ],
+      "source": {
+        "file": "svg-diagram/svg-05-multi-path-sequential-draw.md"
+      }
+    },
+    {
+      "id": "svg-06-step-scrubbed-stroke",
+      "name": "Step-Scrubbed Stroke",
+      "kind": "motion",
+      "category": "svg-diagram",
+      "description": "A paused draw-on timeline whose progress is driven by the step index instead of scroll.",
+      "snippet": "const tl = gsap\n  .timeline({ paused: true })\n  .fromTo('[sel]', { drawSVG: '0% 0%' }, { drawSVG: '0% 100%', ease: 'none' });\n// on step change: tl.tweenTo(step / totalSteps);",
+      "motion": "paused timeline; step change tweens progress; reduced motion jumps to the target progress",
+      "engine": "gsap/DrawSVG",
+      "tags": [
+        "svg",
+        "draw",
+        "step-driven"
+      ],
+      "source": {
+        "file": "svg-diagram/svg-06-step-scrubbed-stroke.md"
+      }
+    },
+    {
+      "id": "svg-07-shape-morph-simple",
+      "name": "Shape Morph (Simple)",
+      "kind": "motion",
+      "category": "svg-diagram",
+      "description": "Morph one SVG path into another (circle to star, etc.) — convert primitives to paths first.",
+      "snippet": "gsap.registerPlugin(MorphSVGPlugin);\nMorphSVGPlugin.convertToPath('[start], [end]');\ngsap.to('[start]', {\n  morphSVG: { shape: '[end]', type: 'rotational', shapeIndex: 'auto' },\n  duration: 1.2,\n  ease: 'power2.inOut',\n});",
+      "motion": "trigger on a step; duration 0 for reduced motion",
+      "engine": "gsap/MorphSVG",
+      "tags": [
+        "svg",
+        "morph"
+      ],
+      "source": {
+        "file": "svg-diagram/svg-07-shape-morph-simple.md"
+      }
+    },
+    {
+      "id": "svg-08-icon-to-icon-morph",
+      "name": "Icon-to-Icon Morph",
+      "kind": "motion",
+      "category": "svg-diagram",
+      "description": "Toggle between two icon states (play/pause, menu/close) — a live-toggle cue for interactive demos.",
+      "snippet": "let on = false;\nel.addEventListener('click', () => {\n  on = !on;\n  gsap.to('#icon-a', { morphSVG: on ? dataB : dataA, duration: 0.4, ease: 'power2.inOut' });\n});",
+      "motion": "toggle on step or click; duration 0 for reduced motion",
+      "engine": "gsap/MorphSVG",
+      "tags": [
+        "svg",
+        "morph",
+        "interactive"
+      ],
+      "source": {
+        "file": "svg-diagram/svg-08-icon-to-icon-morph.md"
+      }
+    },
+    {
+      "id": "svg-10-multi-shape-morph-sequence",
+      "name": "Multi-Shape Morph Sequence",
+      "kind": "motion",
+      "category": "svg-diagram",
+      "description": "Morph through several reference shapes in sequence, driven by the step index.",
+      "snippet": "const tl = gsap.timeline({ paused: true });\nshapes.forEach((s) =>\n  tl.to('#morph', { morphSVG: { shape: s, type: 'rotational' }, duration: 1 }),\n);\n// step change -> tl.tweenTo(step / shapes.length);",
+      "motion": "paused timeline; step change tweens progress; reduced motion jumps to the target shape",
+      "engine": "gsap/MorphSVG",
+      "tags": [
+        "svg",
+        "morph",
+        "step-driven"
+      ],
+      "source": {
+        "file": "svg-diagram/svg-10-multi-shape-morph-sequence.md"
+      }
+    },
+    {
+      "id": "svg-11-element-along-path",
+      "name": "Element Along Path",
+      "kind": "motion",
+      "category": "svg-diagram",
+      "description": "Move a token, avatar, or dot along an (often hidden) SVG path — data flowing through a diagram.",
+      "snippet": "gsap.registerPlugin(MotionPathPlugin);\ngsap.to('[el]', {\n  motionPath: { path: '[path]', align: '[path]', alignOrigin: [0.5, 0.5], autoRotate: false },\n  duration: 2,\n  ease: 'power1.inOut',\n}); // on active",
+      "motion": "run on active; duration 0 for reduced motion",
+      "engine": "gsap/MotionPath",
+      "tags": [
+        "svg",
+        "motion-path",
+        "diagram"
+      ],
+      "source": {
+        "file": "svg-diagram/svg-11-element-along-path.md"
+      }
+    },
+    {
+      "id": "svg-12-auto-rotate-along-path",
+      "name": "Auto-Rotate Along Path",
+      "kind": "motion",
+      "category": "svg-diagram",
+      "description": "Same as element-along-path but the element turns to face its direction of travel — an arrowhead, a ship.",
+      "snippet": "gsap.to('[el]', {\n  motionPath: { path: '[path]', align: '[path]', alignOrigin: [0.5, 0.5], autoRotate: true },\n  duration: 2,\n  ease: 'power1.inOut',\n});\n// orbit loop: drop the trigger, add repeat: -1, ease: 'none'",
+      "motion": "run on active; continuous orbits use repeat -1 and pause on reduced motion",
+      "engine": "gsap/MotionPath",
+      "tags": [
+        "svg",
+        "motion-path",
+        "loop"
+      ],
+      "source": {
+        "file": "svg-diagram/svg-12-auto-rotate-along-path.md"
+      }
+    },
+    {
+      "id": "svg-13-step-driven-path-follower",
+      "name": "Step-Driven Path Follower",
+      "kind": "motion",
+      "category": "svg-diagram",
+      "description": "An element whose position along a path tracks progress — driven by the step index instead of scroll.",
+      "snippet": "const tl = gsap.timeline({ paused: true }).to('[el]', {\n  motionPath: {\n    path: '[path]', align: '[path]', alignOrigin: [0.5, 0.5],\n    autoRotate: true, start: 0, end: 1,\n  },\n  ease: 'none',\n});\n// step change -> tl.progress(step / total);",
+      "motion": "paused timeline; step change sets progress; reduced motion jumps to the target position",
+      "engine": "gsap/MotionPath",
+      "tags": [
+        "svg",
+        "motion-path",
+        "step-driven"
+      ],
+      "source": {
+        "file": "svg-diagram/svg-13-step-driven-path-follower.md"
+      }
+    },
+    {
+      "id": "svg-14-clip-path-reveal",
+      "name": "SVG Clip-Path Reveal",
+      "kind": "motion",
+      "category": "svg-diagram",
+      "description": "Wipe an image or graphic into view by animating an SVG clip rect — a clean masked reveal.",
+      "snippet": "// clipPath#reveal-clip > rect#clip-rect (objectBoundingBox, height 0); CSS clip-path: url(#reveal-clip)\ngsap.to('#clip-rect', { attr: { height: 1 }, duration: 1.2, ease: 'power3.out' }); // on active",
+      "motion": "run on active; duration 0 for reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "svg",
+        "reveal",
+        "mask"
+      ],
+      "source": {
+        "file": "svg-diagram/svg-14-clip-path-reveal.md"
+      }
+    },
+    {
+      "id": "svg-15-filter-distortion-liquid",
+      "name": "SVG Filter Distortion (Liquid)",
+      "kind": "motion",
+      "category": "svg-diagram",
+      "description": "A liquid/glass ripple over one hero element via feTurbulence and feDisplacementMap.",
+      "snippet": "// inject filter: feTurbulence#liquid-turbulence + feDisplacementMap#liquid-displacement (scale 0)\ngsap.to('#liquid-turbulence', { attr: { baseFrequency: '0.65 0.75' }, duration: 0.4 });\ngsap.to('#liquid-displacement', { attr: { scale: 30 }, duration: 0.4 });",
+      "motion": "trigger on a step, then settle back; skip entirely on reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "svg",
+        "filter",
+        "emphasis"
+      ],
+      "source": {
+        "file": "svg-diagram/svg-15-filter-distortion-liquid.md"
+      }
+    },
+    {
+      "id": "t-01-line-reveal",
+      "name": "Line Reveal",
+      "kind": "motion",
+      "category": "text",
+      "description": "A multi-line headline rises in line by line.",
+      "snippet": "const split = SplitText.create('[sel]', { type: 'lines' });\ngsap.from(split.lines, { y: 40, autoAlpha: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out' });",
+      "motion": "gate on active; duration 0 for reduced motion",
+      "engine": "gsap/SplitText",
+      "tags": [
+        "text",
+        "split",
+        "entrance"
+      ],
+      "source": {
+        "file": "text/t-01-line-reveal.md"
+      }
+    },
+    {
+      "id": "t-02-word-reveal",
+      "name": "Word Reveal",
+      "kind": "motion",
+      "category": "text",
+      "description": "Words cascade upward into place — the standard split-text entrance for titles.",
+      "snippet": "const split = SplitText.create('[sel]', { type: 'words' });\ngsap.from(split.words, { yPercent: 80, opacity: 0, duration: 0.6, stagger: 0.05, ease: 'power3.out' });",
+      "motion": "gate on active; duration 0 for reduced motion",
+      "engine": "gsap/SplitText",
+      "tags": [
+        "text",
+        "split",
+        "entrance"
+      ],
+      "source": {
+        "file": "text/t-02-word-reveal.md"
+      }
+    },
+    {
+      "id": "t-03-character-reveal",
+      "name": "Character Reveal",
+      "kind": "motion",
+      "category": "text",
+      "description": "Per-character cascade with a back.out pop — energetic titles and single punch words.",
+      "snippet": "const split = SplitText.create('[sel]', { type: 'chars' });\ngsap.from(split.chars, { y: 20, autoAlpha: 0, scale: 0.8, stagger: 0.03, ease: 'back.out(1.7)' });",
+      "motion": "gate on active; duration 0 for reduced motion",
+      "engine": "gsap/SplitText",
+      "tags": [
+        "text",
+        "split",
+        "entrance"
+      ],
+      "source": {
+        "file": "text/t-03-character-reveal.md"
+      }
+    },
+    {
+      "id": "t-04-masked-line-reveal",
+      "name": "Masked Line Reveal",
+      "kind": "motion",
+      "category": "text",
+      "description": "Lines slide up from behind a clip mask — the premium reveal. Needs GSAP 3.13+.",
+      "snippet": "SplitText.create('[sel]', {\n  type: 'lines',\n  mask: 'lines',\n  autoSplit: true,\n  onSplit: (self) =>\n    gsap.from(self.lines, { yPercent: 110, duration: 0.9, stagger: 0.1, ease: 'power4.out' }),\n});",
+      "motion": "trigger inside onSplit when active; duration 0 for reduced motion",
+      "engine": "gsap/SplitText",
+      "tags": [
+        "text",
+        "split",
+        "mask",
+        "entrance"
+      ],
+      "source": {
+        "file": "text/t-04-masked-line-reveal.md"
+      }
+    },
+    {
+      "id": "t-05-step-revealed-text",
+      "name": "Step-Revealed Text",
+      "kind": "motion",
+      "category": "text",
+      "description": "Words sit ghosted at low opacity, then brighten to full — revealed as one tween or per step.",
+      "snippet": "gsap.set(split.words, { opacity: 0.15 });\ngsap.to(split.words, { opacity: 1, stagger: 0.15, ease: 'none' }); // on active (or tween by step)",
+      "motion": "brighten on active or per step; reduced motion shows full opacity immediately",
+      "engine": "gsap/SplitText",
+      "tags": [
+        "text",
+        "split",
+        "step-driven"
+      ],
+      "source": {
+        "file": "text/t-05-step-revealed-text.md"
+      }
+    },
+    {
+      "id": "t-06-rotated-character-entrance",
+      "name": "Rotated Character Entrance",
+      "kind": "motion",
+      "category": "text",
+      "description": "Characters flip in on the X axis in 3D — set perspective on the parent.",
+      "snippet": "// parent: perspective: 400px\ngsap.from(split.chars, {\n  rotationX: 90,\n  transformOrigin: '0% 50% -50',\n  autoAlpha: 0,\n  duration: 0.7,\n  stagger: 0.04,\n  ease: 'back.out(2)',\n});",
+      "motion": "gate on active; duration 0 for reduced motion",
+      "engine": "gsap/SplitText",
+      "tags": [
+        "text",
+        "split",
+        "3d",
+        "entrance"
+      ],
+      "source": {
+        "file": "text/t-06-rotated-character-entrance.md"
+      }
+    },
+    {
+      "id": "t-07-scramble-decode",
+      "name": "Scramble Decode",
+      "kind": "motion",
+      "category": "text",
+      "description": "Text resolves out of random characters — a matrix-style decode for a reveal moment.",
+      "snippet": "gsap.registerPlugin(ScrambleTextPlugin);\ngsap.to('[sel]', {\n  duration: 2,\n  ease: 'none',\n  scrambleText: { text: '[final]', chars: 'upperAndLowerCase', revealDelay: 0.3, speed: 0.4 },\n}); // on active",
+      "motion": "run on active; reduced motion sets the final text instantly",
+      "engine": "gsap/ScrambleText",
+      "tags": [
+        "text",
+        "scramble",
+        "reveal"
+      ],
+      "source": {
+        "file": "text/t-07-scramble-decode.md"
+      }
+    },
+    {
+      "id": "t-08-custom-glyph-scramble",
+      "name": "Custom Glyph Scramble",
+      "kind": "motion",
+      "category": "text",
+      "description": "Scramble decode with a themed glyph set: binary \"01\", Katakana for cyberpunk, dots and dashes for minimal.",
+      "snippet": "gsap.to('[sel]', {\n  duration: 2,\n  ease: 'none',\n  scrambleText: { text: '[final]', chars: '01', revealDelay: 0.3, speed: 0.4 },\n});",
+      "motion": "run on active; reduced motion sets the final text instantly",
+      "engine": "gsap/ScrambleText",
+      "tags": [
+        "text",
+        "scramble",
+        "themed"
+      ],
+      "source": {
+        "file": "text/t-08-custom-glyph-scramble.md"
+      }
+    },
+    {
+      "id": "t-09-typewriter",
+      "name": "Typewriter",
+      "kind": "motion",
+      "category": "text",
+      "description": "Type text out character by character — terminal lines, commands, captions.",
+      "snippet": "gsap.registerPlugin(TextPlugin);\ngsap.set('[sel]', { text: '' });\ngsap.to('[sel]', { duration: 2, ease: 'none', text: '[your text]', delay: 0.5 }); // on active",
+      "motion": "run on active; reduced motion sets the full text instantly",
+      "engine": "gsap/TextPlugin",
+      "tags": [
+        "text",
+        "typewriter",
+        "terminal"
+      ],
+      "source": {
+        "file": "text/t-09-typewriter.md"
+      }
+    },
+    {
+      "id": "t-10-rotating-headlines",
+      "name": "Text Swap / Rotating Headlines",
+      "kind": "motion",
+      "category": "text",
+      "description": "Cycle one slot word through a list (\"build / ship / scale\"): fade out, swap, fade in, hold, repeat.",
+      "snippet": "const tl = gsap.timeline({ repeat: -1, defaults: { ease: 'power2.out' } });\nwords.forEach((w) =>\n  tl\n    .to('.rotating-word', { autoAlpha: 0, duration: 0.3 })\n    .set('.rotating-word', { text: w })\n    .to('.rotating-word', { autoAlpha: 1, duration: 0.4 })\n    .to({}, { duration: 2 }),\n);",
+      "motion": "loop only while active; pause on reduced motion",
+      "engine": "gsap/TextPlugin",
+      "tags": [
+        "text",
+        "loop",
+        "headline"
+      ],
+      "source": {
+        "file": "text/t-10-rotating-headlines.md"
+      }
+    },
+    {
+      "id": "t-13-rgb-split-glitch",
+      "name": "RGB Split Glitch",
+      "kind": "motion",
+      "category": "text",
+      "description": "Chromatic-aberration glitch bursts on a headline — two colored layers jitter and reset.",
+      "snippet": "const tl = gsap.timeline();\ntl.to('.red', { x: gsap.utils.random(-4, 4), skewX: gsap.utils.random(-2, 2), duration: 0.08 })\n  .to('.cyan', { x: gsap.utils.random(-4, 4), skewX: gsap.utils.random(-2, 2), duration: 0.08 }, '<')\n  .to(['.red', '.cyan'], { x: 0, skewX: 0, duration: 0.06 });\ngsap.delayedCall(gsap.utils.random(2, 6), glitchBurst);",
+      "motion": "burst on a step or sparse random timer; skip on reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "text",
+        "glitch",
+        "emphasis"
+      ],
+      "source": {
+        "file": "text/t-13-rgb-split-glitch.md"
+      }
+    },
+    {
+      "id": "t-14-skew-glitch-burst",
+      "name": "Skew Glitch Burst",
+      "kind": "motion",
+      "category": "text",
+      "description": "Lightweight single-element skew jitter — a quick attention tic with no extra layers.",
+      "snippet": "gsap\n  .timeline()\n  .to('[sel]', { skewX: gsap.utils.random(-4, 4), duration: 0.06 })\n  .to('[sel]', { skewX: 0, duration: 0.08 });\ngsap.delayedCall(gsap.utils.random(3, 8), glitchBurst);",
+      "motion": "burst on a step or sparse random timer; skip on reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "text",
+        "glitch",
+        "emphasis"
+      ],
+      "source": {
+        "file": "text/t-14-skew-glitch-burst.md"
+      }
+    },
+    {
+      "id": "ui-03-3d-card-flip",
+      "name": "3D Card Flip",
+      "kind": "motion",
+      "category": "transitions",
+      "description": "Flip a card front-to-back in 3D — needs preserve-3d and backface-visibility hidden.",
+      "snippet": "gsap.to(card, {\n  rotationY: flipped ? 0 : 180,\n  duration: 0.6,\n  ease: 'power2.inOut',\n  transformPerspective: 1000,\n});",
+      "motion": "flip on a step or click; duration 0 for reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "transition",
+        "card",
+        "3d"
+      ],
+      "source": {
+        "file": "transitions/ui-03-3d-card-flip.md"
+      }
+    },
+    {
+      "id": "ui-04-card-expand-to-detail",
+      "name": "Card Expand to Detail",
+      "kind": "motion",
+      "category": "transitions",
+      "description": "A card morphs from grid tile into a full detail panel and back — same DOM, animated layout change.",
+      "snippet": "gsap.registerPlugin(Flip);\nconst state = Flip.getState(card);\ncard.classList.add('expanded'); // or move into a bigger container\nFlip.from(state, { duration: 0.5, ease: 'power2.inOut', absolute: true });",
+      "motion": "trigger on a step click; duration 0 for reduced motion",
+      "engine": "gsap/Flip",
+      "tags": [
+        "transition",
+        "flip",
+        "layout"
+      ],
+      "source": {
+        "file": "transitions/ui-04-card-expand-to-detail.md"
+      }
+    },
+    {
+      "id": "ui-06-step-stagger-reveal",
+      "name": "Step Stagger Reveal",
+      "kind": "motion",
+      "category": "transitions",
+      "description": "Cards or list items stagger in — reach for GSAP only when you need its grid/random stagger distribution.",
+      "snippet": "gsap.from('[sel]', { y: 50, autoAlpha: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out' }); // on active",
+      "motion": "run on active; prefer the platform default entrance for plain cases; duration 0 for reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "transition",
+        "stagger",
+        "entrance",
+        "scr-03"
+      ],
+      "source": {
+        "file": "transitions/ui-06-step-stagger-reveal.md"
+      }
+    },
+    {
+      "id": "ui-07-flip-grid-filter",
+      "name": "Flip Grid Filter",
+      "kind": "motion",
+      "category": "transitions",
+      "description": "Re-filter a grid and have surviving items smoothly relayout into their new slots.",
+      "snippet": "const state = Flip.getState('.card');\n// toggle display: none on non-matching cards\nFlip.from(state, {\n  duration: 0.5,\n  ease: 'power2.inOut',\n  absolute: true,\n  onEnter: (els) => gsap.from(els, { autoAlpha: 0, duration: 0.3 }),\n  onLeave: (els) => gsap.to(els, { autoAlpha: 0, duration: 0.2 }),\n});",
+      "motion": "drive per step (each step = a filter); duration 0 for reduced motion",
+      "engine": "gsap/Flip",
+      "tags": [
+        "transition",
+        "flip",
+        "grid"
+      ],
+      "source": {
+        "file": "transitions/ui-07-flip-grid-filter.md"
+      }
+    },
+    {
+      "id": "ui-16-transition-wipe",
+      "name": "Transition Wipe",
+      "kind": "motion",
+      "category": "transitions",
+      "description": "A full-screen accent panel wipes across on enter/exit — a between-view wipe overlay.",
+      "snippet": "gsap.set('#overlay', { scaleX: 0, transformOrigin: 'left center' });\n// enter: from scaleX: 1 (origin right) -> scaleX: 0, duration: 0.6, ease: 'power3.inOut'\n// exit:  to scaleX: 1 (origin left), then advance in onComplete",
+      "motion": "hook to the surface change (slide/scene advance); duration 0 for reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "transition",
+        "wipe",
+        "overlay"
+      ],
+      "source": {
+        "file": "transitions/ui-16-transition-wipe.md"
+      }
+    },
+    {
+      "id": "adv-01-step-to-value-mapping",
+      "name": "Step-to-Value Range Mapping",
+      "kind": "motion",
+      "category": "utility",
+      "description": "Map step progress to any value range with mapRange and clamp built outside the update callback.",
+      "snippet": "const toAngle = gsap.utils.mapRange(0, 1, -90, 90);\nconst clamp01 = gsap.utils.clamp(0, 1);\n// on step change:\ngsap.set('[dial]', { rotation: toAngle(clamp01(step / totalSteps)) });",
+      "motion": "drive by step progress; values apply instantly (reduced-motion safe)",
+      "engine": "gsap",
+      "tags": [
+        "utility",
+        "mapping",
+        "step-driven"
+      ],
+      "source": {
+        "file": "utility/adv-01-step-to-value-mapping.md"
+      }
+    },
+    {
+      "id": "adv-02-pointer-to-value-mapping",
+      "name": "Pointer-to-Value Range Mapping",
+      "kind": "motion",
+      "category": "utility",
+      "description": "Map pointer position to a value range, applied through gsap.quickTo — desktop-interactive surfaces only.",
+      "snippet": "const toX = gsap.utils.mapRange(0, window.innerWidth, -30, 30);\nconst xTo = gsap.quickTo('[sel]', 'x', { duration: 0.4, ease: 'power2.out' });\nwindow.addEventListener('pointermove', (e) => xTo(toX(e.clientX)));",
+      "motion": "pointer-driven, interactive surfaces only; disable on touch and reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "utility",
+        "mapping",
+        "interactive"
+      ],
+      "source": {
+        "file": "utility/adv-02-pointer-to-value-mapping.md"
+      }
+    },
+    {
+      "id": "adv-03-color-interpolation",
+      "name": "Color Interpolation",
+      "kind": "motion",
+      "category": "utility",
+      "description": "Interpolate between two colors by progress — handles hex, rgb, hsl, and named colors.",
+      "snippet": "const mix = gsap.utils.interpolate('#0EA5E9', '#F59E0B');\n// on step change:\ngsap.set('[sel]', { color: mix(step / totalSteps) });",
+      "motion": "drive by step progress; apply with gsap.set",
+      "engine": "gsap",
+      "tags": [
+        "utility",
+        "color",
+        "step-driven"
+      ],
+      "source": {
+        "file": "utility/adv-03-color-interpolation.md"
+      }
+    },
+    {
+      "id": "adv-05-radial-grid-stagger",
+      "name": "Radial / Grid Stagger",
+      "kind": "motion",
+      "category": "utility",
+      "description": "Ripple a stagger outward from the center or edges of a grid using gsap.utils.distribute.",
+      "snippet": "gsap.from('[sel] .cell', {\n  scale: 0,\n  autoAlpha: 0,\n  duration: 0.5,\n  ease: 'power2.out',\n  stagger: gsap.utils.distribute({ amount: 0.8, from: 'center', grid: 'auto' }),\n});",
+      "motion": "run on active; duration 0 for reduced motion",
+      "engine": "gsap",
+      "tags": [
+        "utility",
+        "stagger",
+        "grid"
+      ],
+      "source": {
+        "file": "utility/adv-05-radial-grid-stagger.md"
+      }
+    },
+    {
+      "id": "adv-07-utility-pipeline",
+      "name": "Chained Utility Pipeline",
+      "kind": "motion",
+      "category": "utility",
+      "description": "Compose a value transform once with gsap.utils.pipe (normalize, map, snap) and reuse it.",
+      "snippet": "const transform = gsap.utils.pipe(\n  gsap.utils.normalize(0, totalSteps),\n  gsap.utils.mapRange(0, 1, 0, 100),\n  gsap.utils.snap(5),\n);\n// transform(step) -> 0..100 snapped to 5s",
+      "motion": "composition helper; inherits the drive mode of whatever consumes it",
+      "engine": "gsap",
+      "tags": [
+        "utility",
+        "mapping",
+        "composition"
+      ],
+      "source": {
+        "file": "utility/adv-07-utility-pipeline.md"
+      }
+    },
+    {
+      "id": "adv-08-snap-to-grid",
+      "name": "Snap-to-Grid Drag",
+      "kind": "motion",
+      "category": "utility",
+      "description": "Drag an element with inertia that settles onto a grid via a snap function.",
+      "snippet": "gsap.registerPlugin(Draggable, InertiaPlugin);\nDraggable.create('[sel]', {\n  type: 'x,y',\n  inertia: true,\n  snap: { x: gsap.utils.snap(80), y: gsap.utils.snap(80) },\n});",
+      "motion": "interactive surfaces only; disable on reduced motion (no throw physics)",
+      "engine": "gsap/Draggable",
+      "tags": [
+        "utility",
+        "draggable",
+        "interactive"
+      ],
+      "source": {
+        "file": "utility/adv-08-snap-to-grid.md"
+      }
+    },
+    {
+      "id": "adv-09-custom-easing",
+      "name": "Custom Easing",
+      "kind": "motion",
+      "category": "utility",
+      "description": "Register a brand ease once and reuse it everywhere by name — plus CustomBounce and CustomWiggle.",
+      "snippet": "gsap.registerPlugin(CustomEase);\nCustomEase.create('brandEase', '.17,.67,.35,1.2');\ngsap.to('[sel]', { y: 0, duration: 0.8, ease: 'brandEase' });",
+      "motion": "define once at setup; eases apply wherever recipes run",
+      "engine": "gsap/CustomEase",
+      "tags": [
+        "utility",
+        "easing"
+      ],
+      "source": {
+        "file": "utility/adv-09-custom-easing.md"
+      }
+    },
+    {
+      "id": "adv-10-draggable-element",
+      "name": "Draggable Element",
+      "kind": "motion",
+      "category": "utility",
+      "description": "A momentum-draggable element with bounds — the base for hands-on demo surfaces.",
+      "snippet": "gsap.registerPlugin(Draggable, InertiaPlugin);\nDraggable.create('[sel]', { type: 'x,y', bounds: '[container]', inertia: true });",
+      "motion": "interactive surfaces only; disable inertia on reduced motion",
+      "engine": "gsap/Draggable",
+      "tags": [
+        "utility",
+        "draggable",
+        "interactive"
+      ],
+      "source": {
+        "file": "utility/adv-10-draggable-element.md"
+      }
+    },
+    {
+      "id": "adv-11-draggable-carousel",
+      "name": "Draggable Carousel",
+      "kind": "motion",
+      "category": "utility",
+      "description": "A momentum carousel that snaps to each panel width after a throw.",
+      "snippet": "Draggable.create('[track]', {\n  type: 'x',\n  inertia: true,\n  bounds: { minX: -(panels - 1) * panelW, maxX: 0 },\n  snap: { x: gsap.utils.snap(panelW) },\n});",
+      "motion": "interactive surfaces only; disable inertia on reduced motion",
+      "engine": "gsap/Draggable",
+      "tags": [
+        "utility",
+        "draggable",
+        "carousel",
+        "interactive"
+      ],
+      "source": {
+        "file": "utility/adv-11-draggable-carousel.md"
+      }
+    },
+    {
+      "id": "adv-12-swipe-gesture",
+      "name": "Swipe / Gesture Observer",
+      "kind": "motion",
+      "category": "utility",
+      "description": "Unified touch/pointer/wheel gesture detection with an isAnimating guard — could drive step navigation.",
+      "snippet": "gsap.registerPlugin(Observer);\nlet isAnimating = false;\nObserver.create({\n  type: 'touch,pointer,wheel',\n  onUp: () => !isAnimating && next(),\n  onDown: () => !isAnimating && prev(),\n});",
+      "motion": "guard with isAnimating; the platform nav layer owns navigation — use with care",
+      "engine": "gsap/Observer",
+      "tags": [
+        "utility",
+        "gesture",
+        "interactive"
+      ],
+      "source": {
+        "file": "utility/adv-12-swipe-gesture.md"
+      }
+    }
+  ]
+}

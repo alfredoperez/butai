@@ -1,0 +1,253 @@
+version: 1
+# The butai upstream ledger. Tracks code/design ADOPTED, COPIED-IN, INSPIRED-BY,
+# consumed as an EXTERNAL TOOL, our OWN prior work, or EXCLUDED-and-why — each with a
+# license. NOT a full npm SBOM (ordinary OSS libs are tracked by package.json; a full
+# SBOM is a P10 concern). CREDITS.md is GENERATED from this file — edit here, not there.
+#
+# Schema (frozen, phase-8 §0.1) — each entry:
+#   id            stable kebab id, unique, never reuse/renumber
+#   name          display name
+#   url           canonical URL
+#   repo          OPTIONAL — source repo if distinct from url
+#   license       SPDX id or short name; "UNVERIFIED" allowed for excluded rows
+#   what          what was taken/adopted, in plain language
+#   how           ENUM: copied-in | inspired-by | runtime-dep | external-tool | own-work | excluded
+#   adopted       phase tag (P1..P7) or ISO date (YYYY-MM-DD); MAY be null when excluded
+#   last_checked  ISO date STRING in the data; the sync skill updates it in real time
+#   last_ref      commit SHA or release tag if known, else null
+#   notes         OPTIONAL — free text (e.g. a secondary relationship)
+#   excluded_reason  REQUIRED when how: excluded
+#
+# Thirteen surveyed upstreams (phase-8 §0.2 + iter-2): 9 adopted/inspired/external/own + 4 excluded.
+sources:
+  # ── Copied-in (vendored) ────────────────────────────────────────────────────
+  - id: shadcn-ui
+    name: shadcn/ui
+    url: https://ui.shadcn.com
+    repo: https://github.com/shadcn-ui/ui
+    license: MIT
+    what: >-
+      UI primitives (button, card, input, badge) for the Studio surface, hand-copied
+      as MIT source in the "new-york" style.
+    how: copied-in
+    adopted: P4
+    last_checked: 2026-07-07
+    last_ref: null
+    notes: >-
+      Hand-vendored per phase-4 §0.2 with NO `npx shadcn` network call; each primitive
+      at apps/studio/src/components/ui/*.tsx carries a provenance header naming the
+      MIT source. Its small utility deps (class-variance-authority, clsx, tailwind-merge)
+      ride along under this entry rather than earning separate rows.
+
+  # ── Inspired by (concept reimplemented, no code taken) ──────────────────────
+  - id: frontend-slides
+    name: frontend-slides
+    url: https://github.com/zarazhangrui/frontend-slides
+    license: UNVERIFIED
+    what: >-
+      The stepped-deck engine concept plus two CSS motion ideas (the print reveal and
+      the cinematic "unfocus into view"), reimplemented from scratch — no theme code taken.
+    how: inspired-by
+    adopted: P1
+    last_checked: 2026-07-07
+    last_ref: null
+    notes: >-
+      Evidence: packages/deck/styles/engine.css headers ("Extracted from the upstream
+      presentation app's base.css", "Ported concept from frontend-slides", "cinematic
+      'unfocus into view' — ported from frontend-slides"). NO theme code ported from here —
+      its two theme packs are EXCLUDED (see frontend-slides-theme-presets and
+      bold-template-pack). License is UNVERIFIED; because no upstream code ships (only the
+      concept and two reimplemented CSS motions), it is not a distribution risk, but the
+      concept-level borrow is FLAGGED for the public-flip review.
+  - id: gsap-recipe-reference
+    name: GSAP recipe reference (first-party prior art)
+    url: ./library/web/README.md
+    license: Own prior work
+    what: >-
+      The recipe-catalog structure and the preserved recipe ids (svg-01-…, t-09-…,
+      ui-13-…, adv-05-…), reworked here one-file-per-recipe for the motion library.
+    how: inspired-by
+    adopted: P1
+    last_checked: 2026-07-07
+    last_ref: null
+    notes: >-
+      Evidence: library/web/README.md — the maintainer's own prior deck-native GSAP recipe
+      reference (itself harvested from an 84-entry GSAP prompt library), restructured here.
+      Recipe ids are preserved; the snippets are short GSAP API idioms, low copyright risk.
+      FLAG for the public-flip review: whether to name the maintainer's personal domain as
+      the precise first-party source (recorded internally in _ops/GAPS.md) or keep this
+      generic "first-party prior art" wording in the public CREDITS.md.
+
+  # ── Runtime dependencies (tied to an adopted-design story) ──────────────────
+  - id: radix-ui
+    name: Radix UI
+    url: https://www.radix-ui.com
+    repo: https://github.com/radix-ui/primitives
+    license: MIT
+    what: >-
+      The @radix-ui/react-slot primitive that underpins the vendored shadcn Button (Slot).
+    how: runtime-dep
+    adopted: P4
+    last_checked: 2026-07-07
+    last_ref: null
+    notes: >-
+      shadcn/ui's peer primitive; @radix-ui/react-slot ^1.1.0 in apps/studio/package.json.
+      Earns a row because it is tied to the adopted shadcn story, not merely a transitive lib.
+  - id: tailwindcss
+    name: Tailwind CSS
+    url: https://tailwindcss.com
+    repo: https://github.com/tailwindlabs/tailwindcss
+    license: MIT
+    what: >-
+      The utility-CSS engine (v4) behind the Studio's shadcn surface.
+    how: runtime-dep
+    adopted: P4
+    last_checked: 2026-07-07
+    last_ref: null
+    notes: >-
+      tailwindcss ^4.0.0 + @tailwindcss/vite in apps/studio; the styling layer of the
+      adopted shadcn Studio surface.
+  - id: lucide-react
+    name: Lucide (lucide-react)
+    url: https://lucide.dev
+    repo: https://github.com/lucide-icons/lucide
+    license: ISC
+    what: >-
+      The icon set used across the Studio navigation and controls.
+    how: runtime-dep
+    adopted: P4
+    last_checked: 2026-07-07
+    last_ref: null
+    notes: >-
+      lucide-react ^0.468.0 in apps/studio; part of the adopted shadcn Studio surface.
+  - id: gsap
+    name: GSAP (GreenSock core)
+    url: https://gsap.com
+    repo: https://github.com/greensock/GSAP
+    license: GreenSock Standard "No Charge" License
+    what: >-
+      The free GSAP core — the runtime behind the motion recipe library.
+    how: runtime-dep
+    adopted: P1
+    last_checked: 2026-07-07
+    last_ref: null
+    notes: >-
+      gsap ^3.12.5 in library/web/package.json. Secondary relationship — inspired-by: the
+      ~57 recipe idioms in library/web/recipes/** are short GSAP API patterns. Only the free
+      CORE ships; the Club GreenSock plugins (DrawSVG, MorphSVG, Physics2D, SplitText) are
+      EXCLUDED (see greensock-club-plugins).
+
+  # ── External tool (consumed via npx, never vendored) ────────────────────────
+  - id: hyperframes
+    name: HyperFrames
+    url: https://www.npmjs.com/package/hyperframes
+    license: External tool (proprietary; not adopted code)
+    what: >-
+      The external video-render tool the storyboard-to-video skill invokes for the real
+      render — run through the user's own install via `npx hyperframes`.
+    how: external-tool
+    adopted: P5
+    last_checked: 2026-07-07
+    last_ref: null
+    notes: >-
+      Evidence: plugins/butai-skills/skills/butai-storyboard-to-video/SKILL.md — "HyperFrames
+      is an external tool, consumed via npx, never vendored." It is a tool dependency the user
+      runs themselves, not code adopted into the repo and not an npm dependency.
+
+  # ── Our own work ────────────────────────────────────────────────────────────
+  - id: butai-themes
+    name: Butai themes
+    url: ./packages/themes/THEMES-PROVENANCE.md
+    license: MIT
+    what: >-
+      The 13 shipped presentation themes — 9 originals ported from our own prior
+      presentations app plus 4 authored fresh for butai (blueprint, atelier, stage, marker).
+    how: own-work
+    adopted: P1
+    last_checked: 2026-07-07
+    last_ref: null
+    notes: >-
+      Originality gate documented per-theme in packages/themes/THEMES-PROVENANCE.md
+      (file headers, author-voice comments, first-party git history). NONE come from the
+      excluded third-party packs; src/themes.test.ts enforces that no excluded string or
+      selector ships.
+
+  # ── Excluded (considered but deliberately NOT shipped — the license-review rows) ──
+  - id: frontend-slides-theme-presets
+    name: frontend-slides theme presets (12)
+    url: https://github.com/zarazhangrui/frontend-slides
+    license: UNVERIFIED
+    what: >-
+      The 12-preset frontend-slides.css theme pack (bold-signal, electric-studio,
+      creative-voltage, dark-botanical, and 8 more).
+    how: excluded
+    excluded_reason: >-
+      Bulk third-party theme pack with an unverified license — treated as not ours and never
+      ported. The 12 excluded [data-theme] blocks are named in packages/themes/THEMES-PROVENANCE.md;
+      src/themes.test.ts forbids any "frontend-slides" string or excluded selector from shipping.
+    adopted: null
+    last_checked: 2026-07-07
+    last_ref: null
+    notes: >-
+      Evidence: packages/themes/THEMES-PROVENANCE.md "EXCLUDE — 46 third-party bulk imports" section.
+  - id: bold-template-pack
+    name: bold-template-pack (34 themes) + its primitives.css devices
+    url: https://github.com/zarazhangrui/frontend-slides
+    license: UNVERIFIED
+    what: >-
+      The 34-template frontend-slides-bold.css pack AND the primitives.css signature devices
+      (hard-offset shadows, sticker borders, Win95 bevels).
+    how: excluded
+    excluded_reason: >-
+      Third-party pack with an unverified license — never ported. The original license flag was
+      dissolved by authoring our own themes instead; primitives.css and base.css were deliberately
+      NOT ported (base.css @imports the excluded aggregators). The one exception, midnight-coral,
+      was generated by our own create-theme skill and is credited under butai-themes, not here.
+    adopted: null
+    last_checked: 2026-07-07
+    last_ref: null
+    notes: >-
+      Evidence: packages/themes/THEMES-PROVENANCE.md + _ops/GAPS.md [P1/GroupC], [P3/GroupA].
+  - id: house-design-system
+    name: Proprietary house design system (layout conventions only)
+    url: ./packages/docs-kit/src/docs-kit.guard.test.ts
+    license: Proprietary (professional access; not adopted, nothing shipped)
+    what: >-
+      Generic page/section LAYOUT conventions (hero, section-header, metric-grid, timeline,
+      comparison) that informed the docs-kit doc-pattern scaffolds — structure only, no visual
+      expression.
+    how: excluded
+    excluded_reason: >-
+      A proprietary house design system the maintainer has professional access to informed the
+      docs-kit doc-pattern LAYOUT scaffolds. NOTHING proprietary ships: the docs-kit provenance
+      guard (packages/docs-kit/src/docs-kit.guard.test.ts) enforces that no proprietary palette,
+      font, product name, or copy crosses into the kit — only generic, unprotectable layout
+      structure was generalized. Disclosed here for ledger completeness, by parity with the
+      frontend-slides concept-borrow row. PUBLIC-FLIP REVIEW: decide whether to name it precisely,
+      keep this generic wording, or drop the reference entirely before going public.
+    adopted: null
+    last_checked: 2026-07-07
+    last_ref: null
+    notes: >-
+      Evidence: packages/docs-kit/src/docs-kit.guard.test.ts header ("generalized from a
+      proprietary-derived house design system"). Surfaced by the phase-8 verifier's independent
+      provenance sweep (_ops/feedback/phase-8-iter-1.md, MAJOR finding) as a ledger-consistency
+      gap vs the frontend-slides inspired-by row; resolved in iter-2 as a non-naming disclosure.
+  - id: greensock-club-plugins
+    name: Club GreenSock plugins (DrawSVG, MorphSVG, Physics2D, SplitText)
+    url: https://gsap.com/pricing/
+    license: Club GreenSock (commercial, not freely redistributable)
+    what: >-
+      SVG draw/morph and physics motion plugins referenced by the GSAP recipe idioms.
+    how: excluded
+    excluded_reason: >-
+      Non-free — requires paid Club GreenSock membership; shipping it via copy-in would distribute
+      a non-redistributable dependency. The recipe docs reference the idioms as metadata
+      (library/web/catalog/catalog.md lists engine: gsap/DrawSVG|MorphSVG|Physics2D) but NO Club
+      code is vendored; the slide archetypes that imported them (gsap-showcase, diagram-slide,
+      fill-chart-slide) were excluded at P3.
+    adopted: null
+    last_checked: 2026-07-07
+    last_ref: null
+    notes: >-
+      Evidence: _ops/GAPS.md [P3/GroupA] "EXCLUDED gsap business-plugin slides".

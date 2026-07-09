@@ -1,0 +1,26 @@
+/*
+ * Video Studio layout (Group B). Scoped to `.vs-*`. The scene documents render
+ * inside `<iframe srcdoc>` — a hard isolation boundary, so scene CSS never leaks
+ * into the shadcn chrome and Tailwind preflight never restyles the scenes.
+ *
+ * The iframe fills a 9:16 thumbnail box; scenes are authored in vw/vh units so
+ * they adapt to the iframe viewport with no transform math.
+ */
+.vs-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border, #2a2a3a);
+  background: #000;
+}
+
+.vs-thumb iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}

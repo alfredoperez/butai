@@ -1,0 +1,23 @@
+[data-theme="dark"] {
+  --bg: #0f0f13;
+  --bg-card: #1a1a24;
+  --bg-nav: #13131a;
+  --text: #e8e8f0;
+  --text-dim: #8888a0;
+  --accent: #60a5fa;
+  --accent-glow: rgba(96, 165, 250, 0.18);
+  /* yellow marker highlight (dark ink reads on the swash) */
+  --highlight: #facc15;
+  --highlight-ink: #0f0f13;
+  --red: #ff6b6b;
+  --red-dim: rgba(255, 107, 107, 0.15);
+  --green: #4ecdc4;
+  --green-dim: rgba(78, 205, 196, 0.15);
+  --yellow: #ffd166;
+  --yellow-dim: rgba(255, 209, 102, 0.15);
+  --orange: #ff9f43;
+  --orange-dim: rgba(255, 159, 67, 0.15);
+  --blue: #54a0ff;
+  --blue-dim: rgba(84, 160, 255, 0.15);
+  --border: #2a2a3a;
+}

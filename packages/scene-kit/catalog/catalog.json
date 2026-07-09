@@ -1,0 +1,100 @@
+{
+  "version": "0.0.1",
+  "contentHash": "ce8c65d193fe1b521bce868f45a8c2451e40df6ece326eda9c89eb542f361291",
+  "count": 5,
+  "kinds": {
+    "scene": 5
+  },
+  "items": [
+    {
+      "id": "feature-callout",
+      "name": "Feature Callout",
+      "kind": "scene",
+      "category": "callout",
+      "description": "A centered framed shot placeholder with a mono eyebrow label on top and a big display caption with one accent payoff below.",
+      "snippet": "<!-- feature-callout — a generic placeholder panel, not a real screenshot -->\n<section class=\"scene\">\n  <div class=\"shot\"><div class=\"placeholder\">Your UI here</div></div>\n  <div class=\"scrim\"></div>\n  <div class=\"eyebrow\">Feature · what it does</div>\n  <div class=\"caption\">One panel, <span class=\"accent\">one payoff</span></div>\n</section>",
+      "motion": "a slow crop punch-in on the shot, then the caption rises and lands a beat after the frame settles; firm eases, no bounce",
+      "engine": "css",
+      "tags": [
+        "scene",
+        "callout",
+        "shot-with-caption"
+      ],
+      "source": {
+        "file": "scenes/feature-callout.meta.md"
+      }
+    },
+    {
+      "id": "outro-scene",
+      "name": "Outro Scene",
+      "kind": "scene",
+      "category": "closing",
+      "description": "An end card — a generic wordmark, a two-line CTA with one accent tagline, and a follow ask. Generic brand, no logo or brand character.",
+      "snippet": "<!-- outro-scene — the accent tagline is the single payoff; generic brand only -->\n<section class=\"scene\">\n  <div class=\"wordmark\">Studio Kit</div>\n  <div class=\"tagline\">Build in the open.</div>\n  <div class=\"cta\">npm create example-app</div>\n  <div class=\"follow\">New drops weekly. Follow along.</div>\n</section>",
+      "motion": "elements rise and settle top to bottom, staggered, on firm eases; no bounce, no overshoot",
+      "engine": "css",
+      "tags": [
+        "scene",
+        "closing",
+        "end-card"
+      ],
+      "source": {
+        "file": "scenes/outro-scene.meta.md"
+      }
+    },
+    {
+      "id": "code-reveal",
+      "name": "Code Reveal",
+      "kind": "scene",
+      "category": "code",
+      "description": "A mono code block that reveals line by line with one highlighted payoff line. Generic sample code, no personal refs.",
+      "snippet": "<!-- code-reveal — one highlighted line is the payoff; a theme repaints it -->\n<div class=\"code\">\n  <span class=\"ln\"><span class=\"kw\">async function</span> load(id) {</span>\n  <span class=\"ln hot\">  <span class=\"kw\">if</span> (!res.ok) <span class=\"kw\">throw new</span> Error(\"not found\");</span>\n  <span class=\"ln\">}</span>\n</div>",
+      "motion": "lines reveal top to bottom staggered, sliding in from the read direction; the highlighted line settles last and holds; no bounce",
+      "engine": "css",
+      "tags": [
+        "scene",
+        "code",
+        "reveal"
+      ],
+      "source": {
+        "file": "scenes/code-reveal.meta.md"
+      }
+    },
+    {
+      "id": "title-card",
+      "name": "Title Card",
+      "kind": "scene",
+      "category": "opener",
+      "description": "Kinetic-type opener — a mono eyebrow, a big display headline with one accent word, and a calm subtitle. No UI.",
+      "snippet": "<!-- title-card — the accent word is the single payoff; a theme repaints it -->\n<section class=\"scene\">\n  <div class=\"eyebrow\">Example.com · 2026</div>\n  <h1 class=\"headline\">Ship faster, <span class=\"accent\">break less</span></h1>\n  <p class=\"sub\">A calm, one-idea-per-frame opener.</p>\n</section>",
+      "motion": "eyebrow and headline rise and settle on firm eases, then the subtitle lands a beat later; power2/power3 out, no bounce",
+      "engine": "css",
+      "tags": [
+        "scene",
+        "opener",
+        "kinetic-type"
+      ],
+      "source": {
+        "file": "scenes/title-card.meta.md"
+      }
+    },
+    {
+      "id": "quote-scene",
+      "name": "Quote Scene",
+      "kind": "scene",
+      "category": "quote",
+      "description": "A large pull-quote with attribution; the oversized quotation mark is the single accent payoff. Generic quote.",
+      "snippet": "<!-- quote-scene — the accent quotation mark is the single payoff -->\n<section class=\"scene\">\n  <div class=\"mark\" aria-hidden=\"true\">&ldquo;</div>\n  <blockquote class=\"quote\">Make the important thing the obvious thing.</blockquote>\n  <div class=\"attr\">Casey Vale<span class=\"role\"> · Design lead</span></div>\n</section>",
+      "motion": "the mark pops in first, then the quote rises and settles, then the attribution lands a beat later; firm eases, no overshoot",
+      "engine": "css",
+      "tags": [
+        "scene",
+        "quote",
+        "pull-quote"
+      ],
+      "source": {
+        "file": "scenes/quote-scene.meta.md"
+      }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<!--
+  decisions.html — framework-free butai doc pattern (structure).
+  A numbered locked-decisions list, ADR-style: a chip digit + a title + a muted
+  rationale, one row per decision.
+
+  Styling is the butai TOKEN CONTRACT (CSS custom properties). The :root block
+  below is a SELF-CONTAINED FALLBACK so the fragment renders standalone and
+  offline (no CDN, system-font fallbacks). A theme restyles it by overriding
+  these same vars on :root / [data-theme] — same HTML, different render.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+
+      :root {
+        --bg: #0f0f13; --bg-card: #16161d; --bg-nav: #1c1d24;
+        --text: #e9e9f2; --text-dim: #8a8a9c; --border: #2a2a3a;
+        --accent: #60a5fa; --accent-glow: rgba(96, 165, 250, 0.16);
+        --green: #3ecf8e; --green-dim: rgba(62, 207, 142, 0.14);
+        --yellow: #e0a52e; --yellow-dim: rgba(224, 165, 46, 0.14);
+        --blue: #4c6ee6; --blue-dim: rgba(76, 110, 230, 0.14);
+        --red: #ef4444; --red-dim: rgba(239, 68, 68, 0.14); --orange: #f59e0b;
+        --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+        /* page-local: the numbered chip surface + fixed radius */
+        --chip: var(--bg-nav); --r-sm: 8px;
+      }
+
+      html, body {
+        margin: 0; background: var(--bg); color: var(--text);
+        font: 15px/1.6 var(--font-body); -webkit-font-smoothing: antialiased;
+      }
+      .doc { max-width: 1000px; margin: 0 auto; padding: 48px 28px; }
+
+      .decisions { margin: 0; }
+      .dec {
+        display: flex; gap: 14px; align-items: flex-start;
+        padding: 14px 0; border-bottom: 1px solid var(--border);
+      }
+      .dec:last-child { border-bottom: 0; }
+      .dec .num {
+        flex: 0 0 30px; height: 30px; border-radius: var(--r-sm);
+        background: var(--chip); color: var(--accent);
+        display: flex; align-items: center; justify-content: center;
+        font: 700 13px var(--font-mono);
+      }
+      .dec .body { flex: 1; }
+      .dec h3 { margin: 0; font: 600 15px/1.3 var(--font-display); }
+      .dec p { margin: 4px 0 0; color: var(--text-dim); font-size: 13px; }
+
+      @media (max-width: 760px) { .doc { padding: 32px 18px; } }
+    </style>
+  </head>
+  <body>
+    <main class="doc">
+      <div class="decisions">
+        <div class="dec">
+          <span class="num">1</span>
+          <div class="body">
+            <h3>Reuse the token contract, not a new theme layer</h3>
+            <p>Docs restyle from the same tokens as every other surface, so a theme repaints them for free.</p>
+          </div>
+        </div>
+        <div class="dec">
+          <span class="num">2</span>
+          <div class="body">
+            <h3>Ship framework-free HTML, no build step</h3>
+            <p>Each pattern is a standalone fragment that renders offline with system fonts.</p>
+          </div>
+        </div>
+        <div class="dec">
+          <span class="num">3</span>
+          <div class="body">
+            <h3>Keep patterns self-contained</h3>
+            <p>No shared stylesheet to pull in, so a pattern copies cleanly on its own.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

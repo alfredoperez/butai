@@ -1,0 +1,119 @@
+/**
+ * /kit gallery styling (playground-only). Frames each archetype example in a
+ * fixed 1280×720 canvas scaled down to the card width, so the same slide that
+ * fills a deck renders legibly in a grid cell.
+ */
+
+.kit-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px clamp(20px, 4vw, 64px) 96px;
+  color: var(--text, #e7e7ea);
+}
+
+.kit-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.kit-header__title {
+  font-size: 28px;
+  font-weight: 700;
+}
+.kit-header__count {
+  font-size: 14px;
+  color: var(--text-dim, #9a9aa2);
+}
+.kit-header__back {
+  font-size: 14px;
+  color: var(--accent, #4f7cff);
+  text-decoration: none;
+}
+.kit-header__back:hover {
+  text-decoration: underline;
+}
+
+.kit-group {
+  margin-bottom: 48px;
+}
+.kit-group__title {
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-dim, #9a9aa2);
+  border-bottom: 1px solid var(--border, #26262c);
+}
+
+.kit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.kit-card {
+  margin: 0;
+}
+
+/* Container query: the canvas scales against this frame's inline size. */
+.kit-frame {
+  position: relative;
+  container-type: inline-size;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid var(--border, #26262c);
+  background: var(--bg, #0f0f13);
+}
+
+.kit-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: 720px;
+  transform-origin: top left;
+  transform: scale(calc(100cqw / 1280));
+}
+
+/*
+ * The examples render a bare <Slide> — outside a SlideEngine it never gets the
+ * `.active` class, so the engine keeps it hidden (opacity/visibility 0). In the
+ * gallery each framed slide is the only one on screen, so force it visible and
+ * static. Specificity (0,2,0) beats the base `.slide` rule (0,1,0).
+ */
+.kit-canvas .slide {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  pointer-events: auto;
+}
+
+.kit-card__label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 13px;
+}
+.kit-card__name {
+  font-weight: 600;
+}
+.kit-card__id {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 11px;
+  color: var(--text-dim, #9a9aa2);
+}
+
+.kit-single {
+  max-width: 960px;
+}
+.kit-notfound,
+.kit-missing {
+  color: var(--text-dim, #9a9aa2);
+}

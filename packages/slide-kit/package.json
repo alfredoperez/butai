@@ -1,0 +1,55 @@
+{
+  "name": "@butai/slide-kit",
+  "version": "0.1.0-beta.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./styles/index.css": "./src/styles/index.css",
+    "./styles/*.css": "./src/styles/*.css"
+  },
+  "files": [
+    "dist",
+    "registry",
+    "catalog",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "gen": "tsx scripts/gen.ts",
+    "lint": "eslint src",
+    "test": "vitest run --passWithNoTests"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "@butai/deck": "workspace:*",
+    "@butai/patterns": "workspace:*"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@types/node": "^22.9.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "eslint": "^9.15.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.15.0",
+    "vitest": "^2.1.0",
+    "yaml": "^2.6.0"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "tag": "beta"
+  }
+}

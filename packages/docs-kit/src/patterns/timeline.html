@@ -1,0 +1,86 @@
+<!doctype html>
+<!--
+  timeline.html — framework-free butai doc pattern (structure).
+  A vertical stepped sequence with counter chips down the left, plus a compact
+  horizontal flow-pipeline variant for a left-to-right process.
+
+  Styling is the butai TOKEN CONTRACT (CSS custom properties). The :root block
+  below is a SELF-CONTAINED FALLBACK so the fragment renders standalone and
+  offline (no CDN, system-font fallbacks). A theme restyles it by overriding
+  these same vars on :root / [data-theme] — same HTML, different render.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+
+      :root {
+        --bg: #0f0f13; --bg-card: #16161d; --bg-nav: #1c1d24;
+        --text: #e9e9f2; --text-dim: #8a8a9c; --border: #2a2a3a;
+        --accent: #60a5fa; --accent-glow: rgba(96, 165, 250, 0.16);
+        --green: #3ecf8e; --green-dim: rgba(62, 207, 142, 0.14);
+        --yellow: #e0a52e; --yellow-dim: rgba(224, 165, 46, 0.14);
+        --blue: #4c6ee6; --blue-dim: rgba(76, 110, 230, 0.14);
+        --red: #ef4444; --red-dim: rgba(239, 68, 68, 0.14); --orange: #f59e0b;
+        --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+        --chip: var(--bg-nav); --r-sm: 8px; --r-md: 16px;
+      }
+
+      html, body {
+        margin: 0; background: var(--bg); color: var(--text);
+        font: 15px/1.6 var(--font-body); -webkit-font-smoothing: antialiased;
+      }
+      .doc { max-width: 1000px; margin: 0 auto; padding: 48px 28px; }
+
+      ol.steps { counter-reset: s; list-style: none; margin: 0 0 24px; padding: 0; }
+      ol.steps li {
+        counter-increment: s; position: relative;
+        padding: 11px 0 11px 40px; border-bottom: 1px solid var(--border);
+        font-size: 14px; color: var(--text);
+      }
+      ol.steps li:last-child { border-bottom: 0; }
+      ol.steps li::before {
+        content: counter(s); position: absolute; left: 0; top: 8px;
+        width: 26px; height: 26px; border-radius: var(--r-sm);
+        background: var(--chip); color: var(--accent);
+        font: 700 12px var(--font-mono);
+        display: flex; align-items: center; justify-content: center;
+      }
+      ol.steps li b { font-weight: 600; }
+      ol.steps li span { color: var(--text-dim); }
+
+      /* horizontal pipeline variant */
+      .flow { display: flex; gap: 12px; flex-wrap: wrap; }
+      .flow .step {
+        flex: 1; min-width: 150px; background: var(--bg-card);
+        border: 1px solid var(--border); border-radius: var(--r-md);
+        padding: 12px 14px;
+      }
+      .flow .step .k {
+        font: 700 11px var(--font-mono); text-transform: uppercase;
+        letter-spacing: 0.6px; color: var(--accent);
+      }
+      .flow .step p { margin: 6px 0 0; font-size: 13px; color: var(--text-dim); }
+
+      @media (max-width: 760px) { .doc { padding: 32px 18px; } }
+    </style>
+  </head>
+  <body>
+    <main class="doc">
+      <ol class="steps">
+        <li><b>Author the pattern</b> <span>as a self-contained HTML fragment.</span></li>
+        <li><b>Catalog it</b> <span>from its meta, deterministically.</span></li>
+        <li><b>Compose a doc</b> <span>by picking patterns and applying a theme.</span></li>
+      </ol>
+      <div class="flow">
+        <div class="step"><span class="k">Source</span><p>The pattern fragment.</p></div>
+        <div class="step"><span class="k">Catalog</span><p>The generated index.</p></div>
+        <div class="step"><span class="k">Doc</span><p>The composed page.</p></div>
+      </div>
+    </main>
+  </body>
+</html>

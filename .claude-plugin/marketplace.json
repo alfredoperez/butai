@@ -1,0 +1,14 @@
+{
+  "name": "butai",
+  "owner": { "name": "butai" },
+  "description": "The butai content-platform skills.",
+  "plugins": [
+    {
+      "name": "butai-skills",
+      "source": "./plugins/butai-skills",
+      "description": "Butai platform skills that read the generated catalogs.",
+      "version": "0.1.0",
+      "license": "MIT"
+    }
+  ]
+}

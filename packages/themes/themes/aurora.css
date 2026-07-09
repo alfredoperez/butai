@@ -1,0 +1,91 @@
+[data-theme="aurora"] {
+  --bg: #0c0c1d;
+  --bg-card: #14142a;
+  --bg-nav: #10101f;
+  --text: #e8e8f0;
+  /* lifted from #7878a0 for legible captions/subtitles at projection distance */
+  --text-dim: #9595bb;
+  --accent: #60a5fa;
+  --accent-glow: rgba(96, 165, 250, 0.15);
+  --red: #ff6b8a;
+  --red-dim: rgba(255, 107, 138, 0.15);
+  --green: #4ecdc4;
+  --green-dim: rgba(78, 205, 196, 0.15);
+  --yellow: #ffd166;
+  --yellow-dim: rgba(255, 209, 102, 0.15);
+  --orange: #ff9f43;
+  --blue: #54a0ff;
+  --blue-dim: rgba(84, 160, 255, 0.15);
+  --border: #2a2a45;
+  /* approved palette: blue accent only, no violet baked into text/nodes */
+  --grad-purple: linear-gradient(135deg, #60a5fa, #3b82f6);
+  --grad-teal: linear-gradient(135deg, #4ecdc4, #44e5a0);
+}
+
+/* Gradient text on headings */
+html[data-theme="aurora"] .slide h1,
+html[data-theme="aurora"] .slide h2 {
+  background: var(--grad-purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+html[data-theme="aurora"] .label {
+  background: var(--grad-purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Restore solid color for accent spans inside gradient headings */
+html[data-theme="aurora"] .c-accent {
+  color: var(--accent);
+  -webkit-text-fill-color: var(--accent);
+}
+
+html[data-theme="aurora"] .big-num {
+  background: var(--grad-purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient left-border cards */
+html[data-theme="aurora"] .card {
+  border-left: 3px solid transparent;
+  border-image: var(--grad-purple) 1;
+  border-image-slice: 0 0 0 1;
+  border-radius: 0 12px 12px 0;
+}
+
+/* Gradient badges */
+html[data-theme="aurora"] .badge-red {
+  background: linear-gradient(135deg, #ff6b8a, #ff4757);
+  color: #fff;
+}
+html[data-theme="aurora"] .badge-green {
+  background: linear-gradient(135deg, #4ecdc4, #44e5a0);
+  color: #fff;
+}
+html[data-theme="aurora"] .badge-yellow {
+  background: linear-gradient(135deg, #ffd166, #ffb347);
+  color: #fff;
+}
+html[data-theme="aurora"] .badge-blue {
+  background: linear-gradient(135deg, #54a0ff, #7c6aef);
+  color: #fff;
+}
+
+/* Gradient code block left border */
+html[data-theme="aurora"] .code-block {
+  border-left: 3px solid;
+  border-image: var(--grad-teal) 1;
+  border-image-slice: 0 0 0 1;
+  border-radius: 0 10px 10px 0;
+}
+
+/* Gradient progress bar */
+html[data-theme="aurora"] .progress-bar {
+  background: var(--grad-purple);
+}

@@ -1,0 +1,5 @@
+test-results/
+playwright-report/
+
+# Runtime storyboard persistence (phase-4 §0.4) — never committed.
+.butai/

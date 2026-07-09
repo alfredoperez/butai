@@ -1,0 +1,128 @@
+[data-theme="neon"] {
+  --bg: #0a0a0a;
+  --bg-card: #111111;
+  --bg-nav: #0d0d0d;
+  --text: #00ff88;
+  --text-dim: #336644;
+  --accent: #00ff88;
+  --accent-glow: rgba(0, 255, 136, 0.1);
+  --red: #ff00ff;
+  --red-dim: rgba(255, 0, 255, 0.12);
+  --green: #00ff88;
+  --green-dim: rgba(0, 255, 136, 0.12);
+  --yellow: #ffff00;
+  --yellow-dim: rgba(255, 255, 0, 0.12);
+  --orange: #ff9f43;
+  --blue: #00ffff;
+  --blue-dim: rgba(0, 255, 255, 0.12);
+  --border: #1a3a2a;
+}
+
+/* Monospace font */
+html[data-theme="neon"] body {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* CRT scanline overlay */
+html[data-theme="neon"] .slide-area::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Neon text glow */
+html[data-theme="neon"] .slide h1 {
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
+html[data-theme="neon"] .slide h2 {
+  text-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+}
+
+html[data-theme="neon"] .label {
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+}
+
+html[data-theme="neon"] .big-num {
+  text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+}
+
+/* Neon color glows */
+html[data-theme="neon"] .c-accent {
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+}
+html[data-theme="neon"] .c-green {
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+}
+html[data-theme="neon"] .c-red {
+  text-shadow: 0 0 8px rgba(255, 0, 255, 0.4);
+}
+html[data-theme="neon"] .c-yellow {
+  text-shadow: 0 0 8px rgba(255, 255, 0, 0.4);
+}
+html[data-theme="neon"] .c-blue {
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+}
+
+/* Terminal card style */
+html[data-theme="neon"] .card {
+  border-color: rgba(0, 255, 136, 0.2);
+  border-radius: 4px;
+}
+
+html[data-theme="neon"] .flow-step {
+  border-color: rgba(0, 255, 136, 0.2);
+  border-radius: 4px;
+}
+
+html[data-theme="neon"] .flow-step.highlight {
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+}
+
+html[data-theme="neon"] .badge {
+  border-radius: 4px;
+}
+
+html[data-theme="neon"] .code-block {
+  border-color: rgba(0, 255, 136, 0.2);
+  border-radius: 4px;
+}
+
+html[data-theme="neon"] .timeline-dot {
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+html[data-theme="neon"] .nav-chapter.active {
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+}
+
+/* Glowing progress bar */
+html[data-theme="neon"] .progress-bar {
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+html[data-theme="neon"] .cursor-blink::after {
+  content: "_";
+  animation: blink 1s step-end infinite;
+  color: var(--accent);
+}

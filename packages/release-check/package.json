@@ -1,0 +1,22 @@
+{
+  "name": "@butai/release-check",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "echo \"@butai/release-check: no build\"",
+    "lint": "eslint src scripts",
+    "test": "vitest run",
+    "dryrun": "tsx scripts/publish-dryrun.ts",
+    "report": "tsx scripts/manifest-report.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@types/node": "^22.9.0",
+    "eslint": "^9.15.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.15.0",
+    "vitest": "^2.1.0"
+  }
+}

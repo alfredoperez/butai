@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`metasFromMarkdownDir + generateCatalog — end to end > renders the fixtures catalog.md snapshot 1`] = `
+"# Butai pattern catalog
+
+- count: 4
+- version: 0.0.1
+- contentHash: b752e289763d8661f713a91fce00da4af423c43e19989cf32d39060a6d2e0786
+
+## motion
+
+### svg-diagram
+
+- **Stroke Draw On** (\`svg-01-stroke-draw-on\`) · engine: gsap/DrawSVG — Draw a line/path on as if hand-drawn — diagram connectors, arrows, underlines.
+  - motion: drive on active; duration 0 for reduced motion
+### text
+
+- **Character Stagger** (\`text-02-char-stagger\`) · engine: gsap — Reveal a headline character by character with a tight stagger.
+## slide
+
+### hero
+
+- **Hero Split** (\`hero-split\`) · engine: css — Two-column opener — display headline left, supporting visual right.
+## theme
+
+### dark
+
+- **Dup Theme (first)** (\`dup-theme\`) — First of a deliberate duplicate-id pair — this one wins.
+"
+`;

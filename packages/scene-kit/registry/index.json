@@ -1,0 +1,108 @@
+{
+  "name": "@butai/scene-kit",
+  "version": "0.1.0-beta.0",
+  "registryVersion": 1,
+  "contentHash": "9b953441900be2fe68eb671b05f5de8d3cb908b4817f872c0dc230dcaf8a7fe9",
+  "items": [
+    {
+      "id": "code-reveal",
+      "type": "registry:scene",
+      "title": "Code Reveal",
+      "category": "code",
+      "files": [
+        {
+          "path": "src/scenes/code-reveal.frame.md",
+          "target": "specs",
+          "sha256": "04d9a3adb5f1634b0c10a8dccf94df4cd49cd849ed1265f8840398713c09583d"
+        },
+        {
+          "path": "src/scenes/code-reveal.html",
+          "target": "scenes",
+          "sha256": "f58606ff24a9575f6bea4c622c973bedc3e20fcd6ff68eddf7aa2192e410289f"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "id": "feature-callout",
+      "type": "registry:scene",
+      "title": "Feature Callout",
+      "category": "callout",
+      "files": [
+        {
+          "path": "src/scenes/feature-callout.frame.md",
+          "target": "specs",
+          "sha256": "3922f019ee7fbdc8a44f2884f7ccdf6b778d2cc5239f73720046df1157c40ef8"
+        },
+        {
+          "path": "src/scenes/feature-callout.html",
+          "target": "scenes",
+          "sha256": "1d35ec8eb8dfe92c95a564fed08e18abe0a5f1cbab9f88d1114cc5e4e49032d3"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "id": "outro-scene",
+      "type": "registry:scene",
+      "title": "Outro Scene",
+      "category": "closing",
+      "files": [
+        {
+          "path": "src/scenes/outro-scene.frame.md",
+          "target": "specs",
+          "sha256": "d7a08e06a0a44b06a750efd6b820db6eeeb82e7d55d34c5aede1787c577b8181"
+        },
+        {
+          "path": "src/scenes/outro-scene.html",
+          "target": "scenes",
+          "sha256": "60f7cb2b9791b51c0398464e8e6d417a56976227399935358d4febd51071589e"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "id": "quote-scene",
+      "type": "registry:scene",
+      "title": "Quote Scene",
+      "category": "quote",
+      "files": [
+        {
+          "path": "src/scenes/quote-scene.frame.md",
+          "target": "specs",
+          "sha256": "e819b058a5ec29c9d31d68207a254f4b6916a7e43ddc08dbc890d078da773d0f"
+        },
+        {
+          "path": "src/scenes/quote-scene.html",
+          "target": "scenes",
+          "sha256": "60f515baa569d365212084b3f13b0219d6e9a84bc40c32c4c31248eeacfeae93"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    },
+    {
+      "id": "title-card",
+      "type": "registry:scene",
+      "title": "Title Card",
+      "category": "opener",
+      "files": [
+        {
+          "path": "src/scenes/title-card.frame.md",
+          "target": "specs",
+          "sha256": "865a98a83f314b971dbb0e89f331477ac6d086c3386f39fb0f376596238d1c7e"
+        },
+        {
+          "path": "src/scenes/title-card.html",
+          "target": "scenes",
+          "sha256": "930aa75245815ccef3e2fa413e1808eb8015ba076dbdb3dd3d097f655a57c1ad"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": []
+    }
+  ]
+}

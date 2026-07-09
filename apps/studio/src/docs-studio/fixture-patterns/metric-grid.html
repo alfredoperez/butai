@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      :root {
+        --bg: #0f0f13;
+        --bg-card: #1a1a24;
+        --text: #e8e8f0;
+        --text-dim: #8888a0;
+        --accent: #60a5fa;
+        --border: #2a2a3a;
+        --green: #34d399;
+        --yellow: #fbbf24;
+        --blue: #60a5fa;
+        --font-display: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        --font-body: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      html,
+      body {
+        margin: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        padding: 7%;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        width: 100%;
+      }
+      .stat {
+        border: 1px solid var(--border);
+        background: var(--bg-card);
+        border-radius: 0.6rem;
+        padding: 1.1rem 1.2rem;
+      }
+      .stat .kicker {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text-dim);
+        margin-bottom: 0.5rem;
+      }
+      .stat .num {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: clamp(1.6rem, 5vw, 2.4rem);
+        line-height: 1;
+      }
+      .stat .caption {
+        font-size: 0.82rem;
+        color: var(--text-dim);
+        margin-top: 0.4rem;
+      }
+      .num.ok {
+        color: var(--green);
+      }
+      .num.info {
+        color: var(--blue);
+      }
+      .num.warn {
+        color: var(--yellow);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="grid">
+      <div class="stat">
+        <div class="kicker">Shipped</div>
+        <div class="num ok">12</div>
+        <div class="caption">patterns in the kit</div>
+      </div>
+      <div class="stat">
+        <div class="kicker">Coverage</div>
+        <div class="num info">98%</div>
+        <div class="caption">render-valid headless</div>
+      </div>
+      <div class="stat">
+        <div class="kicker">Deferred</div>
+        <div class="num warn">3</div>
+        <div class="caption">logged to backlog</div>
+      </div>
+    </section>
+  </body>
+</html>

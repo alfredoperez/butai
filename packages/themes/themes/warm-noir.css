@@ -1,0 +1,19 @@
+[data-theme="warm-noir"] {
+  --bg: #1a1714;
+  --bg-card: #241f1a;
+  --bg-nav: #1e1915;
+  --text: #f5f0e8;
+  --text-dim: #a09080;
+  --accent: #f0a500;
+  --accent-glow: rgba(240, 165, 0, 0.15);
+  --red: #ff6b6b;
+  --red-dim: rgba(255, 107, 107, 0.15);
+  --green: #7ec8a0;
+  --green-dim: rgba(126, 200, 160, 0.15);
+  --yellow: #ffd166;
+  --yellow-dim: rgba(255, 209, 102, 0.15);
+  --orange: #ff9f43;
+  --blue: #7ab0d4;
+  --blue-dim: rgba(122, 176, 212, 0.15);
+  --border: #3a3228;
+}

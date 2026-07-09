@@ -1,0 +1,41 @@
+/*
+ * Theme Studio preview framing (phase-4 · Group A).
+ *
+ * These rules are SCOPED to `.ts-preview` — the dedicated preview container — so
+ * they never leak into the shadcn/Tailwind chrome, and Tailwind utilities are
+ * never applied to `.slide*` internals (phase-4 style-collision guardrail).
+ *
+ * A bare <Slide> outside a SlideEngine never gets `.active`, so the engine keeps
+ * it hidden. In the preview each framed slide is the only one on screen, so force
+ * it visible + static. Specificity (0,2,0) beats the base `.slide` rule (0,1,0).
+ * Mirrors the playground kit-gallery framing technique.
+ */
+
+.ts-frame {
+  position: relative;
+  container-type: inline-size;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid var(--border, #26262c);
+  background: var(--bg, #0f0f13);
+}
+
+.ts-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: 720px;
+  transform-origin: top left;
+  transform: scale(calc(100cqw / 1280));
+}
+
+.ts-canvas .slide {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  pointer-events: auto;
+}

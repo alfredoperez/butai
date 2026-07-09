@@ -1,0 +1,46 @@
+/*
+ * Slide Studio (Group B) — preview framing only.
+ *
+ * The themed deck preview lives in a DEDICATED container whose `data-theme` is set
+ * on THIS stage element, never on <html> (phase-4 §0.2 / Risks). That keeps butai
+ * theme tokens (`--bg`, `--accent`, `--display-font`) scoped to the preview and out
+ * of the shadcn/Tailwind chrome, and Tailwind utilities are never applied to
+ * `.slide*` internals. The deck engine + theme + slide-kit CSS (loaded globally by
+ * index.tsx) style everything inside; this file only frames + forces-visible.
+ */
+
+.slide-studio__stage {
+  position: relative;
+  container-type: inline-size;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--border, #26262c);
+  background: var(--bg, #0f0f13);
+}
+
+/* Fixed 1280×720 slide canvas, scaled to the stage's inline size. */
+.slide-studio__canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: 720px;
+  transform-origin: top left;
+  transform: scale(calc(100cqw / 1280));
+}
+
+/*
+ * The example renders a bare <Slide>; outside a SlideEngine it never gets the
+ * `.active` class, so the engine keeps it hidden. It is the only slide on the
+ * stage, so force it visible + static. Specificity (0,2,0) beats base `.slide`.
+ */
+.slide-studio__canvas .slide {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  pointer-events: auto;
+}

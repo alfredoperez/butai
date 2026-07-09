@@ -1,0 +1,66 @@
+[data-theme="light"] {
+  --bg: #fafaf8;
+  --bg-card: #ffffff;
+  --bg-nav: #f0efed;
+  --text: #1a1a2e;
+  --text-dim: #6b6b80;
+  --accent: #2563eb;
+  --accent-glow: rgba(37, 99, 235, 0.08);
+  --red: #dc2626;
+  --red-dim: rgba(220, 38, 38, 0.08);
+  --green: #16a34a;
+  --green-dim: rgba(22, 163, 74, 0.08);
+  --yellow: #ca8a04;
+  --yellow-dim: rgba(202, 138, 4, 0.08);
+  --orange: #ea580c;
+  --blue: #2563eb;
+  --blue-dim: rgba(37, 99, 235, 0.08);
+  --border: #e0ddd8;
+}
+
+/* Serif headings */
+html[data-theme="light"] .slide h1,
+html[data-theme="light"] .slide h2,
+html[data-theme="light"] .slide h3 {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+html[data-theme="light"] .big-num,
+html[data-theme="light"] .stat-value,
+html[data-theme="light"] .card-num {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+/* Subtle shadows */
+html[data-theme="light"] .card,
+html[data-theme="light"] .flow-step {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Pastel badge backgrounds */
+html[data-theme="light"] .badge-red {
+  background: #fef2f2;
+}
+html[data-theme="light"] .badge-green {
+  background: #f0fdf4;
+}
+html[data-theme="light"] .badge-yellow {
+  background: #fefce8;
+}
+html[data-theme="light"] .badge-blue {
+  background: #eff6ff;
+}
+
+/* Thicker table header border */
+html[data-theme="light"] .slide-table th {
+  border-bottom-width: 2px;
+}
+
+/* Light code block */
+html[data-theme="light"] .code-block {
+  background: #f4f3f0;
+}
+
+html[data-theme="light"] .code-block .fn {
+  color: #b45309;
+}

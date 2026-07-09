@@ -1,0 +1,56 @@
+.statrow {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), 1fr);
+  gap: clamp(18px, 2vw, 36px);
+  width: 100%;
+  max-width: 1180px;
+}
+.statrow__card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: clamp(28px, 3vw, 48px) clamp(24px, 2.4vw, 44px);
+  overflow: hidden;
+}
+.statrow__card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--stat-color, var(--accent));
+}
+.statrow__num {
+  font-family: var(--display-font);
+  font-weight: 900;
+  font-size: clamp(3rem, 6vw, 7.2rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--stat-color, var(--accent));
+  background: linear-gradient(
+    178deg,
+    color-mix(in srgb, var(--text) 88%, var(--stat-color, var(--accent))) 0%,
+    var(--stat-color, var(--accent)) 128%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.statrow__label {
+  color: var(--text);
+  font-size: clamp(1.05rem, 1.5vw, 1.7rem);
+  font-weight: 600;
+  margin-top: 14px;
+}
+.statrow__sub {
+  color: var(--text-dim);
+  font-size: clamp(0.85rem, 1.2vw, 1.25rem);
+  margin-top: 7px;
+}
+@media (max-width: 820px) {
+  .statrow {
+    grid-template-columns: 1fr;
+  }
+}

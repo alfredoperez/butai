@@ -1,0 +1,9 @@
+{
+  "name": "butai-skills",
+  "displayName": "Butai Skills",
+  "version": "0.1.0",
+  "description": "Butai platform skills — author decks, themes, scenes, storyboards, and HTML docs that read the generated butai catalogs (the meta -> catalog -> skill flywheel). Framework-free, token-contract-driven, trademark-clean.",
+  "author": { "name": "butai" },
+  "license": "MIT",
+  "keywords": ["butai", "slides", "deck", "themes", "video", "docs", "skills"]
+}

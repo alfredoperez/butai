@@ -1,0 +1,58 @@
+.cmp {
+  width: 100%;
+  max-width: 1140px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cmp__row {
+  display: grid;
+  grid-template-columns: minmax(160px, 1.4fr) repeat(var(--cols, 3), 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--border);
+}
+.cmp__row--head {
+  border-bottom: 2px solid var(--border);
+}
+.cmp__rowlabel {
+  color: var(--text-dim);
+  font-size: clamp(0.95rem, 1.3vw, 1.3rem);
+  font-weight: 600;
+}
+.cmp__col {
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: clamp(0.85rem, 1.2vw, 1.15rem);
+  font-weight: 700;
+  color: var(--text);
+  padding: 6px 4px;
+}
+.cmp__col.is-win,
+.cmp__cell.is-win {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border-radius: 8px;
+}
+.cmp__col.is-win {
+  color: var(--accent);
+}
+.cmp__cell {
+  text-align: center;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  padding: 6px 4px;
+}
+.cmp-yes {
+  color: var(--green);
+  font-weight: 800;
+}
+.cmp-no {
+  color: color-mix(in srgb, var(--red) 70%, var(--text-dim));
+}
+.cmp-partial {
+  color: var(--yellow);
+}
+.cmp-text {
+  font-size: clamp(0.85rem, 1.15vw, 1.1rem);
+  color: var(--text-dim);
+}

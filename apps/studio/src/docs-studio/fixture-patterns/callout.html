@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      :root {
+        --bg: #0f0f13;
+        --text: #e8e8f0;
+        --text-dim: #8888a0;
+        --accent: #60a5fa;
+        --accent-glow: rgba(96, 165, 250, 0.12);
+        --border: #2a2a3a;
+        --font-display: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        --font-body: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      }
+      html,
+      body {
+        margin: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        padding: 8% 7%;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+      }
+      .callout {
+        border: 1px solid var(--accent);
+        background: var(--accent-glow);
+        border-radius: 0.6rem;
+        padding: 1.4rem 1.6rem;
+      }
+      .callout .kicker {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
+      .callout p {
+        margin: 0;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: clamp(1.1rem, 3vw, 1.5rem);
+        line-height: 1.3;
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="callout">
+      <div class="kicker">The thesis</div>
+      <p>The one line that matters — highlighted so a skimming reader cannot miss it.</p>
+    </aside>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://butai.dev/schema/butai.json",
+  "registry": "file:node_modules/@butai/slide-kit/registry",
+  "tsx": true,
+  "aliases": {
+    "slides": "@/components/butai/slides",
+    "primitives": "@/components/butai/primitives",
+    "styles": "@/styles/butai"
+  },
+  "importExtensions": false
+}

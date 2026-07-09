@@ -1,0 +1,85 @@
+<!doctype html>
+<!--
+  title-card.html — framework-free HyperFrames scene (opener).
+  Kinetic-type opener: mono eyebrow, a big display headline with ONE accent
+  payoff word, and a calm subtitle. No UI, one idea per frame.
+
+  Styling is the butai TOKEN CONTRACT (CSS custom properties). The :root block
+  below is a SELF-CONTAINED FALLBACK so the file renders standalone and offline
+  (no CDN, system-font fallbacks). A theme restyles the scene by overriding
+  these same vars on :root / [data-theme] — same HTML, different render.
+-->
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      /* ---- built-in fallback tokens (a theme overrides these) ---- */
+      :root {
+        --bg: #0f0f13;
+        --bg-card: #16161d;
+        --text: #e9e9f2;
+        --text-dim: #8a8a9c;
+        --accent: #60a5fa;
+        --accent-glow: rgba(96, 165, 250, 0.18);
+        --border: #2a2a3a;
+        --font-display: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      }
+
+      html, body {
+        width: 1080px; height: 1920px; overflow: hidden;
+        background: var(--bg); font-family: var(--font-body); color: var(--text);
+      }
+
+      /* faint blueprint grid + vignette; depth from the grid, not shadow */
+      .bg {
+        position: absolute; inset: 0; opacity: 0.55;
+        background:
+          radial-gradient(120% 75% at 50% 42%, transparent 45%, rgba(0, 0, 0, 0.9) 100%),
+          linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 100% 100%, 46px 46px, 46px 46px;
+      }
+
+      .scene {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        padding: 120px 70px; text-align: center;
+      }
+
+      .eyebrow {
+        font-family: var(--font-mono); font-size: 28px; font-weight: 600;
+        letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent);
+        margin-bottom: 44px;
+        animation: rise 0.5s ease-out both;
+      }
+      .headline {
+        font-family: var(--font-display); font-weight: 800; font-size: 112px;
+        line-height: 1.02; letter-spacing: -0.03em; text-wrap: balance;
+        animation: rise 0.6s ease-out 0.1s both;
+      }
+      /* the single accent payoff — a theme repaints it (the restyle proof) */
+      .headline .accent { color: var(--accent); }
+      .sub {
+        font-family: var(--font-body); font-size: 38px; color: var(--text-dim);
+        margin-top: 40px; max-width: 820px; text-wrap: balance;
+        animation: rise 0.6s ease-out 0.35s both;
+      }
+
+      @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+      @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    </style>
+  </head>
+  <body>
+    <div class="bg"></div>
+    <section class="scene">
+      <div class="eyebrow">Example.com · 2026</div>
+      <h1 class="headline">Ship faster, <span class="accent">break less</span></h1>
+      <p class="sub">A calm, one-idea-per-frame opener that sets the tone in three seconds.</p>
+    </section>
+  </body>
+</html>

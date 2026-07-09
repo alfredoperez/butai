@@ -1,0 +1,71 @@
+<!doctype html>
+<!--
+  section-header.html — framework-free butai doc pattern (structure).
+  A section marker: an uppercase mono eyebrow (the lead one takes the accent)
+  above an h2 with a hairline underline. Paces a long document into scannable
+  sections.
+
+  Styling is the butai TOKEN CONTRACT (CSS custom properties). The :root block
+  below is a SELF-CONTAINED FALLBACK so the fragment renders standalone and
+  offline (no CDN, system-font fallbacks). A theme restyles it by overriding
+  these same vars on :root / [data-theme] — same HTML, different render.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+
+      :root {
+        --bg: #0f0f13; --bg-card: #16161d; --bg-nav: #1c1d24;
+        --text: #e9e9f2; --text-dim: #8a8a9c; --border: #2a2a3a;
+        --accent: #60a5fa; --accent-glow: rgba(96, 165, 250, 0.16);
+        --green: #3ecf8e; --green-dim: rgba(62, 207, 142, 0.14);
+        --yellow: #e0a52e; --yellow-dim: rgba(224, 165, 46, 0.14);
+        --blue: #4c6ee6; --blue-dim: rgba(76, 110, 230, 0.14);
+        --red: #ef4444; --red-dim: rgba(239, 68, 68, 0.14); --orange: #f59e0b;
+        --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+      }
+
+      html, body {
+        margin: 0; background: var(--bg); color: var(--text);
+        font: 15px/1.6 var(--font-body); -webkit-font-smoothing: antialiased;
+      }
+      .doc { max-width: 1000px; margin: 0 auto; padding: 48px 28px; }
+
+      .section-header { margin: 0 0 8px; }
+      .section-header .eyebrow {
+        display: block; font: 600 12px/1.2 var(--font-mono);
+        text-transform: uppercase; letter-spacing: 1.4px;
+        color: var(--text-dim); margin-bottom: 12px;
+      }
+      /* the lead section takes the accent — a theme repaints it */
+      .section-header .eyebrow.lead { color: var(--accent); }
+      .section-header h2 {
+        margin: 0; padding-bottom: 14px; border-bottom: 1px solid var(--border);
+        font: 500 24px/1.15 var(--font-display); letter-spacing: -0.4px;
+      }
+      .section-header + .section-header { margin-top: 44px; }
+
+      @media (max-width: 760px) {
+        .doc { padding: 32px 18px; }
+        .section-header h2 { font-size: 21px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="doc">
+      <div class="section-header">
+        <span class="eyebrow lead">Overview</span>
+        <h2>What this section is about</h2>
+      </div>
+      <div class="section-header">
+        <span class="eyebrow">How it works</span>
+        <h2>The next section, quieter eyebrow</h2>
+      </div>
+    </main>
+  </body>
+</html>

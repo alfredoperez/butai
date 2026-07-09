@@ -1,0 +1,85 @@
+<!doctype html>
+<!--
+  outro-scene.html — framework-free HyperFrames scene (closing).
+  An end card: a generic wordmark, a two-line CTA with ONE accent tagline, and
+  a "follow" ask. Generic brand only (example.com), no logo, no personal refs.
+
+  Styled by the butai TOKEN CONTRACT; the :root fallback keeps it standalone
+  and offline. A theme overrides the vars to restyle the same HTML.
+-->
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      :root {
+        --bg: #0f0f13;
+        --bg-card: #16161d;
+        --text: #e9e9f2;
+        --text-dim: #8a8a9c;
+        --accent: #60a5fa;
+        --accent-glow: rgba(96, 165, 250, 0.18);
+        --border: #2a2a3a;
+        --font-display: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      }
+
+      html, body {
+        width: 1080px; height: 1920px; overflow: hidden;
+        background: var(--bg); font-family: var(--font-body); color: var(--text);
+      }
+
+      .bg {
+        position: absolute; inset: 0; opacity: 0.55;
+        background:
+          radial-gradient(120% 75% at 50% 42%, transparent 45%, rgba(0, 0, 0, 0.9) 100%),
+          linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 100% 100%, 46px 46px, 46px 46px;
+      }
+
+      .scene {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        padding: 120px 70px; text-align: center;
+      }
+
+      .wordmark {
+        font-family: var(--font-display); font-weight: 800; font-size: 104px;
+        letter-spacing: -0.02em; color: var(--text);
+        animation: rise 0.6s ease-out both;
+      }
+      .tagline {
+        font-family: var(--font-display); font-weight: 800; font-size: 72px;
+        color: var(--accent); margin-top: 10px;
+        animation: rise 0.6s ease-out 0.2s both;
+      }
+      .cta {
+        font-family: var(--font-mono); font-size: 32px; color: var(--text-dim);
+        margin-top: 46px; background: var(--bg-card);
+        border: 1px solid var(--border); border-radius: 12px; padding: 20px 30px;
+        animation: rise 0.6s ease-out 0.4s both;
+      }
+      .follow {
+        font-family: var(--font-body); font-size: 34px; color: var(--text-dim);
+        margin-top: 32px;
+        animation: rise 0.6s ease-out 0.6s both;
+      }
+
+      @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+      @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    </style>
+  </head>
+  <body>
+    <div class="bg"></div>
+    <section class="scene">
+      <div class="wordmark">Studio Kit</div>
+      <div class="tagline">Build in the open.</div>
+      <div class="cta">npm create example-app</div>
+      <div class="follow">New drops weekly. Follow along.</div>
+    </section>
+  </body>
+</html>

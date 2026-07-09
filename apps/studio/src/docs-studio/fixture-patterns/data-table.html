@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      :root {
+        --bg: #0f0f13;
+        --bg-card: #1a1a24;
+        --text: #e8e8f0;
+        --text-dim: #8888a0;
+        --accent: #60a5fa;
+        --accent-glow: rgba(96, 165, 250, 0.1);
+        --border: #2a2a3a;
+        --green: #34d399;
+        --font-display: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        --font-body: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      html,
+      body {
+        margin: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        padding: 6% 7%;
+        box-sizing: border-box;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 0.7em 0.9em;
+        border-bottom: 1px solid var(--border);
+      }
+      th {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-dim);
+      }
+      td.mine {
+        background: var(--accent-glow);
+      }
+      td .yes {
+        color: var(--green);
+        font-weight: 600;
+      }
+      caption {
+        text-align: left;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text-dim);
+        margin-bottom: 0.8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>Approach comparison</caption>
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>Baseline</th>
+          <th>This approach</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Restyle by theme</td>
+          <td>Manual</td>
+          <td class="mine"><span class="yes">Automatic</span></td>
+        </tr>
+        <tr>
+          <td>Build step</td>
+          <td>Required</td>
+          <td class="mine"><span class="yes">None</span></td>
+        </tr>
+        <tr>
+          <td>External deps</td>
+          <td>Several</td>
+          <td class="mine"><span class="yes">Zero</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

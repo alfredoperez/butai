@@ -1,0 +1,27 @@
+/* example (create-theme skill) · Midnight Coral — deep ink navy + coral (dark) */
+[data-theme="midnight-coral"] {
+  --bg: #0e1320;
+  --bg-card: #19223a;
+  --bg-nav: #121829;
+  --text: #eef1f8;
+  --text-dim: #8b94ad;
+  --accent: #ff6f5e;
+  --accent-glow: color-mix(in srgb, var(--accent) 18%, transparent);
+  --highlight: #ffb35c;
+  --highlight-ink: #0e1320;
+  --red: #ff6b6b;
+  --red-dim: rgba(255, 107, 107, 0.15);
+  --green: #4cd6b4;
+  --green-dim: rgba(76, 214, 180, 0.15);
+  --yellow: #ffcf6b;
+  --yellow-dim: rgba(255, 207, 107, 0.15);
+  --orange: #ff9f43;
+  --orange-dim: rgba(255, 159, 67, 0.15);
+  --blue: #6aa8ff;
+  --blue-dim: rgba(106, 168, 255, 0.15);
+  --border: #283250;
+  --display-font: "Clash Display", "Syne", system-ui, sans-serif;
+}
+html[data-theme="midnight-coral"] body {
+  font-family: "Manrope", system-ui, sans-serif;
+}

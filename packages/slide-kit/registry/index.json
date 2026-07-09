@@ -1,0 +1,900 @@
+{
+  "name": "@butai/slide-kit",
+  "version": "0.1.0-beta.0",
+  "registryVersion": 1,
+  "contentHash": "f2d142085c17e7042032a8c96e511b1ac4a5c55b7d4ddb195f664fdd8336d2a3",
+  "items": [
+    {
+      "id": "agenda-slide",
+      "type": "registry:slide",
+      "title": "Agenda Slide",
+      "category": "structure",
+      "files": [
+        {
+          "path": "src/slides/agenda-slide.css",
+          "target": "styles",
+          "sha256": "3ff4773052e62163d5fa9235509eb3ec7e6820a917ed0cb2fc6b3816d774825f"
+        },
+        {
+          "path": "src/slides/agenda-slide.tsx",
+          "target": "slides",
+          "sha256": "21664a2b43e5395fbaf7994ed1b4a21264ee903202b708d64921bddeda29a63d"
+        }
+      ],
+      "registryDependencies": [
+        "label",
+        "slide-base"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/agenda-slide.tsx": {
+          "../primitives/label.js": {
+            "kind": "registry",
+            "item": "label",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "badge",
+      "type": "registry:primitive",
+      "title": "Badge",
+      "category": "primitive",
+      "files": [
+        {
+          "path": "src/primitives/badge.css",
+          "target": "styles",
+          "sha256": "7a2baf9cf222232de2af497614b9594a9d72376aeffb92f742e005f0ec8110b1"
+        },
+        {
+          "path": "src/primitives/badge.tsx",
+          "target": "primitives",
+          "sha256": "e8bbec869936f5e27b392bb90ee5513a5c98179f3f8222e8d05495b0bfecb9af"
+        }
+      ],
+      "registryDependencies": [],
+      "dependencies": [],
+      "butaiDependencies": [],
+      "importMap": {
+        "src/primitives/badge.tsx": {
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "bento-grid-slide",
+      "type": "registry:slide",
+      "title": "Bento Grid Slide",
+      "category": "layout",
+      "files": [
+        {
+          "path": "src/slides/bento-grid-slide.css",
+          "target": "styles",
+          "sha256": "eea65403dd2f0fa0f442e3f7f8d7c15f4f2127e6bba797cfb4ea949618231e4a"
+        },
+        {
+          "path": "src/slides/bento-grid-slide.tsx",
+          "target": "slides",
+          "sha256": "4b99a3059ce2592e11e5f08ddad68bc93f465e5b840b93ff77f0a1ddc7c6599a"
+        }
+      ],
+      "registryDependencies": [
+        "slide-base",
+        "subheading"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/bento-grid-slide.tsx": {
+          "../primitives/subheading.js": {
+            "kind": "registry",
+            "item": "subheading",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "big-statement-slide",
+      "type": "registry:slide",
+      "title": "Big Statement Slide",
+      "category": "layout",
+      "files": [
+        {
+          "path": "src/slides/big-statement-slide.css",
+          "target": "styles",
+          "sha256": "598b8d88b651561f73f557997249a78bd047ead8c04355bd93e7daa737d29b5b"
+        },
+        {
+          "path": "src/slides/big-statement-slide.tsx",
+          "target": "slides",
+          "sha256": "65ac947a48c7c4943ee326c782a22a49c8db9c2059a426616c92146c0111a38a"
+        }
+      ],
+      "registryDependencies": [
+        "label",
+        "slide-base"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/big-statement-slide.tsx": {
+          "../primitives/label.js": {
+            "kind": "registry",
+            "item": "label",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "cold-open-slide",
+      "type": "registry:slide",
+      "title": "Cold Open Slide",
+      "category": "structure",
+      "files": [
+        {
+          "path": "src/slides/cold-open-slide.tsx",
+          "target": "slides",
+          "sha256": "39b53f7f307950a2aadf0ac1cc342dd24b4dc40c654bced60abfd3ac2aa7f890"
+        }
+      ],
+      "registryDependencies": [
+        "intro-slide",
+        "slide-base"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [],
+      "importMap": {
+        "src/slides/cold-open-slide.tsx": {
+          "../primitives/intro-slide.js": {
+            "kind": "registry",
+            "item": "intro-slide",
+            "alias": "primitives"
+          }
+        }
+      }
+    },
+    {
+      "id": "comparison-table-slide",
+      "type": "registry:slide",
+      "title": "Comparison Table Slide",
+      "category": "layout",
+      "files": [
+        {
+          "path": "src/slides/comparison-table-slide.css",
+          "target": "styles",
+          "sha256": "1f264d0534f814f4d1e6eea717b6e8bfe24e6bfcc21cac47619441b98a277559"
+        },
+        {
+          "path": "src/slides/comparison-table-slide.tsx",
+          "target": "slides",
+          "sha256": "347c9cd80d1d8bea5955c3c304872ad507899bfdb5443e06acc536e3383f201f"
+        }
+      ],
+      "registryDependencies": [
+        "slide-base",
+        "subheading"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/comparison-table-slide.tsx": {
+          "../primitives/subheading.js": {
+            "kind": "registry",
+            "item": "subheading",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "concept-slide",
+      "type": "registry:slide",
+      "title": "Concept Slide",
+      "category": "content",
+      "files": [
+        {
+          "path": "src/slides/concept-slide.tsx",
+          "target": "slides",
+          "sha256": "ef99798101e09bc82c92f260d764539af35314a0f2e457bd2e9b49e953a6a4b3"
+        }
+      ],
+      "registryDependencies": [
+        "label",
+        "slide-base",
+        "subtitle"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/concept-slide.tsx": {
+          "../primitives/label.js": {
+            "kind": "registry",
+            "item": "label",
+            "alias": "primitives"
+          },
+          "../primitives/subtitle.js": {
+            "kind": "registry",
+            "item": "subtitle",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "cover-slide",
+      "type": "registry:slide",
+      "title": "Cover Slide",
+      "category": "structure",
+      "files": [
+        {
+          "path": "src/slides/cover-slide.tsx",
+          "target": "slides",
+          "sha256": "351e62561acc23f5a2fa782daa550d773557a637f14b9a0c2f8d46f0c5afd1f9"
+        }
+      ],
+      "registryDependencies": [
+        "intro-slide",
+        "slide-base"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [],
+      "importMap": {
+        "src/slides/cover-slide.tsx": {
+          "../primitives/intro-slide.js": {
+            "kind": "registry",
+            "item": "intro-slide",
+            "alias": "primitives"
+          }
+        }
+      }
+    },
+    {
+      "id": "demo-cue-slide",
+      "type": "registry:slide",
+      "title": "Demo Cue Slide",
+      "category": "demo",
+      "files": [
+        {
+          "path": "src/slides/demo-cue-slide.tsx",
+          "target": "slides",
+          "sha256": "c8a260fa6d8497e6adedf65b738c185fef76dcbbd3e0890289e0ec37ded0df32"
+        }
+      ],
+      "registryDependencies": [
+        "badge",
+        "icon",
+        "slide-base",
+        "subtitle"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/demo-cue-slide.tsx": {
+          "../primitives/badge.js": {
+            "kind": "registry",
+            "item": "badge",
+            "alias": "primitives"
+          },
+          "../primitives/icon.js": {
+            "kind": "registry",
+            "item": "icon",
+            "alias": "primitives"
+          },
+          "../primitives/subtitle.js": {
+            "kind": "registry",
+            "item": "subtitle",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "full-bleed-slide",
+      "type": "registry:slide",
+      "title": "Full Bleed Slide",
+      "category": "layout",
+      "files": [
+        {
+          "path": "src/slides/full-bleed-slide.css",
+          "target": "styles",
+          "sha256": "71d4c0dca43b8bb34c2f46a438004ebe3786bbf05449fc6dc1ff5c1a29a20852"
+        },
+        {
+          "path": "src/slides/full-bleed-slide.tsx",
+          "target": "slides",
+          "sha256": "e9dfa4827038a6e1756e1d095e42c227324b3b438bf1a277a759e75094b5569c"
+        }
+      ],
+      "registryDependencies": [
+        "label",
+        "slide-base"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/full-bleed-slide.tsx": {
+          "../primitives/label.js": {
+            "kind": "registry",
+            "item": "label",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "icon",
+      "type": "registry:primitive",
+      "title": "Icon",
+      "category": "primitive",
+      "files": [
+        {
+          "path": "src/primitives/icon.tsx",
+          "target": "primitives",
+          "sha256": "d78b895ddfecdee3c9b990033c2d9e210b4334ffd75a51430c8a8d22f6caabc1"
+        }
+      ],
+      "registryDependencies": [],
+      "dependencies": [],
+      "butaiDependencies": [],
+      "importMap": {
+        "src/primitives/icon.tsx": {
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "image-caption-slide",
+      "type": "registry:slide",
+      "title": "Image Caption Slide",
+      "category": "content",
+      "files": [
+        {
+          "path": "src/slides/image-caption-slide.tsx",
+          "target": "slides",
+          "sha256": "1374940d1e6123a230407df47a5aa984f61d369f44ecb4d169677fe4399cc4db"
+        }
+      ],
+      "registryDependencies": [
+        "slide-base",
+        "subheading",
+        "subtitle"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/image-caption-slide.tsx": {
+          "../primitives/subheading.js": {
+            "kind": "registry",
+            "item": "subheading",
+            "alias": "primitives"
+          },
+          "../primitives/subtitle.js": {
+            "kind": "registry",
+            "item": "subtitle",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "image-text-split-slide",
+      "type": "registry:slide",
+      "title": "Image Text Split Slide",
+      "category": "content",
+      "files": [
+        {
+          "path": "src/slides/image-text-split-slide.css",
+          "target": "styles",
+          "sha256": "3e225656c56429bb0095c2d013fa60699aee15db38d75bf0fdaddf94f7353b6c"
+        },
+        {
+          "path": "src/slides/image-text-split-slide.tsx",
+          "target": "slides",
+          "sha256": "b3d29544d13810a0e0ff58a00422f19b9ddac67bed0a5091e7526bc725e41d0a"
+        }
+      ],
+      "registryDependencies": [
+        "label",
+        "slide-base"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/image-text-split-slide.tsx": {
+          "../primitives/label.js": {
+            "kind": "registry",
+            "item": "label",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "intro-slide",
+      "type": "registry:primitive",
+      "title": "Intro Slide",
+      "category": "primitive",
+      "files": [
+        {
+          "path": "src/primitives/intro-slide.css",
+          "target": "styles",
+          "sha256": "c985030d21b3dbec1e0b721e4c5fa3fa6de7d53bb9d103b0f90fabcaf7a3ae7e"
+        },
+        {
+          "path": "src/primitives/intro-slide.tsx",
+          "target": "primitives",
+          "sha256": "c15ac4706916c2f7340c3858ad6f0ad300f3c50146680f1ba008389ae9a4941f"
+        }
+      ],
+      "registryDependencies": [],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/primitives/intro-slide.tsx": {
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "label",
+      "type": "registry:primitive",
+      "title": "Label",
+      "category": "primitive",
+      "files": [
+        {
+          "path": "src/primitives/label.css",
+          "target": "styles",
+          "sha256": "e7d715a1bc1a8ebb034b34ec31f2b2ac5efd561129487ec591cc9d0fe6433b55"
+        },
+        {
+          "path": "src/primitives/label.tsx",
+          "target": "primitives",
+          "sha256": "8a9d44f355e093828a0063a4827d280e5561cf27489d86474de474c43a51f185"
+        }
+      ],
+      "registryDependencies": [],
+      "dependencies": [],
+      "butaiDependencies": [],
+      "importMap": {
+        "src/primitives/label.tsx": {
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "quote-portrait-slide",
+      "type": "registry:slide",
+      "title": "Quote Portrait Slide",
+      "category": "content",
+      "files": [
+        {
+          "path": "src/slides/quote-portrait-slide.css",
+          "target": "styles",
+          "sha256": "0a7228e3ce3196235b4a7d2164673dd02a96676e6d9dad4d1daf2fa800f0d2c8"
+        },
+        {
+          "path": "src/slides/quote-portrait-slide.tsx",
+          "target": "slides",
+          "sha256": "46c311c600b63f65aca14e135c6ba327091abc0f23df0543fd0d77c44397e36d"
+        }
+      ],
+      "registryDependencies": [
+        "slide-base"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/quote-portrait-slide.tsx": {
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "quote-slide",
+      "type": "registry:slide",
+      "title": "Quote Slide",
+      "category": "content",
+      "files": [
+        {
+          "path": "src/slides/quote-slide.css",
+          "target": "styles",
+          "sha256": "27a96b7e6be708efb1c72f39b0d1a8b4982d60dbb6fe503ccc7828cc4cfdf171"
+        },
+        {
+          "path": "src/slides/quote-slide.tsx",
+          "target": "slides",
+          "sha256": "b127a2471bd9c5f537f30b3130ace293932a4e09a1ab6907a12bd1339e594c63"
+        }
+      ],
+      "registryDependencies": [
+        "slide-base"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/quote-slide.tsx": {
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "recap-slide",
+      "type": "registry:slide",
+      "title": "Recap Slide",
+      "category": "content",
+      "files": [
+        {
+          "path": "src/slides/recap-slide.css",
+          "target": "styles",
+          "sha256": "0d8005e00b7f3a3e08101d13ae4c4fe7202e574c6842e433dc313a8530cb225c"
+        },
+        {
+          "path": "src/slides/recap-slide.tsx",
+          "target": "slides",
+          "sha256": "2550d317e3f082e54f369130ca087194cd801ce512eed28c00d7ef4d1d9a1aef"
+        }
+      ],
+      "registryDependencies": [
+        "icon",
+        "label",
+        "slide-base"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/recap-slide.tsx": {
+          "../primitives/icon.js": {
+            "kind": "registry",
+            "item": "icon",
+            "alias": "primitives"
+          },
+          "../primitives/label.js": {
+            "kind": "registry",
+            "item": "label",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "section-divider-slide",
+      "type": "registry:slide",
+      "title": "Section Divider Slide",
+      "category": "structure",
+      "files": [
+        {
+          "path": "src/slides/section-divider-slide.css",
+          "target": "styles",
+          "sha256": "a2b0a6ed19d016234618b83e1e53ca27d08dde65181ec4356496bb52727a12d4"
+        },
+        {
+          "path": "src/slides/section-divider-slide.tsx",
+          "target": "slides",
+          "sha256": "e97906af2f52aa895c5eadd4389b105bc41f9c106f91e6411a0d75aab636d5cc"
+        }
+      ],
+      "registryDependencies": [
+        "slide-base",
+        "subtitle"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/section-divider-slide.tsx": {
+          "../primitives/subtitle.js": {
+            "kind": "registry",
+            "item": "subtitle",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "slide-base",
+      "type": "registry:style",
+      "title": "Slide Base",
+      "category": "style",
+      "files": [
+        {
+          "path": "src/styles/slide-base.css",
+          "target": "styles",
+          "sha256": "efc60bc0505521698cbde030de6769644ecdfee294bef895ccd8c81c77ba3119"
+        }
+      ],
+      "registryDependencies": [],
+      "dependencies": [],
+      "butaiDependencies": [],
+      "importMap": {}
+    },
+    {
+      "id": "speaker-intro-slide",
+      "type": "registry:slide",
+      "title": "Speaker Intro Slide",
+      "category": "closing",
+      "files": [
+        {
+          "path": "src/slides/speaker-intro-slide.css",
+          "target": "styles",
+          "sha256": "bc74719218a0d1edb99448973f0f99ed8143ecf4031ae15d1cf9c0456ab7fbf9"
+        },
+        {
+          "path": "src/slides/speaker-intro-slide.tsx",
+          "target": "slides",
+          "sha256": "4751270e030cfd37ff3d7d1e0ba0c82f95b7d4490e53f5c3770e7cb99b7987dc"
+        }
+      ],
+      "registryDependencies": [
+        "slide-base"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/speaker-intro-slide.tsx": {
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "stat-row-slide",
+      "type": "registry:slide",
+      "title": "Stat Row Slide",
+      "category": "type",
+      "files": [
+        {
+          "path": "src/slides/stat-row-slide.css",
+          "target": "styles",
+          "sha256": "c9e956e7a37f8ba6b26d8fa16cbc68c461d22f2b10a1b5d77d4fa4397e961b9b"
+        },
+        {
+          "path": "src/slides/stat-row-slide.tsx",
+          "target": "slides",
+          "sha256": "a03c89e2639baa83625bc5cc05c7372d4df952ebc90da5494d26722f9d2678a1"
+        }
+      ],
+      "registryDependencies": [
+        "slide-base",
+        "subheading",
+        "subtitle"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/stat-row-slide.tsx": {
+          "../primitives/subheading.js": {
+            "kind": "registry",
+            "item": "subheading",
+            "alias": "primitives"
+          },
+          "../primitives/subtitle.js": {
+            "kind": "registry",
+            "item": "subtitle",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "subheading",
+      "type": "registry:primitive",
+      "title": "Subheading",
+      "category": "primitive",
+      "files": [
+        {
+          "path": "src/primitives/subheading.tsx",
+          "target": "primitives",
+          "sha256": "efde107340387a4ba2b71ac438d5c384ed79c5b2c6e50ca60c22138128178c57"
+        }
+      ],
+      "registryDependencies": [],
+      "dependencies": [],
+      "butaiDependencies": [],
+      "importMap": {
+        "src/primitives/subheading.tsx": {
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "subtitle",
+      "type": "registry:primitive",
+      "title": "Subtitle",
+      "category": "primitive",
+      "files": [
+        {
+          "path": "src/primitives/subtitle.css",
+          "target": "styles",
+          "sha256": "a9d384db009c8f2b97171acd0d17f8edbe7a1641f107e05b210a52345e9a41cf"
+        },
+        {
+          "path": "src/primitives/subtitle.tsx",
+          "target": "primitives",
+          "sha256": "53b5630b5dc50473d95028a3e022359ad94cbff5aa3381c7a4c3088ea5774f54"
+        }
+      ],
+      "registryDependencies": [],
+      "dependencies": [],
+      "butaiDependencies": [],
+      "importMap": {
+        "src/primitives/subtitle.tsx": {
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "timeline-slide",
+      "type": "registry:slide",
+      "title": "Timeline Slide",
+      "category": "layout",
+      "files": [
+        {
+          "path": "src/slides/timeline-slide.css",
+          "target": "styles",
+          "sha256": "91f86a1144ccbdb6a13a97abd1ddc67bca828b497ace0fb17e1abab7cb0ac74d"
+        },
+        {
+          "path": "src/slides/timeline-slide.tsx",
+          "target": "slides",
+          "sha256": "adecf68a618b3d46f97162feda6a033ea5e19934f3ae8774b21e61dfd460987c"
+        }
+      ],
+      "registryDependencies": [
+        "slide-base",
+        "subheading"
+      ],
+      "dependencies": [],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/timeline-slide.tsx": {
+          "../primitives/subheading.js": {
+            "kind": "registry",
+            "item": "subheading",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      /* Built-in fallback :root — the studio/theme injects a later :root that wins,
+         repainting this doc via the token contract. */
+      :root {
+        --bg: #0f0f13;
+        --bg-card: #1a1a24;
+        --text: #e8e8f0;
+        --text-dim: #8888a0;
+        --accent: #60a5fa;
+        --border: #2a2a3a;
+        --green: #34d399;
+        --yellow: #fbbf24;
+        --blue: #60a5fa;
+        --font-display: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        --font-body: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      html,
+      body {
+        margin: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        padding: 6% 7%;
+        box-sizing: border-box;
+      }
+      .meta {
+        display: flex;
+        align-items: center;
+        gap: 0.6em;
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        color: var(--text-dim);
+        margin-bottom: 1.2rem;
+      }
+      .badge {
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.1em 0.7em;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .badge.is-shipped {
+        color: var(--green);
+        border-color: var(--green);
+      }
+      .badge.is-planned {
+        color: var(--yellow);
+        border-color: var(--yellow);
+      }
+      .eyebrow {
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 0.8rem;
+        color: var(--text-dim);
+        margin-bottom: 0.8rem;
+      }
+      h1 {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: clamp(1.6rem, 5vw, 2.8rem);
+        line-height: 1.06;
+        margin: 0 0 0.8rem;
+      }
+      .accent {
+        color: var(--accent);
+      }
+      .sub {
+        font-size: 1.05rem;
+        color: var(--text-dim);
+        max-width: 46ch;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="doc-hero">
+      <div class="meta">
+        <span>2026-01-01</span> ·
+        <span class="badge is-shipped">shipped</span>
+        <span class="badge is-planned">draft</span>
+      </div>
+      <div class="eyebrow">Example.com · Report</div>
+      <h1>One tight headline, <span class="accent">one clear idea</span></h1>
+      <p class="sub">A one-line summary of what this document argues, in plain language.</p>
+    </header>
+  </body>
+</html>
