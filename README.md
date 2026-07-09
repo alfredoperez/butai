@@ -50,10 +50,18 @@ For the full end-to-end walkthrough (install paths, the guided authoring skills,
 the manual CLI flow, and switching themes), see
 [docs/add-a-presentation.md](./docs/add-a-presentation.md).
 
-**Drive it with the skills.** Install the `butai-skills` plugin (see
-`plugins/butai-skills/README.md`) and invoke a skill by name, for example
-`/outline` or `/create`, to plan and assemble content against
-the kits' catalogs.
+**Drive it with the skills.** The repo is public, so on any machine with Claude
+Code you can install the `butai-skills` plugin straight from GitHub, then invoke
+a skill by name (for example `/outline` or `/create`) to plan and assemble
+content against the kits' catalogs:
+
+```sh
+claude plugin marketplace add alfredoperez/butai
+claude plugin install butai-skills@butai
+```
+
+See [plugins/butai-skills/README.md](./plugins/butai-skills/README.md) for the
+full skill list and a local-checkout install path.
 
 ## Monorepo map
 

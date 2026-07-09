@@ -40,30 +40,28 @@ skill finds its catalog once it is installed in your project.
 
 ## Install
 
-The plugin ships with butai as a local marketplace. From a checkout of this
-repo:
+The repo is public, so on any machine with Claude Code you can install straight
+from GitHub — no clone required. Run these two lines (either in your shell as
+`claude plugin ...`, or inside a Claude Code session as `/plugin ...`):
+
+```
+claude plugin marketplace add alfredoperez/butai
+claude plugin install butai-skills@butai
+```
+
+The first line registers butai's marketplace (defined at
+`.claude-plugin/marketplace.json` in the repo root); the second pulls in the
+single `butai-skills` plugin and copies its `skills/` folder into Claude Code's
+plugin cache, so all seven skills resolve. That is all another computer needs to
+get the skills.
+
+If you already have the repo checked out and want to install from that working
+copy instead (for local development), point the marketplace at the current
+directory:
 
 ```
 claude plugin marketplace add .
 claude plugin install butai-skills@butai
-```
-
-`claude plugin marketplace add .` registers the marketplace defined at
-`.claude-plugin/marketplace.json` (repo root); the install line pulls the single
-`butai-skills` plugin from it. Installing copies the plugin's `skills/` folder
-into Claude Code's plugin cache, so all seven skills resolve there.
-
-Once this repo is public, an external consumer installs the same plugin straight
-from git, without a local checkout, by pointing the marketplace at a
-`git-subdir` source:
-
-```json
-{
-  "source": "git-subdir",
-  "url": "https://github.com/<owner>/<repo>",
-  "path": "plugins/butai-skills",
-  "ref": "main"
-}
 ```
 
 ## Using a skill
@@ -82,8 +80,9 @@ repo-local fallback — is documented in
 ## Versioning
 
 The plugin version lives in both `.claude-plugin/plugin.json` and the
-marketplace entry, and the two must match. Bump both on every release. This
-phase ships `0.1.0` from a private repo; no package is published yet.
+marketplace entry, and the two must match. Bump both on every release. The
+engine packages are published to npm under the `@butai/*` scope (currently the
+`0.1.0-beta.0` beta line).
 
 ## Under the hood
 
