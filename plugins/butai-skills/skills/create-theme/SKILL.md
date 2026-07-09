@@ -1,12 +1,12 @@
 ---
-name: butai-theme-author
+name: create-theme
 description: >
   Author a new, complete butai theme as a standalone, contract-valid
   [data-theme] CSS file — read TOKEN_CONTRACT from @butai/patterns for the exact
   token names to fill, study the 13 @butai/themes as convention exemplars, fill
   EVERY required token plus a distinctive display font, then validate the block
   with validateThemeTokens so it has zero missing tokens. Use when the user says
-  '/butai-theme-author', "create a theme", "new theme", "make a <vibe> theme"
+  '/create-theme', "create a theme", "new theme", "make a <vibe> theme"
   (e.g. "a warm editorial theme", "a cyberpunk theme"), or wants to add a palette
   / color scheme for butai decks, scenes, and docs. Emits a standalone file — it
   never mutates the frozen @butai/themes package.

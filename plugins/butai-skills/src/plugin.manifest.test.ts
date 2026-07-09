@@ -12,7 +12,7 @@
  *      plugin.json's name and its source resolves to ./plugins/butai-skills.
  *
  * NOTE: the seven-skill roster is the six content skills plus the P8 maintainer
- * skill (butai-sync-upstreams). If a dir is authored in parallel and has not yet
+ * skill (sync-upstreams). If a dir is authored in parallel and has not yet
  * landed, the exact-seven assertion fails transiently; it resolves at integration.
  */
 import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
@@ -30,13 +30,13 @@ const skillsDir = join(pluginRoot, "skills");
 
 /** The frozen seven-skill roster (six content skills + the P8 maintainer skill). */
 const EXPECTED_SKILLS = [
-  "butai-scene-author",
-  "butai-storyboard-to-video",
-  "butai-html-page",
-  "butai-talk-plan",
-  "butai-theme-author",
-  "butai-deck-compose",
-  "butai-sync-upstreams",
+  "create-scene",
+  "storyboard",
+  "create-doc",
+  "outline",
+  "create-theme",
+  "create",
+  "sync-upstreams",
 ].sort();
 
 const SEMVER = /^\d+\.\d+\.\d+/;

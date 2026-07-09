@@ -1,12 +1,12 @@
 ---
-name: butai-talk-plan
+name: outline
 description: >
   Plan and outline a talk or deck BEFORE any slides are built — run a short
   discovery (purpose, length, content-readiness, speaking-vs-reading density),
   draft a structured outline whose beats map to real @butai/slide-kit archetypes
   read from the generated catalog, verify it with the user, then write it to a
-  generic, user-named location for butai-deck-compose to build. Use when the user
-  says '/butai-talk-plan', "plan a talk", "help me shape this talk/deck", "outline
+  generic, user-named location for /create to build. Use when the user
+  says '/outline', "plan a talk", "help me shape this talk/deck", "outline
   my presentation", or has rough notes/screenshots to turn into a talk structure.
   This skill plans the outline only — it does not build slides or author themes.
 argument-hint: "[talk topic, or path to rough notes / screenshots (optional)]"
@@ -20,7 +20,7 @@ Shapes a talk into a verified outline **before** any slide is built. The point i
 to decide what goes on the slides and in what order, and to get the user's
 sign-off — not to design visuals and not to write code. It runs a short discovery,
 drafts a structured outline, confirms it, and writes it to a location the user
-names, then hands off to `butai-deck-compose` to generate the deck.
+names, then hands off to `/create` to generate the deck.
 
 The core idea: don't ask abstract questions one at a time, and don't start
 building from a vague brief. Ask everything up front, draft a concrete outline,
@@ -33,8 +33,8 @@ message, and no external service is baked into the outline.
 - The user has rough notes, a topic, or screenshots and wants a talk structure.
 - The user wants the outline signed off before any generation happens.
 
-Do **not** use this to build slides (that is `butai-deck-compose`) or to author a
-theme (that is `butai-theme-author`).
+Do **not** use this to build slides (that is `/create`) or to author a
+theme (that is `/create-theme`).
 
 ## The flywheel: read the slide-kit catalog, never a hand table
 
@@ -52,7 +52,7 @@ catalog per `../../CATALOG-RESOLUTION.md`:
 
 Never invent an archetype that is not in the catalog, and never hardcode an
 archetype list here. If a beat needs a shape the kit lacks, author it via
-`butai-scene-author`'s sibling flow for slides, regenerate the catalog, then
+`/create-scene`'s sibling flow for slides, regenerate the catalog, then
 re-read it — capture once, reuse forever.
 
 ### Map beats to archetypes by intent
@@ -79,7 +79,7 @@ the catalog — this is a map, not the source of truth):
   → `speaker-intro-slide`.
 
 Note in each `### Visuals` line which archetype the beat is heading for, so the
-handoff to `butai-deck-compose` is unambiguous.
+handoff to `/create` is unambiguous.
 
 ## Steps
 
@@ -119,7 +119,7 @@ text-only beats. Usable images become `### Visuals` lines.
 
 ### 3. Draft the outline
 
-Write it in the exact structure `butai-deck-compose` consumes:
+Write it in the exact structure `/create` consumes:
 
 ```markdown
 # {Talk Title}
@@ -147,7 +147,7 @@ Rules:
   Long ≈ 6+. Speaker-led → more acts, fewer Key Points each (1–3); reading-first
   → fewer acts, denser Key Points (4–6).
 - **Record the density choice** as `**Density:**` in the outline header — it
-  carries through to how `butai-deck-compose` builds every slide.
+  carries through to how `/create` builds every slide.
 - **One idea per Key Point.** If a bullet is two ideas, split it.
 - **Mark demos explicitly** (`[Demo] …`) in Key Points or Speaker Notes — the
   `demo-cue-slide` beat keys off that.
@@ -185,16 +185,16 @@ Saved:    {relative path the user chose}
 Shape:    {N} acts · ~{N} min · {speaker-led | reading-first}
 Demos:    {N}     Visuals to capture: {N}
 
-Next:  build the deck →  /butai-deck-compose {saved path}
+Next:  build the deck →  /create {saved path}
 ```
 
-Offer to run `butai-deck-compose` now, but don't auto-run it — the user may want
+Offer to run `/create` now, but don't auto-run it — the user may want
 to tweak the saved outline first.
 
 ## Hard rules (the outline contract)
 
 1. **Plan only.** This skill produces a verified outline. It does not build slides
-   (that is `butai-deck-compose`) or author a theme (that is `butai-theme-author`).
+   (that is `/create`) or author a theme (that is `/create-theme`).
 2. **Map beats to real archetypes read from the catalog** — never a hand-kept
    archetype list, never an archetype the catalog does not contain.
 3. **Verify before saving.** No file is written on an unconfirmed outline.
@@ -214,13 +214,13 @@ to tweak the saved outline first.
 - [ ] Act count matches Length × Density; one idea per Key Point; demos marked
 - [ ] Verified with the user before saving (adjust loop honored)
 - [ ] Saved to a generic, user-named location; path reported; handed off to
-      `butai-deck-compose`
+      `/create`
 - [ ] Personal-data-clean + trademark-clean (generic copy + `example.com` only)
 
 ## Non-goals
 
-- No slide generation — the outline hands off to `butai-deck-compose`.
-- No theme authoring — that is `butai-theme-author`.
+- No slide generation — the outline hands off to `/create`.
+- No theme authoring — that is `/create-theme`.
 - No hardcoded personal folder / absolute path — the user names the target.
 - No hand-maintained archetype table — read the generated slide-kit catalog.
 - No personal, product, proprietary, or campaign content; generic + `example.com`.

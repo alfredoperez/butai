@@ -68,7 +68,7 @@ _tailwindcss ^4.0.0 + @tailwindcss/vite in apps/studio; the styling layer of the
 
 The external video-render tool the storyboard-to-video skill invokes for the real render — run through the user's own install via `npx hyperframes`. Adopted P5. Last checked 2026-07-07.
 
-_Evidence: plugins/butai-skills/skills/butai-storyboard-to-video/SKILL.md — "HyperFrames is an external tool, consumed via npx, never vendored." It is a tool dependency the user runs themselves, not code adopted into the repo and not an npm dependency._
+_Evidence: plugins/butai-skills/skills/storyboard/SKILL.md — "HyperFrames is an external tool, consumed via npx, never vendored." It is a tool dependency the user runs themselves, not code adopted into the repo and not an npm dependency._
 
 ## Our own work
 

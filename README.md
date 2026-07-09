@@ -52,7 +52,7 @@ the manual CLI flow, and switching themes), see
 
 **Drive it with the skills.** Install the `butai-skills` plugin (see
 `plugins/butai-skills/README.md`) and invoke a skill by name, for example
-`/butai-talk-plan` or `/butai-deck-compose`, to plan and assemble content against
+`/outline` or `/create`, to plan and assemble content against
 the kits' catalogs.
 
 ## Monorepo map

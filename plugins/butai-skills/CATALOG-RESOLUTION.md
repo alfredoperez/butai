@@ -39,9 +39,9 @@ The plugin ships **zero** catalog copies. A consumer installs the relevant
 
 | Skill | Catalog it reads | Barrel / path |
 |---|---|---|
-| `butai-talk-plan` | slide-kit catalog | `@butai/slide-kit` `catalog/catalog.json` / `SLIDES` |
-| `butai-deck-compose` | slide-kit catalog + registry (for `butai add`) | `@butai/slide-kit` `catalog/` + `registry/` |
-| `butai-theme-author` | token contract + themes | `@butai/patterns` `TOKEN_CONTRACT` + `@butai/themes` `THEMES` / `themes/*.css` |
-| `butai-html-page` | docs catalog | `@butai/docs-kit` `catalog/catalog.json` / `PATTERNS` |
-| `butai-scene-author` | scene-kit catalog | `@butai/scene-kit` `catalog/catalog.json` |
-| `butai-storyboard-to-video` | scene-kit catalog + STORYBOARD.md | `@butai/scene-kit` (`parseStoryboard`) |
+| `/outline` | slide-kit catalog | `@butai/slide-kit` `catalog/catalog.json` / `SLIDES` |
+| `/create` | slide-kit catalog + registry (for `butai add`) | `@butai/slide-kit` `catalog/` + `registry/` |
+| `/create-theme` | token contract + themes | `@butai/patterns` `TOKEN_CONTRACT` + `@butai/themes` `THEMES` / `themes/*.css` |
+| `/create-doc` | docs catalog | `@butai/docs-kit` `catalog/catalog.json` / `PATTERNS` |
+| `/create-scene` | scene-kit catalog | `@butai/scene-kit` `catalog/catalog.json` |
+| `/storyboard` | scene-kit catalog + STORYBOARD.md | `@butai/scene-kit` (`parseStoryboard`) |

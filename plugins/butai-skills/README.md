@@ -15,25 +15,25 @@ skill finds its catalog once it is installed in your project.
 
 ## The seven skills
 
-- **butai-talk-plan** — plans and outlines a talk. Asks a few questions about
+- **/outline** — plans and outlines a talk. Asks a few questions about
   purpose, length, and content, then drafts a structured outline whose visuals
-  map to real slide archetypes, and hands off to `butai-deck-compose`.
-- **butai-theme-author** — authors a complete theme. Fills every token the
+  map to real slide archetypes, and hands off to `/create`.
+- **/create-theme** — authors a complete theme. Fills every token the
   contract requires (never a partial theme), validates the result, and emits a
   standalone CSS file you can drop into your own project.
-- **butai-deck-compose** — composes a React/TSX slide deck from an outline. Picks
+- **/create** — composes a React/TSX slide deck from an outline. Picks
   archetypes from the slide catalog, wires them to the butai deck engine, and
   copies each one in through the butai CLI.
-- **butai-html-page** — writes a self-contained, framework-free HTML document (a
+- **/create-doc** — writes a self-contained, framework-free HTML document (a
   brief, report, or explainer) by composing the doc patterns and styling the
   page through a butai theme.
-- **butai-scene-author** — authors a single framework-free HTML scene (a title
+- **/create-scene** — authors a single framework-free HTML scene (a title
   card, callout, code, quote, or outro) that an external renderer later turns
   into video.
-- **butai-storyboard-to-video** — turns a storyboard into a set of scene files
+- **/storyboard** — turns a storyboard into a set of scene files
   plus a browser preview, ready for a real video render through your own
   external render tool.
-- **butai-sync-upstreams** — reviews the project's upstream credits ledger,
+- **/sync-upstreams** — reviews the project's upstream credits ledger,
   reading each source from it at run time, and reports what changed upstream since
   each was last checked, proposing what might be worth adopting. It proposes only;
   a human decides.
@@ -68,14 +68,14 @@ from git, without a local checkout, by pointing the marketplace at a
 
 ## Using a skill
 
-After install, invoke a skill by its name, for example `/butai-talk-plan` or
-`/butai-html-page`, or just describe what you want — each skill's description
+After install, invoke a skill by its name, for example `/outline` or
+`/create-doc`, or just describe what you want — each skill's description
 carries the natural-language triggers Claude uses to pick it automatically.
 
 The catalog-reading skills expect the matching butai kit to be installed in your
 project so they can read its catalog (for example `@butai/slide-kit` for
-`butai-talk-plan` and `butai-deck-compose`, `@butai/patterns` and `@butai/themes`
-for `butai-theme-author`). The resolution order — installed package first,
+`/outline` and `/create`, `@butai/patterns` and `@butai/themes`
+for `/create-theme`). The resolution order — installed package first,
 repo-local fallback — is documented in
 [CATALOG-RESOLUTION.md](./CATALOG-RESOLUTION.md).
 

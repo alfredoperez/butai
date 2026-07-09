@@ -1,12 +1,12 @@
 ---
-name: butai-sync-upstreams
+name: sync-upstreams
 description: >
   Check every upstream in the repo-root sources.yml ledger for new
   releases/commits since it was last reviewed, summarize what changed, and
   propose what butai might adopt — then update each entry's last-checked date and
   reference and note that CREDITS.md should be regenerated. Data-driven: it reads
   the upstream names, urls, and repos from sources.yml at runtime and hardcodes
-  none of them. Use when the user says '/butai-sync-upstreams', "check my
+  none of them. Use when the user says '/sync-upstreams', "check my
   upstreams for updates", "sync the credits ledger", "what changed upstream", or
   "are any of our sources out of date". It proposes; a human always decides what
   to adopt.

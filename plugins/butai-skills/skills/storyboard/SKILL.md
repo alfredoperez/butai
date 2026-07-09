@@ -1,10 +1,10 @@
 ---
-name: butai-storyboard-to-video
+name: storyboard
 description: >
   Turn a STORYBOARD.md plus the butai scene kit into a video — parse the
   storyboard, preview the scenes as a themed contact sheet for free, then drive
   the real render through the user's own HyperFrames install via `npx
-  hyperframes`. Use when the user says '/butai-storyboard-to-video', "render this
+  hyperframes`. Use when the user says '/storyboard', "render this
   storyboard", "turn my STORYBOARD.md into a video", "preview my video scenes", or
   has a STORYBOARD.md and scenes ready. A real render costs credits and is a
   deliberate manual step; the default output here is the free contact-sheet

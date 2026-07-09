@@ -129,7 +129,7 @@ The fastest path is to let the Claude Code skills drive it. The skills are optio
 **Step 1: outline the talk.**
 
 ```
-/butai-talk-plan
+/outline
 ```
 
 It runs a short discovery (purpose, length, how ready your content is, and whether the deck is speaker led or reading first), then drafts a structured outline whose visual beats map to real archetypes read from the slide-kit catalog. It shows you the outline, waits for your sign off, and saves it to a location you name (for example `talks/my-talk.md`). It plans only. It does not build slides yet.
@@ -137,7 +137,7 @@ It runs a short discovery (purpose, length, how ready your content is, and wheth
 **Step 2: compose the deck.**
 
 ```
-/butai-deck-compose talks/my-talk.md
+/create talks/my-talk.md
 ```
 
 It reads the outline, picks the matching archetypes from the catalog, runs `butai add` to copy each one into your project, wires them into a `SlideEngine`, applies a theme, and writes the finished deck to a folder you name (for example `src/slides/my-talk/`). Screenshot beats become labeled placeholders so you can drop the real images in later.

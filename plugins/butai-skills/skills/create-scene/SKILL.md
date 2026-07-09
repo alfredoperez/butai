@@ -1,10 +1,10 @@
 ---
-name: butai-scene-author
+name: create-scene
 description: >
   Author a new framework-free video scene into @butai/scene-kit — a standalone
   HTML document styled by the token contract, plus its frame.md design-spec and
   its meta.md catalog entry, then regenerate the catalog + registry. Use when the
-  user says '/butai-scene-author', "add a scene to the scene kit", "author a new
+  user says '/create-scene', "add a scene to the scene kit", "author a new
   HyperFrames scene", "create a title-card / callout / code / quote / outro
   scene", or wants a restyleable HTML scene that a theme can repaint. Scenes are
   raw HTML rendered to video by HyperFrames (consumed via `npx hyperframes`,
@@ -212,7 +212,7 @@ the new scene files together with the regenerated `catalog/` and
   local headless screenshots. No credits, no network render.
 - **Real video render (manual, costs credits):** a real scene-to-video render is a
   deliberate manual step run through the user's own HyperFrames install via
-  `npx hyperframes` (see the `butai-storyboard-to-video` skill). Do not run a paid
+  `npx hyperframes` (see the `/storyboard` skill). Do not run a paid
   render as part of authoring.
 
 ## Non-goals

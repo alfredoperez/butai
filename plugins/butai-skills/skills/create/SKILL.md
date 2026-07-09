@@ -1,13 +1,13 @@
 ---
-name: butai-deck-compose
+name: create
 description: >
   Compose a React/TSX slide deck from a talk outline — read the @butai/slide-kit
   catalog to pick real archetypes by intent, copy them into the project with
   `butai add`, wire them into the @butai/deck engine (SlideEngine / Slide), apply
   a butai theme, and write the deck to a generic, user-named target. Use when the
-  user says '/butai-deck-compose', "build the deck", "generate slides from this
+  user says '/create', "build the deck", "generate slides from this
   outline", "compose a presentation", or hands off a talk outline (typically from
-  butai-talk-plan) ready to become slides. Wires to the butai packages and a
+  /outline) ready to become slides. Wires to the butai packages and a
   consumer-named slides directory — never a personal app path or barrel.
 argument-hint: "[path to the talk outline (optional — defaults to the outline just planned)]"
 ---
@@ -22,18 +22,18 @@ catalog, copies those archetypes into the user's own project via the `butai add`
 copy-in, wires them into the `@butai/deck` engine, applies a butai theme, and
 writes the composed deck to a location the user names.
 
-This is the build step after `butai-talk-plan`. It stays React/TSX — butai's deck
+This is the build step after `/outline`. It stays React/TSX — butai's deck
 is React/TSX — but it wires to the **butai packages** and a **generic consumer
 target**, never a personal app, barrel, or config. Nothing personal, no product
 message, and no external service is baked in.
 
 ## When to use
 
-- The user has a talk outline (usually from `butai-talk-plan`) and wants slides.
+- The user has a talk outline (usually from `/outline`) and wants slides.
 - The user wants a deck composed from real butai archetypes and a butai theme.
 
-Do **not** use this to plan the outline (that is `butai-talk-plan`) or to author a
-theme (that is `butai-theme-author`).
+Do **not** use this to plan the outline (that is `/outline`) or to author a
+theme (that is `/create-theme`).
 
 ## The flywheel: read the slide-kit catalog, never a hand table
 
@@ -57,7 +57,7 @@ what archetypes exist and how they are used. Never hardcode a component list.
 
 Read the outline from the skill argument, or the outline the user just planned.
 Extract the title, the `**Density:**`, and each `## Act N` with its `### Key
-Points`, `### Visuals` (which already name the archetype ids `butai-talk-plan`
+Points`, `### Visuals` (which already name the archetype ids `/outline`
 chose), and `### Speaker Notes`.
 
 ### 2. Derive a slug + a generic target
@@ -74,7 +74,7 @@ in its own directory.
 For each beat, choose the archetype the outline's `### Visuals` line names,
 confirming it exists in the catalog and reading its `snippet` + `props` for the
 exact shape. If the outline left a beat open, pick by intent (the same map
-`butai-talk-plan` uses): opener → `cover-slide` / `cold-open-slide`; roadmap →
+`/outline` uses): opener → `cover-slide` / `cold-open-slide`; roadmap →
 `agenda-slide`; gear change → `section-divider-slide`; one big idea →
 `big-statement-slide`; explained concept → `concept-slide`; comparison →
 `comparison-table-slide`; results → `stat-row-slide`; sequence → `timeline-slide`;
@@ -214,8 +214,8 @@ Screenshots pending: {N}
 
 ## Non-goals
 
-- No outline planning — that is `butai-talk-plan`.
-- No theme authoring — that is `butai-theme-author`.
+- No outline planning — that is `/outline`.
+- No theme authoring — that is `/create-theme`.
 - No hardcoded personal app path, component barrel, or shared deck-config mutation.
 - No CLI changes — `butai add` is documented against the existing `@butai/cli`.
 - No hand-maintained component table — read the generated slide-kit catalog.

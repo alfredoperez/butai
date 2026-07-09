@@ -1,12 +1,12 @@
 ---
-name: butai-html-page
+name: create-doc
 description: >
   Author a self-contained, framework-free HTML document — a brief, report, or
   explainer — by reading the generated @butai/docs-kit catalog, composing its
   doc patterns (hero, section, callout, card grid, metric grid, table,
   comparison, decisions, timeline, code block, quote band, footer), and styling
   the whole page through the token contract with a chosen butai theme. Use when
-  the user says '/butai-html-page', "make a page/doc/brief/report", "an
+  the user says '/create-doc', "make a page/doc/brief/report", "an
   explainer", "capture this as a browsable HTML artifact", "render this design /
   decision / comparison / plan as a page", or wants a themeable HTML document
   richer than markdown. One `.html` file, inline CSS, no external runtime deps —
