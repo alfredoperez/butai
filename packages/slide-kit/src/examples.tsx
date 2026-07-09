@@ -23,6 +23,9 @@ import { TimelineSlide } from "./slides/timeline-slide.js";
 import { StatRowSlide } from "./slides/stat-row-slide.js";
 import { SpeakerIntroSlide } from "./slides/speaker-intro-slide.js";
 import { DemoCueSlide } from "./slides/demo-cue-slide.js";
+import { CodeScrollySlide } from "./slides/code-scrolly-slide.js";
+import { CodeSpotlightSlide } from "./slides/code-spotlight-slide.js";
+import { CodeSlideshowSlide } from "./slides/code-slideshow-slide.js";
 
 /** A 16:9 solid-color placeholder — inline SVG data URI, no asset fetch. */
 const PLACEHOLDER =
@@ -222,6 +225,85 @@ export const EXAMPLES: Record<string, () => JSX.Element> = {
       iconName="terminal"
       title="Back to the spec we created"
       subtitle="We'll create it, plan it, and review it — live."
+    />
+  ),
+  // The code examples render the plain (no-codehike) path on purpose — the
+  // EXAMPLES map must never require the optional codehike dependency.
+  "code-scrolly-slide": () => (
+    <CodeScrollySlide
+      chapter="Code"
+      title="How review reads a change"
+      lang="ts"
+      code={[
+        "async function review(pr) {",
+        "  const spec = await loadSpec(pr);",
+        '  if (!spec) return flag(pr, "no spec");',
+        "  const plan = await loadPlan(pr);",
+        "  const diff = await pr.diff();",
+        "  return judge({ spec, plan, diff });",
+        "}",
+      ].join("\n")}
+      steps={[
+        {
+          focus: [2, 3],
+          title: "Load the spec",
+          body: "No spec means flag and stop early.",
+        },
+        {
+          focus: [4, 4],
+          title: "Load the plan",
+          body: "The plan is the contract to judge against.",
+        },
+        {
+          focus: [5, 6],
+          title: "Judge the diff",
+          body: "Spec, plan, and diff decide the verdict.",
+        },
+      ]}
+    />
+  ),
+  "code-spotlight-slide": () => (
+    <CodeSpotlightSlide
+      chapter="Code"
+      title="A highlight hook, one beat at a time"
+      lang="tsx"
+      code={[
+        "export function useHighlight(code, lang) {",
+        "  const [hl, setHl] = useState(null);",
+        "  useEffect(() => {",
+        "    let alive = true;",
+        "    highlight(code, lang).then((h) => alive && setHl(h));",
+        "    return () => { alive = false; };",
+        "  }, [code, lang]);",
+        "  return hl;",
+        "}",
+      ].join("\n")}
+      steps={[
+        { focus: [1, 2], note: "State holds the highlighted result." },
+        { focus: [3, 7], note: "Resolve the async highlight in an effect." },
+        { focus: [6, 6], note: "Cancel on unmount so stale results never land." },
+      ]}
+    />
+  ),
+  "code-slideshow-slide": () => (
+    <CodeSlideshowSlide
+      chapter="Code"
+      title="Refactor, live"
+      lang="ts"
+      snapshots={[
+        {
+          code: "function add(a, b) {\n  return a + b;\n}",
+          caption: "Start: a plain function.",
+        },
+        {
+          code: "const add = (a, b) => a + b;",
+          caption: "Arrow + implicit return.",
+        },
+        {
+          code: "const add = (a: number, b: number): number => a + b;",
+          caption: "Typed.",
+        },
+      ]}
     />
   ),
 };

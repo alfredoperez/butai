@@ -1,14 +1,22 @@
 # Butai pattern catalog
 
-- count: 18
+- count: 21
 - version: 0.0.1
-- contentHash: eaddeb357e72cb092b593e582911b85aea7351602db3a2789bc1c1efaa47d1f6
+- contentHash: a70630a31d051cd9b181712a0bebb3889eb41d4db8bc53088c05ccc1ef541ded
 
 ## slide
 
 ### closing
 
 - **Speaker Intro Slide** (`speaker-intro-slide`) — Speaker introduction — avatar + name + role + bio + links. Drop it early to set credibility.
+### code
+
+- **Code Scrolly Slide** (`code-scrolly-slide`) — Explanation cards on one side, code on the other; each step advances the active card and refocuses the code to the lines it describes. Scrollycoding, adapted to a stepped deck.
+  - motion: step-driven via hidden data-step markers; active card highlights and code focus moves per advance; reduced motion drops the dim blur and card transition
+- **Code Slideshow Slide** (`code-slideshow-slide`) — Step through code snapshots that swap with a fade, one caption per snapshot and a dot progress row. The before/during/after refactor slide.
+  - motion: step-driven via hidden data-step markers; snapshot fade on advance (generic seam; a Code Hike token morph needs its DOM renderer); reduced motion disables the fade
+- **Code Spotlight Slide** (`code-spotlight-slide`) — One code block; each step spotlights a different line range (the rest dim and soften) with a short note. Arrow keys walk the focuses via the engine step system.
+  - motion: step-driven via hidden data-step markers; per-line dim/blur transition on focus change; reduced motion drops the blur
 ### content
 
 - **Concept Slide** (`concept-slide`) — Eyebrow label + big serif title + optional subtitle. Use for concept defines (What is X?).

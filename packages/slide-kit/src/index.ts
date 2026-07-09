@@ -25,6 +25,17 @@ export { IntroSlide } from "./primitives/intro-slide.js";
 export { Icon } from "./primitives/icon.js";
 export type { IconName } from "./primitives/icon.js";
 export { Badge } from "./primitives/badge.js";
+export {
+  CodePanel,
+  StepMarkers,
+  plainLines,
+  useHighlightedLines,
+  useStepIndex,
+} from "./primitives/code-panel.js";
+export type { CodeHighlighter, CodeToken, HighlightedLines } from "./primitives/code-panel.js";
+// NOTE: primitives/code-hike-highlighter is deliberately NOT exported (and not
+// built) — it is a copy-in-only registry item that requires the optional
+// `codehike` dependency. See its file header.
 
 // ── Archetypes ──
 export { CoverSlide } from "./slides/cover-slide.js";
@@ -51,6 +62,12 @@ export type { StatItem } from "./slides/stat-row-slide.js";
 export { SpeakerIntroSlide } from "./slides/speaker-intro-slide.js";
 export type { SpeakerLink } from "./slides/speaker-intro-slide.js";
 export { DemoCueSlide } from "./slides/demo-cue-slide.js";
+export { CodeScrollySlide } from "./slides/code-scrolly-slide.js";
+export type { ScrollyStep } from "./slides/code-scrolly-slide.js";
+export { CodeSpotlightSlide } from "./slides/code-spotlight-slide.js";
+export type { SpotlightStep } from "./slides/code-spotlight-slide.js";
+export { CodeSlideshowSlide } from "./slides/code-slideshow-slide.js";
+export type { CodeSnapshot } from "./slides/code-slideshow-slide.js";
 
 // ── Gallery examples (asset-free, personal-data-free) ──
 export { EXAMPLES } from "./examples.js";

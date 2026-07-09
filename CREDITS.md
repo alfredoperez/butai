@@ -68,7 +68,7 @@ _tailwindcss ^4.0.0 + @tailwindcss/vite in apps/studio; the styling layer of the
 
 The external video-render tool the storyboard-to-video skill invokes for the real render — run through the user's own install via `npx hyperframes`. Adopted P5. Last checked 2026-07-07.
 
-_Evidence: plugins/butai-skills/skills/storyboard/SKILL.md — "HyperFrames is an external tool, consumed via npx, never vendored." It is a tool dependency the user runs themselves, not code adopted into the repo and not an npm dependency._
+_Evidence: plugins/butai-skills/skills/butai-storyboard-to-video/SKILL.md — "HyperFrames is an external tool, consumed via npx, never vendored." It is a tool dependency the user runs themselves, not code adopted into the repo and not an npm dependency._
 
 ## Our own work
 
@@ -77,6 +77,12 @@ _Evidence: plugins/butai-skills/skills/storyboard/SKILL.md — "HyperFrames is a
 The 13 shipped presentation themes — 9 originals ported from our own prior presentations app plus 4 authored fresh for butai (blueprint, atelier, stage, marker). Adopted P1. Last checked 2026-07-07.
 
 _Originality gate documented per-theme in packages/themes/THEMES-PROVENANCE.md (file headers, author-voice comments, first-party git history). NONE come from the excluded third-party packs; src/themes.test.ts enforces that no excluded string or selector ships._
+
+### [Slide-kit code archetypes](./packages/slide-kit) — MIT
+
+The three code slide archetypes (code-scrolly, code-spotlight, code-slideshow) plus their shared code-panel primitive and the optional Code Hike adapter, generalized from the maintainer's own private presentations app. Adopted 2026-07-09. Last checked 2026-07-09.
+
+_Generalization: app-specific imports and design tokens were replaced with the butai theme token contract, and syntax highlighting was moved behind an optional highlighter seam so the packaged kit never depends on codehike. The slide-kit provenance guard (src/forbidden-strings.test.ts) scans these files like every other archetype._
 
 ## Excluded (considered, not shipped)
 

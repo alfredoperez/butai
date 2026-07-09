@@ -18,7 +18,8 @@ version: 1
 #   notes         OPTIONAL — free text (e.g. a secondary relationship)
 #   excluded_reason  REQUIRED when how: excluded
 #
-# Thirteen surveyed upstreams (phase-8 §0.2 + iter-2): 9 adopted/inspired/external/own + 4 excluded.
+# Fourteen entries: the 13 surveyed upstreams (phase-8 §0.2 + iter-2), i.e. 9
+# adopted/inspired/external/own + 4 excluded, plus the slide-kit code archetypes own-work row.
 sources:
   # ── Copied-in (vendored) ────────────────────────────────────────────────────
   - id: shadcn-ui
@@ -171,6 +172,24 @@ sources:
       (file headers, author-voice comments, first-party git history). NONE come from the
       excluded third-party packs; src/themes.test.ts enforces that no excluded string or
       selector ships.
+  - id: slide-kit-code-archetypes
+    name: Slide-kit code archetypes
+    url: ./packages/slide-kit
+    license: MIT
+    what: >-
+      The three code slide archetypes (code-scrolly, code-spotlight, code-slideshow) plus
+      their shared code-panel primitive and the optional Code Hike adapter, generalized
+      from the maintainer's own private presentations app.
+    how: own-work
+    adopted: 2026-07-09
+    last_checked: 2026-07-09
+    last_ref: null
+    notes: >-
+      Generalization: app-specific imports and design tokens were replaced with the butai
+      theme token contract, and syntax highlighting was moved behind an optional
+      highlighter seam so the packaged kit never depends on codehike. The slide-kit
+      provenance guard (src/forbidden-strings.test.ts) scans these files like every other
+      archetype.
 
   # ── Excluded (considered but deliberately NOT shipped — the license-review rows) ──
   - id: frontend-slides-theme-presets

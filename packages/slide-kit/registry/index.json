@@ -2,7 +2,7 @@
   "name": "@butai/slide-kit",
   "version": "0.1.0-beta.0",
   "registryVersion": 1,
-  "contentHash": "f2d142085c17e7042032a8c96e511b1ac4a5c55b7d4ddb195f664fdd8336d2a3",
+  "contentHash": "f746a9ae03f7b96bf3589564b612f757489a68c27d973b246a7ec15f42b585d2",
   "items": [
     {
       "id": "agenda-slide",
@@ -141,6 +141,216 @@
           "../primitives/label.js": {
             "kind": "registry",
             "item": "label",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "code-hike-highlighter",
+      "type": "registry:primitive",
+      "title": "Code Hike Highlighter",
+      "category": "primitive",
+      "files": [
+        {
+          "path": "src/primitives/code-hike-highlighter.tsx",
+          "target": "primitives",
+          "sha256": "a69ffafe9f4173edbcf71e0fb0d4bd40170b9cf30663ece1c405b76022a7b318"
+        }
+      ],
+      "registryDependencies": [
+        "code-panel"
+      ],
+      "dependencies": [
+        "codehike"
+      ],
+      "butaiDependencies": [],
+      "importMap": {
+        "src/primitives/code-hike-highlighter.tsx": {
+          "./code-panel.js": {
+            "kind": "registry",
+            "item": "code-panel",
+            "alias": "primitives"
+          },
+          "codehike/code": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "code-panel",
+      "type": "registry:primitive",
+      "title": "Code Panel",
+      "category": "primitive",
+      "files": [
+        {
+          "path": "src/primitives/code-panel.css",
+          "target": "styles",
+          "sha256": "a2df9e5cb3d584026d1ad8052c596339222dc536f2e14f63ccf62fe6db632474"
+        },
+        {
+          "path": "src/primitives/code-panel.tsx",
+          "target": "primitives",
+          "sha256": "eb128bd0e2bb8d8c0032b3c84afa80ad3e52b528f70536b52576d31dce407447"
+        }
+      ],
+      "registryDependencies": [],
+      "dependencies": [],
+      "butaiDependencies": [],
+      "importMap": {
+        "src/primitives/code-panel.tsx": {
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "code-scrolly-slide",
+      "type": "registry:slide",
+      "title": "Code Scrolly Slide",
+      "category": "code",
+      "files": [
+        {
+          "path": "src/slides/code-scrolly-slide.css",
+          "target": "styles",
+          "sha256": "97507df86c84940c84dd4224d3663b9a50278794bd30c673d324fb10c6696c96"
+        },
+        {
+          "path": "src/slides/code-scrolly-slide.tsx",
+          "target": "slides",
+          "sha256": "4d9712d92a848d69709a1aea9443ad01549ccf42da8e1da6743d77c64c0a5cb9"
+        }
+      ],
+      "registryDependencies": [
+        "code-hike-highlighter",
+        "code-panel",
+        "slide-base",
+        "subheading"
+      ],
+      "dependencies": [
+        "codehike"
+      ],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/code-scrolly-slide.tsx": {
+          "../primitives/code-panel.js": {
+            "kind": "registry",
+            "item": "code-panel",
+            "alias": "primitives"
+          },
+          "../primitives/subheading.js": {
+            "kind": "registry",
+            "item": "subheading",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "code-slideshow-slide",
+      "type": "registry:slide",
+      "title": "Code Slideshow Slide",
+      "category": "code",
+      "files": [
+        {
+          "path": "src/slides/code-slideshow-slide.css",
+          "target": "styles",
+          "sha256": "35d0791cc33ef5050c29a6532ac71eb091c8a5c53fd78a41c399a87fcf9f416c"
+        },
+        {
+          "path": "src/slides/code-slideshow-slide.tsx",
+          "target": "slides",
+          "sha256": "bd54c9c8e7553fff03c94962696d882e61c5b9cd762cfda0a0256240fab48926"
+        }
+      ],
+      "registryDependencies": [
+        "code-hike-highlighter",
+        "code-panel",
+        "slide-base",
+        "subheading"
+      ],
+      "dependencies": [
+        "codehike"
+      ],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/code-slideshow-slide.tsx": {
+          "../primitives/code-panel.js": {
+            "kind": "registry",
+            "item": "code-panel",
+            "alias": "primitives"
+          },
+          "../primitives/subheading.js": {
+            "kind": "registry",
+            "item": "subheading",
+            "alias": "primitives"
+          },
+          "@butai/deck": {
+            "kind": "external"
+          },
+          "react": {
+            "kind": "external"
+          }
+        }
+      }
+    },
+    {
+      "id": "code-spotlight-slide",
+      "type": "registry:slide",
+      "title": "Code Spotlight Slide",
+      "category": "code",
+      "files": [
+        {
+          "path": "src/slides/code-spotlight-slide.css",
+          "target": "styles",
+          "sha256": "3969ce55520e546a52bf743fa521c88ab36ee21273e3c2e52a8d9a6f6c01114c"
+        },
+        {
+          "path": "src/slides/code-spotlight-slide.tsx",
+          "target": "slides",
+          "sha256": "3723734d5907b6a2da640e0ed2ed63875fa47b1a74f589341093f18d805116b9"
+        }
+      ],
+      "registryDependencies": [
+        "code-hike-highlighter",
+        "code-panel",
+        "slide-base",
+        "subheading"
+      ],
+      "dependencies": [
+        "codehike"
+      ],
+      "butaiDependencies": [
+        "@butai/deck"
+      ],
+      "importMap": {
+        "src/slides/code-spotlight-slide.tsx": {
+          "../primitives/code-panel.js": {
+            "kind": "registry",
+            "item": "code-panel",
+            "alias": "primitives"
+          },
+          "../primitives/subheading.js": {
+            "kind": "registry",
+            "item": "subheading",
             "alias": "primitives"
           },
           "@butai/deck": {

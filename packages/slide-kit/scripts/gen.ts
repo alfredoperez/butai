@@ -23,6 +23,7 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { dirname, join, relative } from "node:path";
+import { parse as parseYaml } from "yaml";
 import type { Catalog, Diagnostic } from "@butai/patterns";
 import { generateCatalog, metasFromMarkdownDir, renderCatalogMd } from "@butai/patterns/node";
 import type {
@@ -50,6 +51,11 @@ const rel = (abs: string) => relative(pkgRoot, abs).split("\\").join("/");
 
 /** react/react-dom are peer/assumed in every consumer — never a copy `dependency`. */
 const ASSUMED_NPM = new Set(["react", "react-dom"]);
+
+/** "codehike/code" → "codehike"; "@scope/pkg/sub" → "@scope/pkg" — `dependencies`
+ *  records installable package NAMES, not import subpaths. */
+const npmPackageName = (spec: string) =>
+  spec.startsWith("@") ? spec.split("/").slice(0, 2).join("/") : spec.split("/")[0];
 
 /** The shared base style every slide references — closured into every slide (§0.5). */
 const SLIDE_BASE_ID = "slide-base";
@@ -111,6 +117,35 @@ function discover(): DiscoveredItem[] {
     }
   }
   return out;
+}
+
+/**
+ * Optional per-item frontmatter extras, declared in the item's `<id>.meta.md`:
+ * npm `dependencies` and extra `registryDependencies` that static import
+ * scanning cannot see — e.g. an optional copy-in enhancement wired through a
+ * prop rather than an import (the code archetypes' Code Hike seam).
+ */
+function metaExtras(it: DiscoveredItem): { dependencies: string[]; registryDependencies: string[] } {
+  const none = { dependencies: [], registryDependencies: [] };
+  if (!it.tsx) return none;
+  const metaPath = it.tsx.replace(/\.tsx$/, ".meta.md");
+  if (!existsSync(metaPath)) return none;
+  const fm = /^---\r?\n([\s\S]*?)\r?\n---/.exec(readFileSync(metaPath, "utf8"));
+  if (!fm) return none;
+  let data: unknown;
+  try {
+    data = parseYaml(fm[1]);
+  } catch {
+    return none;
+  }
+  if (data === null || typeof data !== "object" || Array.isArray(data)) return none;
+  const strings = (v: unknown): string[] =>
+    Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : [];
+  const record = data as Record<string, unknown>;
+  return {
+    dependencies: strings(record.dependencies),
+    registryDependencies: strings(record.registryDependencies),
+  };
 }
 
 function importSpecifiers(source: string): string[] {
@@ -178,7 +213,7 @@ export function buildRegistryIndex(): { json: string; index: RegistryIndex; erro
         } else {
           entry = { kind: "external" };
           if (spec.startsWith("@butai/")) butaiDeps.add(spec);
-          else if (!ASSUMED_NPM.has(spec)) npmDeps.add(spec);
+          else if (!ASSUMED_NPM.has(spec)) npmDeps.add(npmPackageName(spec));
         }
         perFile[spec] = entry;
       }
@@ -192,6 +227,11 @@ export function buildRegistryIndex(): { json: string; index: RegistryIndex; erro
     // §0.5: every slide additionally closures the shared base style, so a
     // `butai add <slide>` carries slide-base.css (previously an orphan style).
     if (it.type === "registry:slide") registryDeps.add(SLIDE_BASE_ID);
+
+    // Frontmatter-declared extras (deps invisible to import scanning).
+    const extras = metaExtras(it);
+    for (const dep of extras.dependencies) npmDeps.add(dep);
+    for (const dep of extras.registryDependencies) registryDeps.add(dep);
 
     const meta = metaById.get(it.id);
     const title =

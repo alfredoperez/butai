@@ -9,6 +9,10 @@
 @import "../primitives/badge.css";
 @import "../slides/bento-grid-slide.css";
 @import "../slides/big-statement-slide.css";
+@import "../primitives/code-panel.css";
+@import "../slides/code-scrolly-slide.css";
+@import "../slides/code-slideshow-slide.css";
+@import "../slides/code-spotlight-slide.css";
 @import "../slides/comparison-table-slide.css";
 @import "../slides/full-bleed-slide.css";
 @import "../slides/image-text-split-slide.css";

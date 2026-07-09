@@ -14,6 +14,9 @@ const ARCHETYPE_IDS = [
   "agenda-slide",
   "big-statement-slide",
   "bento-grid-slide",
+  "code-scrolly-slide",
+  "code-slideshow-slide",
+  "code-spotlight-slide",
   "cold-open-slide",
   "comparison-table-slide",
   "concept-slide",
@@ -82,9 +85,31 @@ describe("registry index generation", () => {
 
   it("lists the migrated primitives as registry:primitive", () => {
     const byId = new Map(index.items.map((i) => [i.id, i]));
-    for (const id of ["label", "subheading", "subtitle", "intro-slide", "icon", "badge"]) {
+    for (const id of [
+      "label",
+      "subheading",
+      "subtitle",
+      "intro-slide",
+      "icon",
+      "badge",
+      "code-panel",
+      "code-hike-highlighter",
+    ]) {
       expect(byId.get(id)?.type, `${id} type`).toBe("registry:primitive");
     }
+  });
+
+  it("declares codehike on the code archetypes and closures the copy-in adapter", () => {
+    const byId = new Map(index.items.map((i) => [i.id, i]));
+    for (const id of ["code-scrolly-slide", "code-spotlight-slide", "code-slideshow-slide"]) {
+      expect(byId.get(id)?.dependencies, `${id} deps`).toEqual(["codehike"]);
+      expect(byId.get(id)?.registryDependencies, `${id} closure`).toContain(
+        "code-hike-highlighter",
+      );
+    }
+    // The adapter derives "codehike" (package name, not the import subpath)
+    // from its own static import.
+    expect(byId.get("code-hike-highlighter")?.dependencies).toEqual(["codehike"]);
   });
 
   it("uses only the three allowed item types", () => {

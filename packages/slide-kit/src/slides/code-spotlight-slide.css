@@ -1,0 +1,15 @@
+.code-spot {
+  width: 100%;
+  max-width: 1140px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.code-spot .code-panel {
+  max-height: 60vh;
+}
+.code-spot__note {
+  margin: 16px 0 0;
+  font-size: clamp(15px, 1.4vw, 21px);
+  color: var(--text-dim);
+}

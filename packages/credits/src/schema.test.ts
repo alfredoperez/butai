@@ -26,6 +26,7 @@ const EXPECTED_IDS = [
   'gsap',
   'gsap-recipe-reference',
   'butai-themes',
+  'slide-kit-code-archetypes',
   'hyperframes',
   'frontend-slides-theme-presets',
   'bold-template-pack',
@@ -50,7 +51,7 @@ describe('sources.yml — schema completeness', () => {
     expect(ledger.sources.length).toBeGreaterThan(0);
   });
 
-  it('has all 13 surveyed upstream ids (§0.2 + iter-2)', () => {
+  it('has all 13 surveyed upstream ids (§0.2 + iter-2) plus the own-work rows', () => {
     const ids = new Set(ledger.sources.map((s) => s.id));
     for (const id of EXPECTED_IDS) expect(ids, `missing ${id}`).toContain(id);
     expect(ledger.sources).toHaveLength(EXPECTED_IDS.length);

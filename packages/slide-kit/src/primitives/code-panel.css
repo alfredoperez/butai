@@ -1,0 +1,35 @@
+/* code-panel — framed console-style code card shared by the code archetypes.
+   Plain rendering inherits the theme text color; a highlighter supplies token
+   colors (and optionally panel background/foreground) via inline styles. We
+   own the frame + the per-line focus dim. */
+.code-panel {
+  margin: 0;
+  padding: 26px 30px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: clamp(15px, 1.45vw, 21px);
+  line-height: 1.6;
+  overflow: auto;
+}
+
+/* per-line spotlight focus */
+.code-panel__line {
+  transition:
+    opacity 0.32s ease,
+    filter 0.32s ease;
+}
+.code-panel__line--dim {
+  opacity: 0.32;
+  filter: blur(1.4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .code-panel__line {
+    transition: none;
+  }
+  .code-panel__line--dim {
+    filter: none;
+  }
+}
